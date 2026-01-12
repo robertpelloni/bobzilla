@@ -1,0 +1,157 @@
+{
+    "policies": {
+        "DisableAppUpdate": true,
+        "DisableTelemetry": true,
+        "DisableFirefoxStudies": true,
+        "DisablePocket": true,
+        "DisableFirefoxAccounts": true,
+        "DisableFirefoxScreenshots": true,
+        "DisableFormHistory": true,
+        "DisablePasswordReveal": false,
+        "DisableProfileImport": false,
+        "DisableProfileRefresh": true,
+        "DisableSystemAddonUpdate": true,
+        "DisableFeedbackCommands": true,
+        "DisableSetDesktopBackground": false,
+        "DontCheckDefaultBrowser": true,
+        "NoDefaultBookmarks": true,
+        "OfferToSaveLogins": true,
+        "OfferToSaveLoginsDefault": false,
+        "PasswordManagerEnabled": true,
+        "SearchBar": "unified",
+        "DisplayBookmarksToolbar": "never",
+        "DisplayMenuBar": "default-off",
+        "NetworkPrediction": false,
+        "NewTabPage": false,
+        "CaptivePortal": false,
+        "PromptForDownloadLocation": false,
+        "HardwareAcceleration": true,
+        "Cookies": {
+            "Behavior": "reject-tracker-and-partition-foreign",
+            "BehaviorPrivateBrowsing": "reject-tracker-and-partition-foreign",
+            "Locked": false
+        },
+        "EnableTrackingProtection": {
+            "Value": true,
+            "Locked": false,
+            "Cryptomining": true,
+            "Fingerprinting": true
+        },
+        "EncryptedMediaExtensions": {
+            "Enabled": true,
+            "Locked": false
+        },
+        "ExtensionSettings": {
+            "*": {
+                "blocked_install_message": "Install extensions from bobzilla's recommended list or manually.",
+                "installation_mode": "allowed"
+            }
+        },
+        "FirefoxHome": {
+            "Search": true,
+            "TopSites": false,
+            "SponsoredTopSites": false,
+            "Highlights": false,
+            "Pocket": false,
+            "SponsoredPocket": false,
+            "Snippets": false,
+            "Locked": false
+        },
+        "FirefoxSuggest": {
+            "WebSuggestions": false,
+            "SponsoredSuggestions": false,
+            "ImproveSuggest": false,
+            "Locked": false
+        },
+        "Homepage": {
+            "URL": "about:blank",
+            "Locked": false,
+            "StartPage": "previous-session"
+        },
+        "HttpsOnlyMode": "enabled",
+        "OverrideFirstRunPage": "",
+        "OverridePostUpdatePage": "",
+        "Permissions": {
+            "Camera": {
+                "BlockNewRequests": false,
+                "Locked": false
+            },
+            "Microphone": {
+                "BlockNewRequests": false,
+                "Locked": false
+            },
+            "Location": {
+                "BlockNewRequests": true,
+                "Locked": false
+            },
+            "Notifications": {
+                "BlockNewRequests": true,
+                "Locked": false
+            },
+            "Autoplay": {
+                "Default": "block-audio-video",
+                "Locked": false
+            }
+        },
+        "PopupBlocking": {
+            "Default": true,
+            "Locked": false
+        },
+        "Preferences": {
+            "browser.aboutConfig.showWarning": {
+                "Value": false,
+                "Status": "default"
+            },
+            "browser.contentblocking.category": {
+                "Value": "strict",
+                "Status": "default"
+            },
+            "browser.newtabpage.activity-stream.showSponsored": {
+                "Value": false,
+                "Status": "locked"
+            },
+            "browser.newtabpage.activity-stream.showSponsoredTopSites": {
+                "Value": false,
+                "Status": "locked"
+            },
+            "browser.urlbar.suggest.quicksuggest.sponsored": {
+                "Value": false,
+                "Status": "locked"
+            },
+            "datareporting.policy.dataSubmissionEnabled": {
+                "Value": false,
+                "Status": "locked"
+            },
+            "toolkit.telemetry.enabled": {
+                "Value": false,
+                "Status": "locked"
+            }
+        },
+        "SanitizeOnShutdown": {
+            "Cache": false,
+            "Cookies": false,
+            "Downloads": false,
+            "FormData": false,
+            "History": false,
+            "Sessions": false,
+            "SiteSettings": false,
+            "OfflineApps": false,
+            "Locked": false
+        },
+        "SearchEngines": {
+            "PreventInstalls": false,
+            "Remove": ["Google", "Bing", "Amazon.com", "eBay"],
+            "Default": "DuckDuckGo",
+            "DefaultPrivate": "DuckDuckGo"
+        },
+        "UserMessaging": {
+            "WhatsNew": false,
+            "ExtensionRecommendations": false,
+            "FeatureRecommendations": false,
+            "UrlbarInterventions": false,
+            "SkipOnboarding": true,
+            "MoreFromMozilla": false,
+            "Locked": false
+        }
+    }
+}
