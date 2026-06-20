@@ -3,13 +3,13 @@
 ## Short-Term Features & Immediate Tasks
 
 ### Privacy (Day 1)
-- [ ] Ensure all telemetry is disabled by default.
-- [ ] Verify no Mozilla accounts integration by default.
-- [ ] Validate removal of Pocket.
-- [ ] Confirm no sponsored content is rendered.
-- [ ] Set "Enhanced tracking protection" to strict by default.
-- [ ] Enable fingerprinting resistance.
-- [ ] Ensure HTTPS-only mode is the default.
+- [x] Ensure all telemetry is disabled by default.
+- [x] Verify no Mozilla accounts integration by default.
+- [x] Validate removal of Pocket.
+- [x] Confirm no sponsored content is rendered.
+- [x] Set "Enhanced tracking protection" to strict by default.
+- [x] Enable fingerprinting resistance.
+- [x] Ensure HTTPS-only mode is the default.
 
 ### Performance
 - [ ] Apply immediate SpiderMonkey optimizations.

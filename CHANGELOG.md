@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [0.1.3] - 2026-01-12
+### Changed
+- Explicitly enabled `privacy.resistFingerprinting` in `settings/bobzilla.cfg` to fulfill the final outstanding item on the "Privacy (Day 1)" milestone.
+- Verified that all other zero-telemetry, Pocket-disabling, and HTTPS-only default configurations were already correctly implemented.
+
+## [0.1.2] - 2026-01-12
+### Added
+- Created `docs/V8_SPIDER_DISPATCHER.md` to define the architectural design and implementation phases for the "V8-Spider Hybrid Engine" milestone, fulfilling the first critical goal from `ROADMAP.md`.
+
 ## [0.1.1] - 2026-01-12
 ### Added
 - Extracted and formalized project roadmap into `ROADMAP.md` based on initial architectural and product visions.
