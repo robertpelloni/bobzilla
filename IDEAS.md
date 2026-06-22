@@ -17,14 +17,7 @@ Bobzilla is "The browser that doesn't suck." To move from "Firefox Fork" to "The
 ## 4. UX & Customization Perspectives
 *   **The "Temporal" Tab Manager:** Instead of just "Tabs," implement a **Timeline-based Session Engine**. Users could scrub back in time to see exactly what tabs they had open and what the state of those pages was at 3:00 PM yesterday, allowing for "Instant Session Resumption" even across device restarts.
 *   **Voice-Native Navigation:** Pivot the "Always-Listening" tech from Merk.Mobile into **Browser Commands**. "Bobzilla, open my trading dashboard and split the view with the latest crypto news." This makes the browser feel like a truly autonomous "Agent Shell" rather than a static document viewer.
-## 5. Aggressive Language Porting & Modernization
-*   **Rust-First Subcomponents:** Sequentially rewrite aging C++ rendering subcomponents into memory-safe Rust. Begin with media parsing libraries and specific layout engines to aggressively minimize zero-day vulnerabilities.
-*   **Boblang Scripting Integration:** Expose internal browser APIs to a bespoke scripting language (`Boblang`). Allow power users to write aggressive, low-level browser automations directly in the browser console.
-
-## 6. Extreme UI/UX Pivots
-*   **The "No-Chrome" Interface:** Introduce a mode that removes all traditional browser UI (tabs, address bar, buttons) relying entirely on command-line style fuzzy search (like an internal Alfred/Raycast) and Voice-Native navigation. The web page consumes 100% of the display.
-*   **Semantic Workspaces:** Workspaces aren't just grouped tabs; they are completely isolated containers (separate cookies, separate IP routing via built-in VPN/Tor nodes) that users can switch between seamlessly (e.g., "Trading Mode" vs "Casual Mode").
-
-## 7. Deep AI Integration
-*   **LLM-Driven DOM Distillation:** Instead of "Reader Mode," use a local model to rewrite the DOM on the fly, extracting only the factual information and rendering it in a standardized, hyper-readable terminal-style format.
-*   **Autonomous Form Completion Engine:** A smart agent that understands the semantic meaning of form fields and securely pulls data from a local, encrypted vault, submitting multi-page forms autonomously.
+## Brainstorming & Aggressive Pivots
+- **Rust Porting:** Rewrite critical SpiderMonkey bridging logic entirely in Rust to bypass legacy C++ overhead.
+- **AI Integration:** Instead of standard browser tabs, implement a "workspace" concept driven entirely by local LLM orchestration.
+- **Crypto-Native:** Integrate native `bobcoin` wallets directly into the Gecko engine, bypassing extension limitations.
