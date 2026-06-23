@@ -3,5 +3,5 @@
 ## Immediate Action Items
 - [ ] Initialize `mozilla-unified` submodule.
 - [ ] Implement V8-Spider mock architecture document.
-- [ ] Configure remaining ad-blocking (Manifest V2) patches.
+- [x] Configure remaining ad-blocking (Manifest V2) patches.
 - [ ] Verify `bobzilla.cfg` is properly loaded during runtime.

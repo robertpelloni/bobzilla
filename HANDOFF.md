@@ -1,12 +1,12 @@
 # Handoff Document
 
 ## Session Summary
-- Analyzed `AGENTS.md`, `README.md`, and global LLM instructions.
-- Enforced Day 1 Privacy tasks in `settings/bobzilla.cfg` (enabled fingerprinting resistance).
-- Noted that `mozilla-unified` submodule is missing/uninitialized, blocking C++ patch implementation.
-- Received user request to design an architecture for running native Java inside a browser tab using a full JDK stack and Linux VM.
-- Authored the comprehensive architectural design for this `javasandbox` system, mapping out the Firecracker MicroVM, Firefox fork hooks, snapshot-on-close logic, and the Monorepo structure. Saved to `docs/architecture/javasandbox-architecture.md`.
+- Analyzed the request to establish Day 1 Privacy settings (Telemetry, Pocket, Sponsored Tiles).
+- Discovered that `policies.json` and `settings/bobzilla.cfg` had already addressed the bulk of these requirements in a previous session.
+- Implemented the missing `settings/user.js` file, heavily inspired by Arkenfox/LibreWolf, to act as a deep baked-in privacy layer (handling WebRTC leaks, Safe Browsing tracking, etc.).
+- Explicitly appended Manifest V2 preservation overrides to `bobzilla.cfg`.
+- Enabled fingerprint letterboxing in `bobzilla.cfg` to align with strict Tor-level privacy standards.
 
 ## Next Steps
 - Initialize the `mozilla-unified` submodule using `scripts/fetch-source.sh`.
-- Review the newly added `javasandbox` architecture document for potential integration paths or next steps in establishing the monorepo structure it defines.
+- Review the `javasandbox-architecture.md` document for future integration.
