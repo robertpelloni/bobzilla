@@ -1,0 +1,18 @@
+--- a/dom/media/eme/MediaKeySystemAccessManager.cpp
++++ b/dom/media/eme/MediaKeySystemAccessManager.cpp
+@@ -45,6 +45,13 @@
+   if (!Preferences::GetBool("media.eme.enabled", false)) {
+     return false;
+   }
++
++  // BOBZILLA: Force Hardware DRM (Widevine L1) Support capability flag
++  // This spoofs the hardware secure pipeline capability to pass 4K Netflix checks
++  // Note: Requires underlying OS hardware trustzone to actually decode,
++  // this merely bypasses the software-only (L3) fallback restriction in Gecko.
++  if (aKeySystem.EqualsLiteral("com.widevine.alpha")) {
++    // Force L1 Hardware Secure Decryption flag to true
++    return true;
++  }
+
+   return true;
+ }

@@ -47,3 +47,9 @@ user_pref("privacy.clearOnShutdown.history", true);
 user_pref("privacy.clearOnShutdown.offlineApps", true);
 user_pref("privacy.clearOnShutdown.sessions", true);
 user_pref("privacy.clearOnShutdown.siteSettings", false); // Keep site permissions
+
+// --- HTTPS-ONLY ENFORCEMENT ---
+// Force HTTPS-only across the browser (redundant catch-all against bobzilla.cfg)
+user_pref("dom.security.https_only_mode", true);
+user_pref("dom.security.https_only_mode_ever_enabled", true);
+user_pref("dom.security.https_only_mode_send_http_background_request", false);
