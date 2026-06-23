@@ -1,0 +1,13 @@
+--- a/browser/components/tabbrowser/content/tabbrowser.js
++++ b/browser/components/tabbrowser/content/tabbrowser.js
+@@ -102,6 +102,12 @@
+     // Standard horizontal layout
+     this.tabContainer.setAttribute("orient", "horizontal");
+   }
++
++  // BOBZILLA: Enable Vertical Tabs Support
++  enableVerticalTabs() {
++    this.tabContainer.setAttribute("orient", "vertical");
++    this.tabContainer.classList.add("bobzilla-vertical-tabs");
++  }
+ }
