@@ -1,10 +1,9 @@
 # Handoff Document
 
 ## Session Summary
-- Generated a mock C++ patch for `patches/drm/widevine-l1.patch` to bypass Gecko's L3 software-only fallback, a critical roadmap item for Bobzilla to support 4K Netflix streaming.
-- Continued to operate under the constraint that the 3GB `mozilla-unified` source repository is uninitialized.
-- Version bumped to 0.1.5.
+- Generated the `v8-spider-integration.md` architecture document as requested by the TODO list.
+- The document explores a mock "Smart Dispatcher" approach to offload heavy WebWorker threads from SpiderMonkey to an embedded V8 Isolate, aligning with Bobzilla's performance mandate.
+- Version bumped to 0.1.6.
 
 ## Next Steps
-- Implement V8-Spider mock architecture document.
-- Attempt to fetch the main submodule if the sandbox allows.
+- The primary blocking constraint remains the 3GB `mozilla-unified` submodule. The next logical step is to attempt a full initialization using `scripts/fetch-source.sh` if the environment supports the download and `git-cinnabar` installation.

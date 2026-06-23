@@ -12,3 +12,7 @@
 ## [0.1.5] - 2026-05-02
 ### Changed
 - Drafted Widevine L1 DRM spoofing patch in `patches/drm/widevine-l1.patch` to support 4K streaming capabilities.
+
+## [0.1.6] - 2026-05-02
+### Changed
+- Authored the V8-Spider Mock Integration architecture document in `docs/architecture/v8-spider-integration.md` detailing the WebWorker offloading strategy.
