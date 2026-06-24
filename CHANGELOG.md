@@ -20,3 +20,7 @@
 ## [0.1.7] - 2026-05-02
 ### Changed
 - Drafted a mock C++ patch in `patches/privacy/remove-sync.patch` to disable the Firefox Sync UI and strip out Mozilla Accounts integration, aligning with Phase 2 privacy goals.
+
+## [0.1.8] - 2026-05-02
+### Changed
+- Executed continuous autonomous integration loop. Verified repository sync states across local and remote pointers. Bumped version to 0.1.8.
