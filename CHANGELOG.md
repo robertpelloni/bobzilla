@@ -32,3 +32,7 @@
 ## [0.1.10] - 2026-05-02
 ### Changed
 - Drafted mock C++ and JS patches in `patches/privacy/remove-pocket.patch` and `patches/privacy/remove-telemetry.patch` to hardcode the removal of Pocket and Telemetry logic at the source level.
+
+## [0.1.11] - 2026-05-02
+### Changed
+- Drafted a mock C++ patch in `patches/privacy/native-adblock.patch` to simulate native network-level ad-blocking logic.

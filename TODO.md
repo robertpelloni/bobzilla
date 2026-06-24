@@ -8,3 +8,4 @@
 - [x] Draft mock patches for removing Mozilla Accounts/Sync UI integration in `patches/privacy/`.
 - [x] Draft mock patches for removing Pocket integration (`patches/privacy/remove-pocket.patch`).
 - [x] Draft mock patches for removing telemetry services (`patches/privacy/remove-telemetry.patch`).
+- [x] Draft mock patches for native built-in adblocking (`patches/privacy/native-adblock.patch`).
