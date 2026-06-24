@@ -40,3 +40,7 @@
 ## [0.1.12] - 2026-05-02
 ### Added
 - Created the foundational Rust structure for the `javasandbox` host runner daemon (`runner-daemon/`) to orchestrate Firecracker MicroVMs via IPC.
+
+## [0.1.13] - 2026-05-02
+### Added
+- Implemented `runner-daemon/src/disk_streamer.rs` containing the HTTP Range Request logic to allow stateless, on-demand demand-paging of the Java payload image, ensuring instant execution upon visiting a Javasandbox URI.

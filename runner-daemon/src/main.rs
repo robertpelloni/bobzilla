@@ -1,3 +1,5 @@
+mod disk_streamer;
+
 use std::env;
 use tokio::net::UnixListener;
 use std::process::Command;
