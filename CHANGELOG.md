@@ -16,3 +16,7 @@
 ## [0.1.6] - 2026-05-02
 ### Changed
 - Authored the V8-Spider Mock Integration architecture document in `docs/architecture/v8-spider-integration.md` detailing the WebWorker offloading strategy.
+
+## [0.1.7] - 2026-05-02
+### Changed
+- Drafted a mock C++ patch in `patches/privacy/remove-sync.patch` to disable the Firefox Sync UI and strip out Mozilla Accounts integration, aligning with Phase 2 privacy goals.

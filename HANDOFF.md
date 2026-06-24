@@ -1,9 +1,9 @@
 # Handoff Document
 
 ## Session Summary
-- Generated the `v8-spider-integration.md` architecture document as requested by the TODO list.
-- The document explores a mock "Smart Dispatcher" approach to offload heavy WebWorker threads from SpiderMonkey to an embedded V8 Isolate, aligning with Bobzilla's performance mandate.
-- Version bumped to 0.1.6.
+- Generated `patches/privacy/remove-sync.patch` to mock the removal of the Firefox Sync/Mozilla Accounts UI.
+- Updated the global version tag to `0.1.7` per Omni-Workspace sync protocols.
 
 ## Next Steps
-- The primary blocking constraint remains the 3GB `mozilla-unified` submodule. The next logical step is to attempt a full initialization using `scripts/fetch-source.sh` if the environment supports the download and `git-cinnabar` installation.
+- The primary blocking constraint remains the uninitialized `mozilla-unified` 3GB submodule.
+- Additional Phase 2 privacy hardening can proceed via mock patches if the submodule remains unavailable.

@@ -1,0 +1,17 @@
+--- a/browser/components/preferences/sync.js
++++ b/browser/components/preferences/sync.js
+@@ -10,7 +10,13 @@
+
+ var gSyncPane = {
+   init() {
+-    // Initialize Firefox Sync UI elements
++    // BOBZILLA: Disable Firefox Sync UI
++    // We are aggressively stripping Mozilla Accounts from the browser.
++    let syncContainer = document.getElementById("sync-category");
++    if (syncContainer) {
++      syncContainer.hidden = true;
++    }
++    return;
+   },
+
+   uninit() {},
