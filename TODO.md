@@ -6,3 +6,5 @@
 - [ ] Verify `bobzilla.cfg` is properly loaded during runtime (requires full build).
 - [x] Draft DRM/Widevine L1 patches in `patches/drm/`.
 - [x] Draft mock patches for removing Mozilla Accounts/Sync UI integration in `patches/privacy/`.
+- [x] Draft mock patches for removing Pocket integration (`patches/privacy/remove-pocket.patch`).
+- [x] Draft mock patches for removing telemetry services (`patches/privacy/remove-telemetry.patch`).

@@ -1,0 +1,14 @@
+--- a/browser/components/pocket/Pocket.sys.mjs
++++ b/browser/components/pocket/Pocket.sys.mjs
+@@ -20,6 +20,11 @@
+
+ export var Pocket = {
+   init() {
++    // BOBZILLA: Hard-disable Pocket integration
++    // Completely bypass initialization logic to ensure it never runs,
++    // even if preferences are somehow reset.
++    return;
++
+     if (this._initialized) {
+       return;
+     }
