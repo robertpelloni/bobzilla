@@ -1,0 +1,15 @@
+[package]
+name = "bobzilla-javasandbox-daemon"
+version = "0.1.0"
+edition = "2021"
+description = "The host daemon controller for the Bobzilla javasandbox Firecracker MicroVM."
+
+[dependencies]
+# Required for interacting with Firecracker API
+reqwest = { version = "0.11", features = ["json"] }
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Required for IPC socket communication with Firefox
+nix = "0.26"

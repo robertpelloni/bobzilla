@@ -36,3 +36,7 @@
 ## [0.1.11] - 2026-05-02
 ### Changed
 - Drafted a mock C++ patch in `patches/privacy/native-adblock.patch` to simulate native network-level ad-blocking logic.
+
+## [0.1.12] - 2026-05-02
+### Added
+- Created the foundational Rust structure for the `javasandbox` host runner daemon (`runner-daemon/`) to orchestrate Firecracker MicroVMs via IPC.
