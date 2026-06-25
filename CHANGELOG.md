@@ -60,3 +60,7 @@
 ## [0.1.17] - 2026-05-02
 ### Added
 - Implemented `runner-daemon/src/snapshot_manager.rs` to abstract the Firecracker REST API calls necessary for suspending vCPUs and dumping active memory states to disk.
+
+## [0.1.18] - 2026-05-02
+### Changed
+- Executed autonomous synchronization check. Cleared finished items from the roadmap and prepared TODO lists for full build integrations. Bumped version to 0.1.18.

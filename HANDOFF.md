@@ -1,9 +1,10 @@
 # Handoff Document
 
 ## Session Summary
-- Generated the `snapshot_manager.rs` module for the `runner-daemon`, fulfilling the requirement to implement Firecracker memory state-saving.
-- The Javasandbox `runner-daemon` layout (IPC, Http Streamer, FUSE, and Snapshotter) is fundamentally complete as a theoretical mock.
-- Updated the global version tag to `0.1.17` per Omni-Workspace protocols.
+- Cleared the finalized mocked tasks from `TODO.md` to cleanly reflect the current blockade (the 3GB source submodule requirement).
+- Appended a new objective to integrate the Rust daemon compilation into the global `./scripts/build.sh` orchestrator.
+- Updated the global version tag to `0.1.18`.
 
 ## Next Steps
-- The primary blocking constraint remains the uninitialized `mozilla-unified` 3GB submodule.
+- Implement the build script linkage for the rust daemon.
+- Await an environment capable of fetching the `mozilla-unified` submodule.
