@@ -1,10 +1,8 @@
 # Handoff Document
 
 ## Session Summary
-- Cleared the finalized mocked tasks from `TODO.md` to cleanly reflect the current blockade (the 3GB source submodule requirement).
-- Appended a new objective to integrate the Rust daemon compilation into the global `./scripts/build.sh` orchestrator.
-- Updated the global version tag to `0.1.18`.
+- Integrated the `runner-daemon` cargo build pipeline into the global `scripts/build.sh` script, fulfilling the immediate build roadmap objective.
+- Updated the global version tag to `0.1.19` per Omni-Workspace protocols.
 
 ## Next Steps
-- Implement the build script linkage for the rust daemon.
-- Await an environment capable of fetching the `mozilla-unified` submodule.
+- The primary blocking constraint remains the uninitialized `mozilla-unified` 3GB submodule.

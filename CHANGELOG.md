@@ -64,3 +64,7 @@
 ## [0.1.18] - 2026-05-02
 ### Changed
 - Executed autonomous synchronization check. Cleared finished items from the roadmap and prepared TODO lists for full build integrations. Bumped version to 0.1.18.
+
+## [0.1.19] - 2026-05-02
+### Changed
+- Updated `scripts/build.sh` to properly integrate and compile the Rust-based `runner-daemon` alongside the primary Firefox `mach` build orchestrator.
