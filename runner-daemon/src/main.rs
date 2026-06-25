@@ -1,3 +1,5 @@
+mod snapshot_manager;
+
 mod fuse_bridge;
 
 mod disk_streamer;

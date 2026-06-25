@@ -56,3 +56,7 @@
 ## [0.1.16] - 2026-05-02
 ### Changed
 - Executed continuous autonomous integration loop. Verified repository sync states across local and remote pointers. Bumped version to 0.1.16.
+
+## [0.1.17] - 2026-05-02
+### Added
+- Implemented `runner-daemon/src/snapshot_manager.rs` to abstract the Firecracker REST API calls necessary for suspending vCPUs and dumping active memory states to disk.
