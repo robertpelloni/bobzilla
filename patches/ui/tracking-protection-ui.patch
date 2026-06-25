@@ -1,0 +1,14 @@
+--- a/browser/components/controlcenter/content/trackingProtection.sys.mjs
++++ b/browser/components/controlcenter/content/trackingProtection.sys.mjs
+@@ -140,6 +140,11 @@
+   _updateState() {
+     let isPrivate = PrivateBrowsingUtils.isWindowPrivate(window);
+
++    // BOBZILLA: Hardcode visual indicator for strict privacy
++    // Visually spoof the protection panel to match Tor-level strictness.
++    this.protectionState = "strict";
++    this._updateUI("strict");
++
+     if (this.isBlockingEnabled) {
+       this.protectionState = "enabled";
+     } else if (isPrivate) {

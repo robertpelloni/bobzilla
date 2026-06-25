@@ -68,3 +68,12 @@
 ## [0.1.19] - 2026-05-02
 ### Changed
 - Updated `scripts/build.sh` to properly integrate and compile the Rust-based `runner-daemon` alongside the primary Firefox `mach` build orchestrator.
+
+## [0.1.20] - 2026-05-02
+### Changed
+- Drafted a mock patch in `patches/ui/tracking-protection-ui.patch` to hardcode the visual tracking protection indicators.
+- Synchronized branch states and cleared completed TODO items.
+
+## [0.1.21] - 2026-05-02
+### Fixed
+- Reverted destructive `|| true` modifications in `scripts/build.sh` that broke the `set -e` failure logic. Restored the structural integrity of the build orchestrator while maintaining the `cargo build --release` inclusion.
