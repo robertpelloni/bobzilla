@@ -48,3 +48,7 @@
 ## [0.1.14] - 2026-05-02
 ### Added
 - Implemented `runner-daemon/src/fuse_bridge.rs` mock to translate the HTTP Block streamer into a local host filesystem mount for Firecracker.
+
+## [0.1.15] - 2026-05-02
+### Added
+- Drafted a mock patch in `patches/ui/compact-urlbar.patch` to simulate the integration of a compact, Floorp-style URL bar.

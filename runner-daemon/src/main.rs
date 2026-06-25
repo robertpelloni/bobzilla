@@ -2,9 +2,7 @@ mod fuse_bridge;
 
 mod disk_streamer;
 
-use std::env;
 use tokio::net::UnixListener;
-use std::process::Command;
 
 /// This daemon listens on a local Unix socket for IPC commands from Firefox.
 /// When the browser intercepts a `javasandbox://` URI, it pings this daemon to
@@ -15,7 +13,7 @@ async fn main() {
     println!("Bobzilla JavaSandbox Runner Daemon Initialized.");
 
     // Bind to the designated IPC socket for Firefox communication
-    let socket_path = "/tmp/bobzilla-sandbox.sock";
+    let socket_path = "/run/user/1000/bobzilla-sandbox.sock"; // Should dynamically resolve UID in production
 
     // Cleanup existing socket file if it exists
     let _ = std::fs::remove_file(socket_path);

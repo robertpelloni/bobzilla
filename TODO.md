@@ -2,12 +2,6 @@
 
 ## Immediate Action Items
 - [ ] Initialize `mozilla-unified` submodule via `scripts/fetch-source.sh`.
-- [x] Implement V8-Spider mock architecture document.
+- [x] Implement UI mock patch for compact Floorp-style URL bar (`patches/ui/compact-urlbar.patch`).
+- [ ] Write integration logic in `runner-daemon/src/snapshot_manager.rs` for Firecracker state saving.
 - [ ] Verify `bobzilla.cfg` is properly loaded during runtime (requires full build).
-- [x] Draft DRM/Widevine L1 patches in `patches/drm/`.
-- [x] Draft mock patches for removing Mozilla Accounts/Sync UI integration in `patches/privacy/`.
-- [x] Draft mock patches for removing Pocket integration (`patches/privacy/remove-pocket.patch`).
-- [x] Draft mock patches for removing telemetry services (`patches/privacy/remove-telemetry.patch`).
-- [x] Draft mock patches for native built-in adblocking (`patches/privacy/native-adblock.patch`).
-- [x] Implement FUSE block device streaming logic in `runner-daemon` for Javasandbox.
-- [x] Implement HTTP Range Request chunking for stateless payload streaming.

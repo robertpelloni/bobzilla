@@ -1,0 +1,15 @@
+--- a/browser/components/urlbar/UrlbarInput.sys.mjs
++++ b/browser/components/urlbar/UrlbarInput.sys.mjs
+@@ -400,6 +400,12 @@
+     if (this.uninit) {
+       this.uninit();
+     }
++
++    // BOBZILLA: Force Compact URL Bar
++    // Override the default Mozilla megabar styling for a tighter,
++    // Floorp-inspired layout that respects vertical space.
++    this.textbox.setAttribute("compact", "true");
++    this.panel.classList.add("bobzilla-compact-panel");
+
+     this._uninit = null;
+   }

@@ -1,7 +1,5 @@
 use std::sync::Arc;
 use reqwest::Client;
-use tokio::io::{AsyncReadExt, AsyncSeekExt};
-use tokio::fs::File;
 
 /// Handles the demand-paging HTTP range-request logic for the Javasandbox.
 /// Instead of downloading the 150MB+ Java application and guest OS image fully upfront,
