@@ -1,3 +1,5 @@
+mod fuse_bridge;
+
 mod disk_streamer;
 
 use std::env;

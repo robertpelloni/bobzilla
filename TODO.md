@@ -9,5 +9,5 @@
 - [x] Draft mock patches for removing Pocket integration (`patches/privacy/remove-pocket.patch`).
 - [x] Draft mock patches for removing telemetry services (`patches/privacy/remove-telemetry.patch`).
 - [x] Draft mock patches for native built-in adblocking (`patches/privacy/native-adblock.patch`).
-- [ ] Implement FUSE block device streaming logic in `runner-daemon` for Javasandbox.
+- [x] Implement FUSE block device streaming logic in `runner-daemon` for Javasandbox.
 - [x] Implement HTTP Range Request chunking for stateless payload streaming.

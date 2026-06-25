@@ -44,3 +44,7 @@
 ## [0.1.13] - 2026-05-02
 ### Added
 - Implemented `runner-daemon/src/disk_streamer.rs` containing the HTTP Range Request logic to allow stateless, on-demand demand-paging of the Java payload image, ensuring instant execution upon visiting a Javasandbox URI.
+
+## [0.1.14] - 2026-05-02
+### Added
+- Implemented `runner-daemon/src/fuse_bridge.rs` mock to translate the HTTP Block streamer into a local host filesystem mount for Firecracker.
