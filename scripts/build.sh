@@ -26,6 +26,10 @@ cp "$ROOT_DIR/policies/policies.json" "$SOURCE_DIR/browser/app/profile/" 2>/dev/
 # Copy default settings
 cp "$ROOT_DIR/settings/bobzilla.cfg" "$SOURCE_DIR/browser/app/" 2>/dev/null || true
 
+# Enforce Patch Integrity before entering source dir
+echo "=== Enforcing Patch Integrity ==="
+$ROOT_DIR/scripts/apply-patches.sh
+
 cd "$SOURCE_DIR"
 
 # Bootstrap if needed

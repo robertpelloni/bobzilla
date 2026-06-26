@@ -118,3 +118,7 @@
 ## [0.1.33] - 2026-05-02
 ### Changed
 - Executed continuous autonomous integration loop. Verified repository sync states and refreshed internal tracking constraints.
+
+## [0.1.34] - 2026-05-02
+### Changed
+- Updated `scripts/build.sh` to enforce patch integrity by triggering `scripts/apply-patches.sh` automatically before initiating the Gecko compilation loop. This guarantees that all Phase 1 baseline configurations and Javasandbox overrides are actively injected.
