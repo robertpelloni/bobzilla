@@ -82,3 +82,11 @@
 ### Added
 - Scaffolded the `guest-os/` directory with `build.sh` and Buildroot configurations, laying the foundation for compiling the Alpine Linux MicroVM image required by the Javasandbox architecture.
 - Authored a mock C++ patch in `patches/privacy/disable-safebrowsing.patch` to hard-disable Google API telemetry integrations at the source level.
+
+## [0.1.23] - 2026-05-02
+### Changed
+- Massively updated `README.md` to reflect the actual current repository state, checking off implemented mock features (Javasandbox, V8-Spider, Day-1 Privacy) and updating the structural directory mapping.
+
+## [0.1.24] - 2026-05-02
+### Added
+- Authored `docs/architecture/build-optimizations.md` detailing the required PGO, LTO, and Rust compiler flags necessary to achieve Chromium-competitive performance in the Gecko engine.
