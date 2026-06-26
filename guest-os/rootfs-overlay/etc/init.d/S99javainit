@@ -1,0 +1,8 @@
+#!/bin/sh
+# Bobzilla Javasandbox Auto-Runner
+# This script executes instantly upon Firecracker boot, bypassing standard login.
+
+echo "Starting Bobzilla Java Payload..."
+# MOCK: Mount the block device containing the target Java application
+# and execute it natively using the baked-in OpenJDK runtime.
+# java -jar /mnt/payload/app.jar

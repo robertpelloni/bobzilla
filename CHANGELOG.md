@@ -77,3 +77,8 @@
 ## [0.1.21] - 2026-05-02
 ### Fixed
 - Reverted destructive `|| true` modifications in `scripts/build.sh` that broke the `set -e` failure logic. Restored the structural integrity of the build orchestrator while maintaining the `cargo build --release` inclusion.
+
+## [0.1.22] - 2026-05-02
+### Added
+- Scaffolded the `guest-os/` directory with `build.sh` and Buildroot configurations, laying the foundation for compiling the Alpine Linux MicroVM image required by the Javasandbox architecture.
+- Authored a mock C++ patch in `patches/privacy/disable-safebrowsing.patch` to hard-disable Google API telemetry integrations at the source level.

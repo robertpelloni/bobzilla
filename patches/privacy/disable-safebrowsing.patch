@@ -1,0 +1,13 @@
+--- a/toolkit/components/url-classifier/nsUrlClassifierDBService.cpp
++++ b/toolkit/components/url-classifier/nsUrlClassifierDBService.cpp
+@@ -102,6 +102,12 @@
+
+ nsresult nsUrlClassifierDBService::Init() {
++  // BOBZILLA: Hard-disable Google Safe Browsing API integration
++  // This prevents the browser from ever contacting Google servers to check URLs or
++  // downloaded binaries, enforcing the strict privacy mandate at the source level.
++  return NS_ERROR_NOT_INITIALIZED;
++
+   if (mInitialized) {
+     return NS_OK;
+   }
