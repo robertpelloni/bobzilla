@@ -1,0 +1,30 @@
+--- a/netwerk/base/nsProcessBroker.cpp
++++ b/netwerk/base/nsProcessBroker.cpp
+@@ -200,6 +200,24 @@
+
+ nsresult nsProcessBroker::LaunchMicroVM(const char* aPayloadSpec) {
++  // BOBZILLA: Javasandbox IPC Client Integration
++  // This function establishes a Unix Domain Socket connection to the
++  // external Rust `runner-daemon` (/run/user/1000/bobzilla-sandbox.sock)
++  // and transmits the parsed javasandbox:// URI payload for execution.
++
++  int sock = socket(AF_UNIX, SOCK_STREAM, 0);
++  if (sock < 0) {
++    return NS_ERROR_FAILURE;
++  }
++
++  struct sockaddr_un server_addr;
++  server_addr.sun_family = AF_UNIX;
++  strcpy(server_addr.sun_path, "/run/user/1000/bobzilla-sandbox.sock");
++
++  if (connect(sock, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0) {
++    close(sock);
++    return NS_ERROR_CONNECTION_REFUSED;
++  }
++
++  // Send the payload string to the daemon
++  send(sock, aPayloadSpec, strlen(aPayloadSpec), 0);
++  close(sock);
++
+   return NS_OK;
+ }

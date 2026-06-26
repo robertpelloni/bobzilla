@@ -12,10 +12,10 @@ SOURCE_DIR="$ROOT_DIR/mozilla-unified"
 if [ ! -d "$SOURCE_DIR" ]; then
     echo "Error: mozilla-unified source not found at $SOURCE_DIR"
     echo "Run ./scripts/fetch-source.sh first"
-    # exit 1 disabled for mock environment
+    exit 1
 fi
 
-cd "$SOURCE_DIR" || true
+cd "$SOURCE_DIR"
 
 echo "=== Applying bobzilla patches ==="
 

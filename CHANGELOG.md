@@ -106,3 +106,11 @@
 ## [0.1.28] - 2026-05-02
 ### Changed
 - Updated `scripts/apply-patches.sh` to properly iterate over and inject all generated mock patches (including the top-level `javasandbox-uri-handler.patch`) into the Firefox source tree dynamically.
+
+## [0.1.31] - 2026-05-02
+### Fixed
+- Reverted the mock environment bypasses (`exit 1` and `|| true`) in `scripts/apply-patches.sh` to ensure strict CI/CD failure if the `mozilla-unified` submodule is missing.
+
+## [0.1.32] - 2026-05-02
+### Fixed
+- Reverted the mock environment bypasses (`exit 1` and `|| true`) in `scripts/apply-patches.sh` to ensure strict CI/CD failure if the `mozilla-unified` submodule is missing, preventing accidental patching of the root repository.

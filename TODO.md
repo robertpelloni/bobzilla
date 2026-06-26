@@ -3,4 +3,4 @@
 ## Immediate Action Items
 - [ ] Initialize `mozilla-unified` submodule via `scripts/fetch-source.sh`.
 - [ ] Verify `bobzilla.cfg` is properly loaded during runtime (requires full build).
-- [x] Update `scripts/apply-patches.sh` to dynamically inject the Javasandbox and OOM patch files into the Firefox source tree during the build phase.
+- [ ] Write mock C++ patch integrating the `runner-daemon` IPC client into Firefox's `nsIOService.cpp` to correctly serialize and send payloads (`patches/javasandbox-ipc-client.patch`).
