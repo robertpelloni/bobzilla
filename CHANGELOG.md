@@ -90,3 +90,11 @@
 ## [0.1.24] - 2026-05-02
 ### Added
 - Authored `docs/architecture/build-optimizations.md` detailing the required PGO, LTO, and Rust compiler flags necessary to achieve Chromium-competitive performance in the Gecko engine.
+
+## [0.1.25] - 2026-05-02
+### Changed
+- Attempted to initialize the `mozilla-unified` submodule using the `gecko-dev` github mirror to overcome `git-cinnabar` constraints, but timed out due to size.
+
+## [0.1.26] - 2026-05-02
+### Added
+- Drafted `patches/javasandbox-uri-handler.patch` to simulate the interception of `javasandbox://` URLs in `nsIOService.cpp`.

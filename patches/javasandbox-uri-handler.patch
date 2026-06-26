@@ -1,0 +1,27 @@
+--- a/netwerk/base/nsIOService.cpp
++++ b/netwerk/base/nsIOService.cpp
+@@ -1025,6 +1025,23 @@
+   if (!aSpec.IsEmpty()) {
+     aURI->GetScheme(scheme);
+   }
++
++  // BOBZILLA: Javasandbox Custom Protocol Intercept
++  // Instantly intercept 'javasandbox://' URIs before they hit standard
++  // network resolution or tab layout.
++  if (scheme.EqualsLiteral("javasandbox")) {
++    // Extract the full specification and payload parameters
++    nsAutoCString spec;
++    aURI->GetSpec(spec);
++
++    // Route the execution to the Bobzilla Sandbox IPC Broker
++    nsCOMPtr<nsIProcessBroker> broker = do_GetService(NS_PROCESSBROKER_CONTRACTID);
++    if (broker) {
++      broker->LaunchMicroVM(spec.get());
++    }
++
++    // Abort normal TCP/HTTP layout bindings to prevent browser rendering faults
++    return NS_BINDING_ABORTED;
++  }
+
+   return CallGetProtocolHandler(scheme.get(), getter_AddRefs(handler));
+ }

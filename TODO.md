@@ -3,4 +3,4 @@
 ## Immediate Action Items
 - [ ] Initialize `mozilla-unified` submodule via `scripts/fetch-source.sh`.
 - [ ] Verify `bobzilla.cfg` is properly loaded during runtime (requires full build).
-- [x] Document specific build flags and optimization strategies in `docs/architecture/build-optimizations.md`.
+- [x] Draft mock patch for initializing Javasandbox custom startup URI handler (`patches/javasandbox-uri-handler.patch`).
