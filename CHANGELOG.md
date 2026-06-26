@@ -98,3 +98,11 @@
 ## [0.1.26] - 2026-05-02
 ### Added
 - Drafted `patches/javasandbox-uri-handler.patch` to simulate the interception of `javasandbox://` URLs in `nsIOService.cpp`.
+
+## [0.1.27] - 2026-05-02
+### Added
+- Drafted `patches/performance/oom-tuning.patch` to simulate aggressive memory reclamation strategies using `jemalloc`, targeting the performance objectives laid out in the initial repository planning.
+
+## [0.1.28] - 2026-05-02
+### Changed
+- Updated `scripts/apply-patches.sh` to properly iterate over and inject all generated mock patches (including the top-level `javasandbox-uri-handler.patch`) into the Firefox source tree dynamically.

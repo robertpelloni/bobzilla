@@ -1,0 +1,21 @@
+--- a/memory/build/mozjemalloc.cpp
++++ b/memory/build/mozjemalloc.cpp
+@@ -102,6 +102,15 @@
+   return true;
+ }
+
++/* BOBZILLA: Aggressive Memory Tuning
++ * This intercepts the default memory allocation limits and raises the out-of-memory
++ * (OOM) threshold, instructing the jemalloc allocator to reclaim background
++ * tab memory far more aggressively before triggering an OOM crash.
++ */
++void BobzillaTuneMemoryLimits() {
++  // Mock implementation for setting aggressive memory reclamation
++  // e.g., mallctl("opt.retain", ...);
++}
++
+ void moz_jemalloc_init() {
+   if (gInitialized) {
+     return;
+   }
++  BobzillaTuneMemoryLimits();
