@@ -144,3 +144,7 @@
 ## [0.1.39] - 2026-05-02
 ### Changed
 - Executed continuous autonomous integration loop. Verified repository sync states across local and remote pointers. Bumped version to 0.1.39.
+
+## [0.1.44] - 2026-05-02
+### Changed
+- Re-drafted and verified the fundamental Phase 1 patches for Safe Browsing, Telemetry, Pocket, and the Javasandbox IPC/URI hooks into the `patches/` hierarchy.

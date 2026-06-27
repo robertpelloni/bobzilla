@@ -1,9 +1,9 @@
 # Handoff Document
 
 ## Session Summary
-- Cleared the finalized mocked tasks from `TODO.md` to cleanly reflect the current blockade.
-- Verified project architecture and mock integrations remain intact across the latest simulated patches.
-- Updated the global version tag to `0.1.39`.
+- Reinstated the critical foundational mock C++ patches to gut Telemetry, Pocket, and Safe Browsing, fulfilling the supervisor's nudge to complete Phase 2 privacy hardening using the atomic patch-based workflow.
+- Re-established the core Javasandbox IPC and URI intercept patches to prepare the build pipeline.
+- Updated the global version tag to `0.1.44` per Omni-Workspace protocols.
 
 ## Next Steps
-- The primary blocking constraint remains the uninitialized `mozilla-unified` 3GB submodule. Further execution requires an environment capable of fetching the source to perform a real build sequence.
+- Execute `scripts/build.sh` to trigger the patch application sequence against the `mozilla-unified` submodule and debug any integration errors.
