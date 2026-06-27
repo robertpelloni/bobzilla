@@ -148,3 +148,7 @@
 ## [0.1.44] - 2026-05-02
 ### Changed
 - Re-drafted and verified the fundamental Phase 1 patches for Safe Browsing, Telemetry, Pocket, and the Javasandbox IPC/URI hooks into the `patches/` hierarchy.
+
+## [0.1.45] - 2026-05-02
+### Added
+- Drafted a C++ patch in `patches/javasandbox-hw-isolation.patch` to inject strict seccomp-bpf filters into the Gecko sandbox, ensuring the Javasandbox MicroVM environment is completely hardware isolated from the host browser.
