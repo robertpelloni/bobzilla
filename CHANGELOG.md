@@ -126,3 +126,8 @@
 ## [0.1.35] - 2026-05-02
 ### Added
 - Drafted a mock patch in `patches/ui/about-support.patch` to inject Javasandbox and custom daemon diagnostic statuses directly into the Firefox troubleshooting page.
+
+## [0.1.36] - 2026-05-02
+### Added
+- Drafted `patches/ui/javasandbox-wayland-bridge.patch` to mock the Wayland framebuffer bridging.
+- Integrated `MicroVmController` execution commands into `runner-daemon/src/main.rs`.
