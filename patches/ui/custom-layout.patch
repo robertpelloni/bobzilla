@@ -1,0 +1,21 @@
+--- a/browser/themes/shared/browser.css
++++ b/browser/themes/shared/browser.css
+@@ -1025,6 +1025,18 @@
+   color: var(--lwt-tab-text);
+ }
+
++/* BOBZILLA: Floorp/Zen inspired minimal UI styling */
++#TabsToolbar {
++  /* Hide standard horizontal tab bar when vertical tabs are active */
++  display: none !important;
++}
++
++#nav-bar {
++  /* Slimmer navigation bar for maximum screen real estate */
++  padding-top: 2px !important;
++  padding-bottom: 2px !important;
++}
++
+ .tabbrowser-tab {
+   min-height: var(--tab-min-height);
+ }

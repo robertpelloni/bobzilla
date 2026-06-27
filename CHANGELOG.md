@@ -131,3 +131,8 @@
 ### Added
 - Drafted `patches/ui/javasandbox-wayland-bridge.patch` to mock the Wayland framebuffer bridging.
 - Integrated `MicroVmController` execution commands into `runner-daemon/src/main.rs`.
+
+## [0.1.37] - 2026-05-02
+### Added
+- Drafted a mock patch in `patches/performance/webgpu-passthrough.patch` to securely route WebGL commands via VirtIO-GPU to the Javasandbox Firecracker instance.
+- Drafted a mock patch in `patches/ui/custom-layout.patch` to introduce minimal Floorp-inspired CSS layout overrides.
