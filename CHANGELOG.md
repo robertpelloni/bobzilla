@@ -122,3 +122,7 @@
 ## [0.1.34] - 2026-05-02
 ### Changed
 - Updated `scripts/build.sh` to enforce patch integrity by triggering `scripts/apply-patches.sh` automatically before initiating the Gecko compilation loop. This guarantees that all Phase 1 baseline configurations and Javasandbox overrides are actively injected.
+
+## [0.1.35] - 2026-05-02
+### Added
+- Drafted a mock patch in `patches/ui/about-support.patch` to inject Javasandbox and custom daemon diagnostic statuses directly into the Firefox troubleshooting page.

@@ -31,10 +31,10 @@ for category in privacy drm performance ui branding .; do
         # Check if there are any .patch files in the directory
         shopt -s nullglob
         for patch in "$CATEGORY_DIR"/*.patch; do
-            echo "Applying patch: $(basename $patch)"
+            echo "Applying patch: $(basename "$patch")"
             # Test application first
             git apply --check "$patch" 2>/dev/null && git apply "$patch" || {
-                echo "    Warning: Patch $(basename $patch) may already be applied or conflicts exist."
+                echo "    Warning: Patch $(basename "$patch") may already be applied or conflicts exist."
             }
         done
         shopt -u nullglob

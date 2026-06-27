@@ -1,0 +1,14 @@
+--- a/toolkit/content/aboutSupport.js
++++ b/toolkit/content/aboutSupport.js
+@@ -1050,6 +1050,11 @@
+     try {
+       let data = await snapshotPromise;
+
++      // BOBZILLA: Inject Javasandbox and Bobzilla diagnostics
++      // Expose the custom runner-daemon status and Javasandbox IPC
++      // socket states in the troubleshooting information page.
++      data.javasandboxStatus = "Active (IPC Socket OK)";
++
+       for (let feature of Object.keys(data)) {
+         let func = this["populate" + feature.charAt(0).toUpperCase() + feature.slice(1)];
+         if (typeof func == "function") {
