@@ -1,0 +1,21 @@
+--- a/dom/canvas/WebGLContext.cpp
++++ b/dom/canvas/WebGLContext.cpp
+@@ -1025,6 +1025,18 @@
+   if (!mIsWebGL2) {
+     return;
+   }
++
++  // BOBZILLA: Javasandbox WebGL/WebGPU Hardware Passthrough
++  // Detects if the current WebGL context is being bound by a Javasandbox tab.
++  // If true, we bypass the standard Gecko Skia/Angle software rasterizer
++  // and securely route the GL commands via VirtIO-GPU to the Firecracker MicroVM,
++  // allowing the guest OS to utilize host hardware acceleration natively.
++  if (mIsJavasandboxTab) {
++    // Route WebGL command buffer to Unix Domain Socket
++    JavasandboxIPC::SendGPUCommandBuffer(mCommandBuffer);
++    // Bypass standard Gecko processing
++    return;
++  }
+
+   // Standard Gecko WebGL processing
+   ProcessCommand(aContext);

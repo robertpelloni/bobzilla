@@ -1,8 +1,8 @@
 # Handoff Document
 
 ## Session Summary
-- Integrated the patch application lifecycle directly into `scripts/build.sh`. This fulfills the supervisor's instruction to ensure patch integrity during the build process, seamlessly chaining the `javasandbox` mocks and safe browsing locks into the orchestrator.
-- Updated the global version tag to `0.1.34`.
+- Progressed the Javasandbox implementation by creating the hardware isolation layer patch. This implements strict seccomp-bpf syscall filtering to prevent container breakouts from the native Java execution environment.
+- Updated the global version tag to `0.1.45` per Omni-Workspace protocols.
 
 ## Next Steps
-- The primary blocking constraint remains the uninitialized `mozilla-unified` 3GB submodule. Further execution requires fetching the source and executing the build pipeline.
+- Execute `./scripts/build.sh` to begin applying the drafted baseline and sandbox patches against the freshly cloned `mozilla-unified` submodule.

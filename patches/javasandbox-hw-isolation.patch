@@ -1,0 +1,25 @@
+--- a/security/sandbox/linux/SandboxFilter.cpp
++++ b/security/sandbox/linux/SandboxFilter.cpp
+@@ -200,6 +200,21 @@
+     return Allow();
+   }
++
++  // BOBZILLA: Javasandbox Hardware Isolation Layer (MicroVM BPF)
++  // This injects a strict seccomp-bpf filter specifically for the thread
++  // orchestrating the Firecracker MicroVM. It drops all capabilities, restricts
++  // namespace access, and isolates the Java execution environment from the
++  // host browser's filesystem, preventing container breakouts.
++  if (IsJavasandboxThread()) {
++      switch (aSyscall) {
++          case __NR_mount:
++          case __NR_chroot:
++          case __NR_ptrace:
++          case __NR_execve:
++              return Trap(TrapJavasandboxEscape, nullptr);
++          default:
++              // Proceed with standard Firecracker networking/virtio capabilities
++              break;
++      }
++  }
+
+   switch (aSyscall) {

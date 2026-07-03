@@ -1,0 +1,30 @@
+--- a/widget/gtk/nsWindow.cpp
++++ b/widget/gtk/nsWindow.cpp
+@@ -1025,6 +1025,27 @@
+   if (!mIsTopLevel) {
+     return;
+   }
++
++  // BOBZILLA: Javasandbox Wayland Framebuffer Bridge
++  // Intercept the native window drawing loop. If this tab is flagged as a
++  // Javasandbox environment, bypass the standard Gecko rendering compositor.
++  // Instead, memory-map (mmap) the shared memory region exposed by the
++  // Rust runner-daemon and blit the raw pixels directly to the Wayland surface.
++  if (mIsJavasandboxTab) {
++    // Open shared memory block populated by the MicroVM virtual compositor
++    int shm_fd = shm_open(mJavasandboxShmName.get(), O_RDONLY, 0666);
++    if (shm_fd >= 0) {
++        void* pixels = mmap(NULL, mWindowWidth * mWindowHeight * 4, PROT_READ, MAP_SHARED, shm_fd, 0);
++        if (pixels != MAP_FAILED) {
++            // Blit directly to the Cairo/Wayland surface
++            DrawJavasandboxSurface(pixels, mWindowWidth, mWindowHeight);
++            munmap(pixels, mWindowWidth * mWindowHeight * 4);
++        }
++        close(shm_fd);
++    }
++    // Abort standard drawing
++    return;
++  }
+
+   // Standard Gecko Compositor drawing
+   DrawWindow(aContext);

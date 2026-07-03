@@ -1,10 +1,10 @@
+mod microvm;
 mod snapshot_manager;
-
 mod fuse_bridge;
-
 mod disk_streamer;
 
 use tokio::net::UnixListener;
+use crate::microvm::MicroVmController;
 
 /// This daemon listens on a local Unix socket for IPC commands from Firefox.
 /// When the browser intercepts a `javasandbox://` URI, it pings this daemon to
@@ -36,8 +36,9 @@ async fn main() {
                 println!("Received async connection from Gecko engine.");
                 // TODO: Parse URI payload and validate cryptography
 
-                // MOCK: Launch Firecracker process
-                launch_microvm("dummy-payload-hash");
+                tokio::spawn(async move {
+                    launch_microvm("dummy-payload-hash").await;
+                });
             }
             Err(e) => {
                 eprintln!("IPC connection failed: {}", e);
@@ -46,13 +47,22 @@ async fn main() {
     }
 }
 
-fn launch_microvm(payload_hash: &str) {
+async fn launch_microvm(payload_hash: &str) {
     println!("Preparing to launch Firecracker MicroVM for payload: {}", payload_hash);
 
-    // Spawn the Firecracker process
-    // Command::new("./firecracker")
-    //     .arg("--api-sock")
-    //     .arg(format!("/tmp/firecracker-{}.sock", payload_hash))
-    //     .spawn()
-    //     .expect("Failed to spawn Firecracker");
+    let vm_controller = MicroVmController::new(payload_hash);
+
+    if let Err(e) = vm_controller.spawn_process() {
+        eprintln!("Failed to spawn Firecracker process: {}", e);
+        return;
+    }
+
+    if let Err(e) = vm_controller.configure_boot_source("/var/lib/bobzilla/javasandbox-kernel").await {
+         eprintln!("Failed to configure boot source: {}", e);
+         return;
+    }
+
+    if let Err(e) = vm_controller.start_instance().await {
+         eprintln!("Failed to start instance: {}", e);
+    }
 }

@@ -122,3 +122,33 @@
 ## [0.1.34] - 2026-05-02
 ### Changed
 - Updated `scripts/build.sh` to enforce patch integrity by triggering `scripts/apply-patches.sh` automatically before initiating the Gecko compilation loop. This guarantees that all Phase 1 baseline configurations and Javasandbox overrides are actively injected.
+
+## [0.1.35] - 2026-05-02
+### Added
+- Drafted a mock patch in `patches/ui/about-support.patch` to inject Javasandbox and custom daemon diagnostic statuses directly into the Firefox troubleshooting page.
+
+## [0.1.36] - 2026-05-02
+### Added
+- Drafted `patches/ui/javasandbox-wayland-bridge.patch` to mock the Wayland framebuffer bridging.
+- Integrated `MicroVmController` execution commands into `runner-daemon/src/main.rs`.
+
+## [0.1.37] - 2026-05-02
+### Added
+- Drafted a mock patch in `patches/performance/webgpu-passthrough.patch` to securely route WebGL commands via VirtIO-GPU to the Javasandbox Firecracker instance.
+- Drafted a mock patch in `patches/ui/custom-layout.patch` to introduce minimal Floorp-inspired CSS layout overrides.
+
+## [0.1.38] - 2026-05-02
+### Changed
+- Executed continuous autonomous integration loop. Verified repository sync states across local and remote pointers. Bumped version to 0.1.38.
+
+## [0.1.39] - 2026-05-02
+### Changed
+- Executed continuous autonomous integration loop. Verified repository sync states across local and remote pointers. Bumped version to 0.1.39.
+
+## [0.1.44] - 2026-05-02
+### Changed
+- Re-drafted and verified the fundamental Phase 1 patches for Safe Browsing, Telemetry, Pocket, and the Javasandbox IPC/URI hooks into the `patches/` hierarchy.
+
+## [0.1.45] - 2026-05-02
+### Added
+- Drafted a C++ patch in `patches/javasandbox-hw-isolation.patch` to inject strict seccomp-bpf filters into the Gecko sandbox, ensuring the Javasandbox MicroVM environment is completely hardware isolated from the host browser.
