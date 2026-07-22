@@ -122,3 +122,45 @@
 ## [0.1.34] - 2026-05-02
 ### Changed
 - Updated `scripts/build.sh` to enforce patch integrity by triggering `scripts/apply-patches.sh` automatically before initiating the Gecko compilation loop. This guarantees that all Phase 1 baseline configurations and Javasandbox overrides are actively injected.
+
+## [0.1.35] - 2026-01-12
+### Changed
+- Re-architected submodule initialization: Replaced standard clone with a shallow clone script from the github `gecko-dev` mirror to bypass restrictive timeout boundaries.
+- Re-formatted and properly applied Phase 1 privacy baseline overrides via explicit patches to disable telemetry, pocket integration, and Google safe browsing APIs.
+
+## [0.1.36] - 2026-01-12
+### Added
+- Created functional `javasandbox-uri-handler-functional.patch` in the new `patches/javasandbox` directory to intercept `javasandbox://` URIs natively inside `nsIOService.cpp` and trigger a placeholder C++ log, validating the first layer of the native host process sandbox architecture.
+
+## [0.1.37] - 2026-01-12
+### Changed
+- Replaced mock `native-adblock.patch` with a functional Phase 2 placeholder that structurally intercepts network URIs and blocks common tracking domains.
+
+## [0.1.38] - 2026-01-12
+### Added
+- Added functional Phase 2 patch `remove-sponsored.patch` to hard-disable sponsored content logic in the Activity Stream / Discovery feed directly in Gecko source code.
+
+## [0.1.39] - 2026-01-12
+### Added
+- Added functional Phase 2 patches `remove-captive-portal.patch` to disable native captive portal checks and `remove-newtab-telemetry.patch` to hard-disable Activity Stream/New Tab telemetry recording.
+
+## [0.1.40] - 2026-01-12
+### Added
+- Added `bobzilla-dashboard-ui.patch` to inject the Bobzilla Privacy Dashboard directly into the Firefox native settings (`about:preferences#privacy`) to visualize the status of the applied native privacy functional patches (Telemetry, Pocket, Captive Portal, Sponsored Content, AdBlocker) with tooltips.
+
+## [0.1.41] - 2026-01-12
+### Changed
+- Added Javasandbox native IPC client (`JavasandboxIPCClient`) that correctly routes URI intercepts to the runner-daemon over a Unix domain socket.
+- Added enterprise policy locks (`policies.json`) for `browser.safebrowsing` preferences to align configuration with the native C++ Safe Browsing wipe.
+
+## [0.1.44] - 2026-01-12
+### Added
+- Added `scripts/validate-patches.sh` to provide a CI-ready patch verification workflow. It runs dry-run checks and generates compatibility reports across all bobzilla patches.
+
+## [0.1.45] - 2026-01-12
+### Added
+- Added Phase 3 `custom-scaling.patch` placeholder.
+
+## [0.1.46] - 2026-01-12
+### Added
+- Added `guest-os/README.md` and initial `inittab` configuration to formalize the Javasandbox MicroVM Guest OS integration. This guest environment utilizes a minimal Buildroot/Alpine image with a baked-in headless OpenJDK JRE designed to execute Java payloads instantly upon Firecracker boot.

@@ -1,14 +1,13 @@
---- a/browser/components/pocket/Pocket.sys.mjs
-+++ b/browser/components/pocket/Pocket.sys.mjs
-@@ -20,6 +20,11 @@
+--- a/browser/components/pocket/content/pktApi.sys.mjs
++++ b/browser/components/pocket/content/pktApi.sys.mjs
+@@ -194,6 +194,10 @@
+   var STORE_NAME = "pocket-saves";
+   var RECENT_SAVES_UPDATE_TIME = 1000 * 60 * 5; // 5 mins
 
- export var Pocket = {
-   init() {
-+    // BOBZILLA: Hard-disable Pocket integration
-+    // Completely bypass initialization logic to ensure it never runs,
-+    // even if preferences are somehow reset.
-+    return;
++  // BOBZILLA: Hard-disable Pocket API
++  // Instantly return without network calls
++  return { isUserLoggedIn: () => false };
 +
-     if (this._initialized) {
-       return;
-     }
+   /**
+    * Wrapper for all XMLHttpRequests to the API. It ensures that the url and
+    * method are setup correctly and adds headers and similar things.

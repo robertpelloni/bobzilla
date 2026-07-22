@@ -1,0 +1,17 @@
+--- a/netwerk/base/nsIOService.cpp
++++ b/netwerk/base/nsIOService.cpp
+@@ -1203,6 +1203,14 @@
+   nsAutoCString scheme;
+   rv = aURI->GetScheme(scheme);
+   if (NS_FAILED(rv)) return rv;
+
++  // BOBZILLA: Javasandbox URI Hook (Functional Implementation)
++  // Intercept 'javasandbox://' early and execute the placeholder C++ log trigger
++  // before the standard handler resolution fails.
++  if (scheme.Equals("javasandbox")) {
++      printf("BOBZILLA-JAVASANDBOX-TRIGGER: Intercepted javasandbox URI\n");
++      return NS_ERROR_UNKNOWN_PROTOCOL;
++  }
++
+   nsCOMPtr<nsIProtocolHandler> handler;
+   rv = GetProtocolHandler(scheme.get(), getter_AddRefs(handler));

@@ -1,20 +1,17 @@
 --- a/netwerk/protocol/http/nsHttpChannel.cpp
 +++ b/netwerk/protocol/http/nsHttpChannel.cpp
-@@ -512,6 +512,18 @@
-
- nsresult nsHttpChannel::Init(nsIURI* aURI, uint32_t aCaps,
-                              nsProxyInfo* aProxyInfo, uint32_t aProxyResolveFlags,
-                              nsIURI* aProxyURI, uint64_t aChannelId,
-                              nsContentPolicyType aContentPolicyType) {
+@@ -411,6 +411,15 @@
+                              ExtContentPolicyType aContentPolicyType,
+                              nsILoadInfo* aLoadInfo) {
 +
 +  // BOBZILLA: Native Ad-Blocking Filter Hook
-+  // Intercept the HTTP channel initialization before network resolution.
-+  // If the URI matches known tracking or ad-serving domains loaded from
-+  // the native blocklist, immediately abort the connection with NS_ERROR_BLOCKED.
-+  nsAutoCString spec;
-+  aURI->GetSpec(spec);
-+  if (BobzillaFilterEngine::ShouldBlock(spec)) {
-+      return NS_ERROR_BLOCKED_URI;
++  // Hardcoded blocks for common tracking domains (Phase 2 functional placeholder)
++  nsAutoCString host;
++  if (NS_SUCCEEDED(uri->GetHost(host))) {
++      if (host.Find("google-analytics.com") != kNotFound || host.Find("doubleclick.net") != kNotFound) {
++          return NS_ERROR_BLOCKED_URI;
++      }
 +  }
-+
-   NS_ENSURE_ARG_POINTER(aURI);
+   nsresult rv =
+       HttpBaseChannel::Init(uri, caps, proxyInfo, proxyResolveFlags, proxyURI,
+                             channelId, aContentPolicyType, aLoadInfo);

@@ -1,13 +1,12 @@
---- a/toolkit/components/telemetry/Telemetry.cpp
-+++ b/toolkit/components/telemetry/Telemetry.cpp
-@@ -55,6 +55,10 @@
-
- nsresult TelemetryImpl::Init() {
+--- a/toolkit/components/telemetry/core/Telemetry.cpp
++++ b/toolkit/components/telemetry/core/Telemetry.cpp
+@@ -1543,6 +1543,11 @@
+ void Init() {
 +  // BOBZILLA: Hard-disable Telemetry Engine
 +  // Instantly return an error condition to prevent any initialization of the
 +  // internal Mozilla telemetry core, disregarding any preference toggles.
-+  return NS_ERROR_NOT_INITIALIZED;
++  return;
 +
-   MOZ_ASSERT(NS_IsMainThread());
-
-   if (mInitialized) {
+   // Make the service manager hold a long-lived reference to the service
+   nsCOMPtr<nsITelemetry> telemetryService =
+       do_GetService("@mozilla.org/base/telemetry;1");

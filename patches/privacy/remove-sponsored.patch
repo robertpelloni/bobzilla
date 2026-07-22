@@ -1,0 +1,22 @@
+--- a/browser/extensions/newtab/lib/DiscoveryStreamFeed.sys.mjs
++++ b/browser/extensions/newtab/lib/DiscoveryStreamFeed.sys.mjs
+@@ -249,6 +249,9 @@
+   }
+
+   get showSponsoredStories() {
++    // BOBZILLA: Hard-disable sponsored stories.
++    return false;
++
+     // Combine user-set sponsored opt-out with Mozilla-set config
+     return (
+       this.store.getState().Prefs.values[PREF_SHOW_SPONSORED] &&
+@@ -257,6 +260,9 @@
+   }
+
+   get showSponsoredTopsites() {
++    // BOBZILLA: Hard-disable sponsored topsites.
++    return false;
++
+     const placements = this.getPlacements();
+     // Combine user-set sponsored opt-out with placement data
+     return !!(
