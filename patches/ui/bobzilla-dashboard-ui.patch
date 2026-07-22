@@ -1,0 +1,34 @@
+--- a/browser/components/preferences/privacy.inc.xhtml
++++ b/browser/components/preferences/privacy.inc.xhtml
+@@ -14,6 +14,31 @@
+   <html:h1 data-l10n-id="privacy-header"/>
+ </hbox>
+
++<!-- BOBZILLA DASHBOARD UI INJECTIONS -->
++<groupbox id="bobzilla-privacy-dashboard" data-category="panePrivacy">
++  <label><html:h2>Bobzilla Privacy Dashboard</html:h2></label>
++
++  <vbox>
++    <label control="bobzilla-telemetry-indicator" tooltiptext="Bobzilla hard-disables all internal Mozilla telemetry at the engine level.">
++      Telemetry Engine: <strong>DISABLED NATIVELY</strong>
++    </label>
++    <label control="bobzilla-pocket-indicator" tooltiptext="Pocket integrations and network requests are stripped.">
++      Pocket Integration: <strong>DISABLED NATIVELY</strong>
++    </label>
++    <label control="bobzilla-captive-indicator" tooltiptext="Captive portal detection network pings are blocked.">
++      Captive Portal Pings: <strong>DISABLED NATIVELY</strong>
++    </label>
++    <label control="bobzilla-sponsored-indicator" tooltiptext="Sponsored content in the Activity Stream is removed at the source.">
++      Sponsored Content: <strong>DISABLED NATIVELY</strong>
++    </label>
++    <label control="bobzilla-adblock-indicator" tooltiptext="Network-level interception aborts requests to common tracking domains before resolution.">
++      Native Ad-Blocker: <strong>ACTIVE</strong>
++    </label>
++  </vbox>
++</groupbox>
++<separator class="thin"/>
++<!-- END BOBZILLA DASHBOARD UI -->
++
+ <!-- Tracking / Content Blocking -->
+ <groupbox id="trackingGroup" data-category="panePrivacy" hidden="true" aria-describedby="contentBlockingDescription" class="highlighting-group">
+   <label id="contentBlockingHeader"><html:h2 data-l10n-id="content-blocking-enhanced-tracking-protection"/></label>

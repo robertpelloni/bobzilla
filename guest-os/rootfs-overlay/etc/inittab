@@ -1,0 +1,12 @@
+# Bobzilla Javasandbox Custom init
+::sysinit:/bin/mount -t proc proc /proc
+::sysinit:/bin/mount -o remount,rw /
+::sysinit:/bin/mkdir -p /dev/pts
+::sysinit:/bin/mount -t devpts devpts /dev/pts
+::sysinit:/bin/mount -t sysfs sysfs /sys
+
+# Immediately launch the Java payload from the attached VirtIO block device
+::respawn:/usr/bin/java -jar /mnt/payload/app.jar
+
+::ctrlaltdel:/sbin/reboot
+::shutdown:/bin/umount -a -r

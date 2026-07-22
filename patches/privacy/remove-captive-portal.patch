@@ -1,0 +1,14 @@
+--- a/netwerk/base/CaptivePortalService.cpp
++++ b/netwerk/base/CaptivePortalService.cpp
+@@ -150,6 +150,11 @@
+ }
+
+ nsresult CaptivePortalService::Start() {
++  // BOBZILLA: Hard-disable Captive Portal detection
++  // We do not want the browser pinging Mozilla servers unprompted.
++  // This completely disables the service at the native host layer.
++  return NS_ERROR_NOT_INITIALIZED;
++
+   if (!mInitialized) {
+     return NS_ERROR_NOT_INITIALIZED;
+   }

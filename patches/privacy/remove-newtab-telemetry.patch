@@ -1,0 +1,12 @@
+--- a/browser/extensions/newtab/lib/TelemetryFeed.sys.mjs
++++ b/browser/extensions/newtab/lib/TelemetryFeed.sys.mjs
+@@ -1126,6 +1126,10 @@
+
+   async onAction(action) {
++    // BOBZILLA: Hard-disable New Tab / Activity Stream Telemetry
++    // Instantly return to prevent any telemetry event recording or sending.
++    return;
++
+     switch (action.type) {
+       case at.INIT:
+         this.init();

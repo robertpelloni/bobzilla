@@ -1,6 +1,7 @@
 --- a/toolkit/components/url-classifier/nsUrlClassifierDBService.cpp
 +++ b/toolkit/components/url-classifier/nsUrlClassifierDBService.cpp
-@@ -102,6 +102,12 @@
+@@ -1661,6 +1661,11 @@
+ }
 
  nsresult nsUrlClassifierDBService::Init() {
 +  // BOBZILLA: Hard-disable Google Safe Browsing API integration
@@ -8,6 +9,6 @@
 +  // downloaded binaries, enforcing the strict privacy mandate at the source level.
 +  return NS_ERROR_NOT_INITIALIZED;
 +
-   if (mInitialized) {
-     return NS_OK;
-   }
+   MOZ_ASSERT(NS_IsMainThread(), "Must initialize DB service on main thread");
+
+   switch (XRE_GetProcessType()) {
