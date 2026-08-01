@@ -13,3 +13,16 @@
        return;
      }
    }
+--- a/browser/components/pocket/content/pktApi.sys.mjs
++++ b/browser/components/pocket/content/pktApi.sys.mjs
+@@ -194,6 +194,10 @@
+   var STORE_NAME = "pocket-saves";
+   var RECENT_SAVES_UPDATE_TIME = 1000 * 60 * 5; // 5 mins
+
++  // BOBZILLA: Hard-disable Pocket API
++  // Instantly return without network calls
++  return { isUserLoggedIn: () => false };
++
+   /**
+    * Wrapper for all XMLHttpRequests to the API. It ensures that the url and
+    * method are setup correctly and adds headers and similar things.
