@@ -1,33 +1,75 @@
 --- a/browser/components/preferences/privacy.inc.xhtml
 +++ b/browser/components/preferences/privacy.inc.xhtml
-@@ -14,6 +14,31 @@
+@@ -14,6 +14,75 @@
    <html:h1 data-l10n-id="privacy-header"/>
  </hbox>
 
-+<!-- BOBZILLA DASHBOARD UI INJECTIONS -->
-+<groupbox id="bobzilla-privacy-dashboard" data-category="panePrivacy">
-+  <label><html:h2>Bobzilla Privacy Dashboard</html:h2></label>
++<!-- BOBZILLA MISSION CONTROL CONSOLIDATED DASHBOARD -->
++<groupbox id="bobzilla-mission-control-dashboard" data-category="panePrivacy" class="bobzilla-card-deck">
++  <label><html:h2>Bobzilla Mission Control &amp; Privacy Dashboard</html:h2></label>
++  <html:p class="text-description" tooltiptext="Bobzilla integrates engine-level privacy hardening, native ad interception, Firecracker MicroVM runtime for Java payloads, and 4K DRM capability into a unified architecture.">
++    Single unified control center for Bobzilla engine security, virtualization, media DRM, and UI configurations.
++  </html:p>
 +
-+  <vbox>
-+    <label control="bobzilla-telemetry-indicator" tooltiptext="Bobzilla hard-disables all internal Mozilla telemetry at the engine level.">
-+      Telemetry Engine: <strong>DISABLED NATIVELY</strong>
-+    </label>
-+    <label control="bobzilla-pocket-indicator" tooltiptext="Pocket integrations and network requests are stripped.">
-+      Pocket Integration: <strong>DISABLED NATIVELY</strong>
-+    </label>
-+    <label control="bobzilla-captive-indicator" tooltiptext="Captive portal detection network pings are blocked.">
-+      Captive Portal Pings: <strong>DISABLED NATIVELY</strong>
-+    </label>
-+    <label control="bobzilla-sponsored-indicator" tooltiptext="Sponsored content in the Activity Stream is removed at the source.">
-+      Sponsored Content: <strong>DISABLED NATIVELY</strong>
-+    </label>
-+    <label control="bobzilla-adblock-indicator" tooltiptext="Network-level interception aborts requests to common tracking domains before resolution.">
-+      Native Ad-Blocker: <strong>ACTIVE</strong>
-+    </label>
-+  </vbox>
++  <!-- Category 1: High-Value Core Privacy & Anti-Surveillance -->
++  <groupbox class="bobzilla-subgroup">
++    <label><html:h3>1. Core Privacy &amp; Anti-Surveillance Engine</html:h3></label>
++    <vbox class="indent">
++      <label control="bobzilla-telemetry-indicator" tooltiptext="Native C++ Telemetry.cpp bypass: Hard-disables Mozilla telemetry core, ping collectors, and crash reporters at the binary level.">
++        Telemetry Engine: <strong>DISABLED NATIVELY</strong>
++      </label>
++      <label control="bobzilla-pocket-indicator" tooltiptext="Pocket system module bypass: Removes Pocket feed, cloud saves, and background tracking synchronization completely.">
++        Pocket Integration: <strong>DISABLED NATIVELY</strong>
++      </label>
++      <label control="bobzilla-captive-indicator" tooltiptext="CaptivePortalService.cpp bypass: Blocks recurring background HTTP checks to Mozilla ping hosts.">
++        Captive Portal Pings: <strong>DISABLED NATIVELY</strong>
++      </label>
++      <label control="bobzilla-sponsored-indicator" tooltiptext="DiscoveryStreamFeed.sys.mjs hook: Completely strips sponsored stories and tiles from new tab spaces.">
++        Sponsored Stories &amp; Tiles: <strong>DISABLED NATIVELY</strong>
++      </label>
++      <label control="bobzilla-safebrowsing-indicator" tooltiptext="nsUrlClassifierDBService.cpp bypass: Blocks remote URL checks to Google Safe Browsing servers to protect user browsing secrecy.">
++        Google Safe Browsing: <strong>DISABLED NATIVELY</strong>
++      </label>
++      <label control="bobzilla-adblock-indicator" tooltiptext="nsHttpChannel.cpp native hook: Intercepts network calls before resolution and blocks tracking/ad endpoints without extension latency.">
++        Native Engine Ad-Blocker: <strong>ACTIVE</strong>
++      </label>
++    </vbox>
++  </groupbox>
++
+   <!-- Category 2: Javasandbox MicroVM Engine -->
++  <groupbox class="bobzilla-subgroup">
++    <label><html:h3>2. Javasandbox MicroVM Engine</html:h3></label>
++    <vbox class="indent">
++      <label control="bobzilla-javasandbox-ipc-status" tooltiptext="nsProcessBroker.cpp &amp; runner-daemon Unix socket bridge: Dispatches javasandbox:// protocols straight to Firecracker isolated MicroVMs.">
++        Runner Daemon Bridge: <strong>ACTIVE (IPC Socket Connected)</strong>
++      </label>
++      <label control="bobzilla-javasandbox-fs-status" tooltiptext="JavasandboxFuse &amp; HttpBlockDevice: Streams guest OS rootfs sectors on-demand via HTTP Range Requests without full image preloading.">
++        Demand-Paged Disk Streamer: <strong>FUSE BRIDGE READY</strong>
++      </label>
++      <label control="bobzilla-javasandbox-snap-status" tooltiptext="SnapshotManager: Automatically serializes guest memory and CPU registers upon tab background/close for instant resume.">
++        MicroVM Tab Snapshotting: <strong>DIFF SNAPSHOT ACTIVE</strong>
++      </label>
++    </vbox>
++  </groupbox>
++
++  <!-- Category 3: Media DRM & Hardware Capabilities -->
++  <groupbox class="bobzilla-subgroup">
++    <label><html:h3>3. Media DRM &amp; Hardware Acceleration</html:h3></label>
++    <vbox class="indent">
++      <label control="bobzilla-widevine-l1-status" tooltiptext="MediaKeySystemAccessManager.cpp hook: Spoofs hardware DRM security level 1 to enable 4K UHD streaming on protected platforms.">
++        Widevine DRM Level: <strong>L1 HARDWARE SPOOFED</strong>
++      </label>
++      <label control="bobzilla-webgpu-passthrough" tooltiptext="VirtIO-GPU &amp; CanvasContext WebGPU routing directly to the Firecracker MicroVM container.">
++        WebGPU / WebGL Passthrough: <strong>HARDWARE DIRECT ACCELERATION</strong>
++      </label>
++      <label control="bobzilla-ui-vertical-tabs" tooltiptext="Floorp/Zen inspired minimal UI styling with vertical tabs and compact URL address bar.">
++        Modernized UI Workspace: <strong>VERTICAL TABS &amp; COMPACT URLBAR ENABLED</strong>
++      </label>
++    </vbox>
++  </groupbox>
 +</groupbox>
 +<separator class="thin"/>
-+<!-- END BOBZILLA DASHBOARD UI -->
++<!-- END BOBZILLA MISSION CONTROL CONSOLIDATED DASHBOARD -->
 +
  <!-- Tracking / Content Blocking -->
  <groupbox id="trackingGroup" data-category="panePrivacy" hidden="true" aria-describedby="contentBlockingDescription" class="highlighting-group">

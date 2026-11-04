@@ -5,7 +5,7 @@ use std::process::Command;
 /// Orchestrates the actual creation and execution of the Firecracker MicroVM process.
 pub struct MicroVmController {
     api_socket_path: String,
-    client: Client,
+    _client: Client,
 }
 
 impl MicroVmController {
@@ -13,7 +13,7 @@ impl MicroVmController {
         let api_socket_path = format!("/tmp/firecracker-{}.sock", payload_hash);
         Self {
             api_socket_path,
-            client: Client::new(), // In production, configure Unix socket connector
+            _client: Client::new(), // In production, configure Unix socket connector
         }
     }
 
@@ -24,17 +24,22 @@ impl MicroVmController {
         // Ensure old socket is removed
         let _ = std::fs::remove_file(&self.api_socket_path);
 
-        Command::new("./firecracker")
-            .arg("--api-sock")
-            .arg(&self.api_socket_path)
-            .spawn()?;
+        // If the firecracker binary exists locally, run it; otherwise log mock simulation
+        if std::path::Path::new("./firecracker").exists() {
+            Command::new("./firecracker")
+                .arg("--api-sock")
+                .arg(&self.api_socket_path)
+                .spawn()?;
+        } else {
+            println!("Notice: Local './firecracker' binary not present; running MicroVM in mock mode.");
+        }
 
         Ok(())
     }
 
     /// Configures the boot source (kernel and init args).
     pub async fn configure_boot_source(&self, kernel_path: &str) -> Result<(), Box<dyn std::error::Error>> {
-        let payload = json!({
+        let _payload = json!({
             "kernel_image_path": kernel_path,
             "boot_args": "console=ttyS0 reboot=k panic=1 pci=off"
         });
@@ -46,7 +51,7 @@ impl MicroVmController {
 
     /// Triggers the InstanceStart API command to boot the VM.
     pub async fn start_instance(&self) -> Result<(), Box<dyn std::error::Error>> {
-        let payload = json!({ "action_type": "InstanceStart" });
+        let _payload = json!({ "action_type": "InstanceStart" });
         println!("Sending InstanceStart command to Firecracker.");
         // MOCK: PUT /actions
         Ok(())

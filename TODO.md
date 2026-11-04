@@ -11,4 +11,9 @@
 - [x] Fix Phase 3: Vertical tabs patch for `tabbrowser.js`.
 - [x] Create Phase 3 Custom UI Scaling patch placeholder.
 - [x] Integrate Guest OS mock and documentation for Javasandbox.
-- [ ] Resume Javasandbox MicroVM process integration.
+- [x] Implement dynamic multi-path IPC socket resolution in `runner-daemon` and `nsProcessBroker.cpp`.
+- [x] Integrate daemon process management CLI commands (`ping`, `status`, `quit`/`shutdown`) for background runner and system tray support.
+- [x] Consolidate Bobzilla Mission Control Dashboard into high-value unified categories in `about:preferences#privacy`.
+- [x] Create automated patch validation and structural inspector tool (`patch_inspector.py`).
+- [ ] End-to-end testing of Javasandbox MicroVM tab integration inside the compiled Gecko browser environment.
+- [ ] Implement desktop system tray applet interacting with runner-daemon status and shutdown commands.

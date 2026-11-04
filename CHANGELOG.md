@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.1.47] - 2026-11-04
+### Added
+- Implemented robust dynamic multi-path IPC socket discovery in `runner-daemon/src/main.rs`, resolving paths through `$BOBZILLA_SOCKET`, `$XDG_RUNTIME_DIR`, `/run/user/$UID`, `/run/user/1000`, and `/tmp` fallbacks.
+- Integrated full CLI daemon lifecycle management in `runner-daemon`, enabling direct querying and control (`ping`, `status`, `quit`/`shutdown`) for background operations and system tray tooling.
+- Added comprehensive unit tests in `runner-daemon` validating socket resolution, ping responses, status checks, and microvm launch commands.
+- Updated `patches/javasandbox-ipc-client.patch` to use multi-path socket discovery in `nsProcessBroker.cpp`, ensuring native Gecko hooks reach the runner-daemon regardless of container or desktop UID layout.
+- Consolidated and redesigned the Bobzilla Mission Control Dashboard in `patches/ui/bobzilla-dashboard-ui.patch` (`about:preferences#privacy`), categorizing settings into Core Privacy & Anti-Surveillance, Javasandbox MicroVM Engine, and Media DRM & Hardware Acceleration, with rich explanatory tooltips and distinct engine-level status indicators.
+- Upgraded `scripts/validate-patches.sh` to perform thorough structural verification and dry-run execution against Firefox source.
+- Created `/home/jules/self_created_tools/patch_inspector.py` to automate hunk and header validation across all patch files.
+- Configured clean `.gitignore` to prevent Rust compilation artifacts and object directories from polluting the tree.
+
 ## [0.1.3] - 2026-05-02
 ### Changed
 - Enforced Day 1 Privacy: Enabled `privacy.resistFingerprinting` in `settings/bobzilla.cfg`.

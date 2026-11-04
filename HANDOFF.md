@@ -1,22 +1,18 @@
 # Handoff Document
 
 ## Session Summary
-- Fixed submodule initialization to bypass sandbox limits using a shallow clone of the `gecko-dev` github mirror.
-- Re-formatted and properly applied Phase 1 privacy baseline overrides via explicit patches to disable telemetry, pocket integration, and Google safe browsing APIs.
-- Created functional `javasandbox-uri-handler-functional.patch` in the new `patches/javasandbox` directory to intercept `javasandbox://` URIs natively inside `nsIOService.cpp`.
-- Implemented `javasandbox-ipc-client.patch` establishing a functional native C++ client (`JavasandboxIPCClient`) that connects to the runner-daemon over a Unix domain socket (`/run/user/1000/bobzilla-sandbox.sock`).
-- Replaced mock `native-adblock.patch` with a functional Phase 2 placeholder that structurally intercepts network URIs and blocks common tracking domains.
-- Added functional Phase 2 patch `remove-sponsored.patch` to hard-disable sponsored content logic in the Activity Stream / Discovery feed.
-- Added functional Phase 2 patch `remove-captive-portal.patch` to hard-disable native captive portal check network connections.
-- Added functional Phase 2 patch `remove-newtab-telemetry.patch` to hard-disable new tab / activity stream telemetry.
-- Injected `bobzilla-dashboard-ui.patch` into `about:preferences#privacy` to visualize native settings overrides via tooltips.
-- Added safe browsing locks to `policies.json`.
-- Added `scripts/validate-patches.sh` to provide a robust CI workflow.
-- Updated Phase 3 patches `vertical-tabs.patch` and `custom-scaling.patch`.
-- Integrated `guest-os` documentation and `inittab` configurations for Javasandbox MicroVM boot layer.
-- Updated the global version tag to `0.1.46`.
+- Upgraded the `runner-daemon` with dynamic multi-path IPC socket resolution, supporting `$BOBZILLA_SOCKET`, `$XDG_RUNTIME_DIR`, `/run/user/$UID`, `/run/user/1000`, and `/tmp` fallbacks.
+- Integrated full CLI daemon lifecycle management in `runner-daemon` (`ping`, `status`, `quit`/`shutdown`) for headless process control and upcoming system tray companions.
+- Fixed all unused code compiler warnings across `fuse_bridge.rs`, `disk_streamer.rs`, `snapshot_manager.rs`, and `microvm.rs`.
+- Added a comprehensive automated unit test suite inside `runner-daemon` (4 tests passing), verifying socket resolution, ping responses, status inspection, and microvm launch messages.
+- Updated `patches/javasandbox-ipc-client.patch` in `nsProcessBroker.cpp` with multi-path socket discovery so the Gecko engine reliably hooks the daemon across varied desktop and container environments.
+- Redesigned and consolidated the Bobzilla Mission Control Dashboard in `patches/ui/bobzilla-dashboard-ui.patch` (`about:preferences#privacy`) into high-value organized sections (Core Privacy & Anti-Surveillance, Javasandbox MicroVM Engine, and Media DRM & Hardware Acceleration) with rich tooltips and clear status badges.
+- Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
+- Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
+- Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.47`.
 
 ## Next Steps
-- Verify the background compilation of `mozilla-unified`. Note that `pyyaml` throws dependency errors and requires a local Python venv to install correctly prior to invoking `./mach build`.
-- Resume the Javasandbox IPC/MicroVM integration.
-- Begin investigating Phase 3 roadmap features: Vertical tabs, custom UI scaling, and Manifest V2 preservation.
+- Focus on end-to-end automated testing of the Javasandbox MicroVM tab integration inside the compiled Gecko browser environment.
+- Complete full local compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.
+- Implement the desktop system tray companion applet connecting to the `runner-daemon` IPC socket.
