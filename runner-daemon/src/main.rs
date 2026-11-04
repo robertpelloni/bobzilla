@@ -127,7 +127,7 @@ pub async fn launch_microvm(payload_hash: &str) {
 }
 
 /// Handles an active client stream over Unix domain socket.
-async fn process_client(mut stream: UnixStream) {
+pub async fn process_client(mut stream: UnixStream) {
     let mut buffer = [0u8; 1024];
     match stream.read(&mut buffer).await {
         Ok(n) if n > 0 => {
@@ -241,5 +241,51 @@ mod tests {
     async fn test_handle_ipc_message_launch() {
         let res = handle_ipc_message("LAUNCH test-payload-xyz").await;
         assert!(res.contains("OK LAUNCHED test-payload-xyz"));
+    }
+
+    #[tokio::test]
+    async fn test_handle_ipc_message_javasandbox_scheme() {
+        let res = handle_ipc_message("javasandbox://run?hash=abc123payload").await;
+        assert!(res.contains("OK LAUNCHED javasandbox://run?hash=abc123payload"));
+    }
+
+    #[tokio::test]
+    async fn test_handle_ipc_message_pause() {
+        let res = handle_ipc_message("PAUSE tab-session-99").await;
+        assert_eq!(res, "OK PAUSED tab-session-99\n");
+    }
+
+    #[tokio::test]
+    async fn test_end_to_end_socket_lifecycle() {
+        let test_socket = format!("/tmp/test-bobzilla-e2e-{}.sock", std::process::id());
+        let _ = std::fs::remove_file(&test_socket);
+
+        let listener = UnixListener::bind(&test_socket).expect("Failed to bind e2e test socket");
+
+        // Spawn mock daemon listener loop in background
+        let server_socket = test_socket.clone();
+        let server_handle = tokio::spawn(async move {
+            if let Ok((mut stream, _)) = listener.accept().await {
+                let mut buf = [0u8; 512];
+                if let Ok(n) = stream.read(&mut buf).await {
+                    let msg = String::from_utf8_lossy(&buf[..n]);
+                    let resp = handle_ipc_message(&msg).await;
+                    let _ = stream.write_all(resp.as_bytes()).await;
+                }
+            }
+        });
+
+        // Connect client (mimicking Gecko tab IPC dispatch)
+        let mut client = UnixStream::connect(&test_socket).await.expect("Failed to connect client");
+        client.write_all(b"LAUNCH applet-e2e-payload\n").await.expect("Failed to write to socket");
+
+        let mut resp_buf = [0u8; 512];
+        let n = client.read(&mut resp_buf).await.expect("Failed to read response");
+        let resp_str = String::from_utf8_lossy(&resp_buf[..n]);
+
+        assert!(resp_str.contains("OK LAUNCHED applet-e2e-payload"));
+
+        let _ = server_handle.await;
+        let _ = std::fs::remove_file(&server_socket);
     }
 }

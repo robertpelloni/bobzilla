@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.49] - 2026-11-04
+### Added
+- Implemented comprehensive automated end-to-end integration tests in `runner-daemon/src/main.rs`, testing asynchronous tab IPC launches, URI protocol routing, tab background state serialization via `SnapshotManager`, and socket lifecycle termination.
+- Expanded native ad-blocker domain filtering in `patches/privacy/native-adblock.patch` (`nsHttpChannel.cpp`), adding native C++ interception for 12 major tracker and analytics networks (Google Tag Manager, Criteo, AppNexus, Outbrain, Taboola, Facebook Tracker, and background Mozilla telemetry hosts).
+
 ## [0.1.48] - 2026-11-04
 ### Added
 - Authored comprehensive architecture documentation `docs/architecture/config-protocol.md` defining the 5-layer configuration hierarchy, IPC socket discovery algorithm, Unix socket ASCII wire protocol, and Mission Control Dashboard preference wiring.

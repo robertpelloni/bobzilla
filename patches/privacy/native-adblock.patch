@@ -1,17 +1,37 @@
 --- a/netwerk/protocol/http/nsHttpChannel.cpp
 +++ b/netwerk/protocol/http/nsHttpChannel.cpp
-@@ -411,6 +411,15 @@
+@@ -411,6 +411,35 @@
                               ExtContentPolicyType aContentPolicyType,
                               nsILoadInfo* aLoadInfo) {
 +
-+  // BOBZILLA: Native Ad-Blocking Filter Hook
-+  // Hardcoded blocks for common tracking domains (Phase 2 functional placeholder)
++  // BOBZILLA: Native Ad-Blocking & Telemetry Interception Filter Hook
++  // High-performance network layer interception. Blocks requests to major ad networks,
++  // analytics platforms, and surveillance trackers before socket connection or DNS lookup.
 +  nsAutoCString host;
 +  if (NS_SUCCEEDED(uri->GetHost(host))) {
-+      if (host.Find("google-analytics.com") != kNotFound || host.Find("doubleclick.net") != kNotFound) {
-+          return NS_ERROR_BLOCKED_URI;
++      static const char* const sBlockedDomains[] = {
++          "google-analytics.com",
++          "doubleclick.net",
++          "googletagmanager.com",
++          "adnxs.com",
++          "scorecardresearch.com",
++          "criteo.com",
++          "quantserve.com",
++          "outbrain.com",
++          "taboola.com",
++          "facebook.net",
++          "telemetry.mozilla.org",
++          "incoming.telemetry.mozilla.org"
++      };
++
++      for (size_t i = 0; i < sizeof(sBlockedDomains) / sizeof(sBlockedDomains[0]); ++i) {
++          if (host.Find(sBlockedDomains[i]) != kNotFound) {
++              printf("BOBZILLA-ADBLOCK: Intercepted and blocked network request to %s\n", host.get());
++              return NS_ERROR_BLOCKED_URI;
++          }
 +      }
 +  }
++
    nsresult rv =
        HttpBaseChannel::Init(uri, caps, proxyInfo, proxyResolveFlags, proxyURI,
                              channelId, aContentPolicyType, aLoadInfo);

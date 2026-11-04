@@ -1,6 +1,6 @@
 --- a/netwerk/base/nsProcessBroker.cpp
 +++ b/netwerk/base/nsProcessBroker.cpp
-@@ -200,6 +200,43 @@
+@@ -200,6 +200,53 @@
 
  nsresult nsProcessBroker::LaunchMicroVM(const char* aPayloadSpec) {
 +  // BOBZILLA: Javasandbox IPC Client Integration
@@ -8,12 +8,17 @@
 +  // (checking BOBZILLA_SOCKET, XDG_RUNTIME_DIR, /run/user/$UID, and /tmp fallbacks)
 +  // to transmit the parsed javasandbox:// URI payload for Firecracker execution.
 +
++  uid_t current_uid = getuid();
++  char uid_run_path[128];
++  char uid_tmp_path[128];
++  snprintf(uid_run_path, sizeof(uid_run_path), "/run/user/%d/bobzilla-sandbox.sock", (int)current_uid);
++  snprintf(uid_tmp_path, sizeof(uid_tmp_path), "/tmp/bobzilla-sandbox-%d.sock", (int)current_uid);
++
 +  const char* socket_paths[] = {
 +    getenv("BOBZILLA_SOCKET"),
-+    "/run/user/1001/bobzilla-sandbox.sock",
++    uid_run_path,
 +    "/run/user/1000/bobzilla-sandbox.sock",
-+    "/tmp/bobzilla-sandbox-1001.sock",
-+    "/tmp/bobzilla-sandbox-1000.sock",
++    uid_tmp_path,
 +    "/tmp/bobzilla-sandbox.sock"
 +  };
 +

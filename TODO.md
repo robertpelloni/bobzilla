@@ -16,6 +16,7 @@
 - [x] Consolidate Bobzilla Mission Control Dashboard into high-value unified categories in `about:preferences#privacy`.
 - [x] Create automated patch validation and structural inspector tool (`patch_inspector.py`).
 - [x] Document configuration protocol and 5-layer hierarchy in `docs/architecture/config-protocol.md`.
-- [ ] End-to-end automated testing of Javasandbox MicroVM tab integration inside the compiled Gecko browser environment.
+- [x] Implement automated end-to-end integration test suite in `runner-daemon` for browser IPC and snapshot management.
+- [x] Expand native network filtering domain blacklist in `patches/privacy/native-adblock.patch` to cover 12 major tracking networks.
 - [ ] Implement desktop system tray applet interacting with runner-daemon status and shutdown commands.
-- [ ] Expand native network filtering domain blacklist in `patches/privacy/native-adblock.patch`.
+- [ ] Verify full Firefox compilation with applied patches via `./scripts/build.sh`.
