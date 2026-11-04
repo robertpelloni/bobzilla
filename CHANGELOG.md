@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.48] - 2026-11-04
+### Added
+- Authored comprehensive architecture documentation `docs/architecture/config-protocol.md` defining the 5-layer configuration hierarchy, IPC socket discovery algorithm, Unix socket ASCII wire protocol, and Mission Control Dashboard preference wiring.
+- Formally concluded Phase 1 (Foundation) in `ROADMAP.md` and detailed immediate short-term milestones for Phase 2 (Privacy Hardening & Network Interception) and Phase 3 (UI & Virtualization Integration).
+- Updated `TODO.md` with targeted action items for live Gecko tab testing of the Javasandbox protocol and native network domain filtering list expansions.
+
 ## [0.1.47] - 2026-11-04
 ### Added
 - Implemented robust dynamic multi-path IPC socket discovery in `runner-daemon/src/main.rs`, resolving paths through `$BOBZILLA_SOCKET`, `$XDG_RUNTIME_DIR`, `/run/user/$UID`, `/run/user/1000`, and `/tmp` fallbacks.
