@@ -16,7 +16,8 @@
 - [x] Google Safe Browsing binary-level elimination (`patches/privacy/disable-safebrowsing.patch`).
 - [x] Native C++ network interception for tracker and ad domain filtering (`patches/privacy/native-adblock.patch`).
 - [x] Consolidated Bobzilla Mission Control Dashboard in `about:preferences#privacy` (`patches/ui/bobzilla-dashboard-ui.patch`).
-- [ ] Automated end-to-end testing of `javasandbox://` URI protocol handling within a live Gecko tab session.
+- [x] Automated end-to-end integration test suite for `runner-daemon` simulating tab IPC lifecycle and snapshot commands.
+- [x] Desktop System Tray Companion and status monitoring CLI tool (`scripts/bobzilla-tray.py`).
 - [ ] Expand native ad-blocker domain matching lists and benchmark zero-latency blocking against uBlock Origin filters.
 - [ ] Build and verify full Firefox source tree with all Phase 1 & 2 patches applied cleanly via `./scripts/build.sh`.
 
@@ -25,5 +26,5 @@
 - Custom UI density and display scaling overrides (`patches/ui/custom-scaling.patch`).
 - WebRequest API preservation (permanent Manifest V2 support).
 - End-to-end Javasandbox MicroVM tab lifecycle (tab open -> socket dispatch -> Firecracker boot -> snapshot on tab blur/close).
-- Desktop system tray companion applet with daemon health telemetry, status monitoring, and graceful termination.
+- Desktop system tray GUI applet (GTK/Wayland) with daemon health telemetry, status monitoring, and graceful termination.
 - Widevine L1 Hardware DRM spoofing verification on streaming platforms.

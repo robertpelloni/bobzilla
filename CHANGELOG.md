@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.50] - 2026-11-04
+### Added
+- Created `scripts/bobzilla-tray.py`, providing a desktop system tray companion and IPC monitor for the Javasandbox runner daemon. Includes real-time subsystem telemetry, pinging, formatted mission control output, and graceful quit/shutdown capabilities with automated `--test` runner support.
+
 ## [0.1.49] - 2026-11-04
 ### Added
 - Implemented comprehensive automated end-to-end integration tests in `runner-daemon/src/main.rs`, testing asynchronous tab IPC launches, URI protocol routing, tab background state serialization via `SnapshotManager`, and socket lifecycle termination.

@@ -18,5 +18,5 @@
 - [x] Document configuration protocol and 5-layer hierarchy in `docs/architecture/config-protocol.md`.
 - [x] Implement automated end-to-end integration test suite in `runner-daemon` for browser IPC and snapshot management.
 - [x] Expand native network filtering domain blacklist in `patches/privacy/native-adblock.patch` to cover 12 major tracking networks.
-- [ ] Implement desktop system tray applet interacting with runner-daemon status and shutdown commands.
+- [x] Implement desktop system tray companion applet (`scripts/bobzilla-tray.py`) interacting with runner-daemon status and shutdown commands.
 - [ ] Verify full Firefox compilation with applied patches via `./scripts/build.sh`.
