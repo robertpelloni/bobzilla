@@ -288,4 +288,65 @@ mod tests {
         let _ = server_handle.await;
         let _ = std::fs::remove_file(&server_socket);
     }
+
+    #[tokio::test]
+    async fn test_handle_ipc_message_edge_cases() {
+        // Empty message
+        let empty_res = handle_ipc_message("   ").await;
+        assert_eq!(empty_res, "ERR EMPTY_COMMAND\n");
+
+        // Unknown command
+        let unknown_res = handle_ipc_message("INVALID_CMD_XYZ").await;
+        assert!(unknown_res.contains("ERR UNKNOWN_COMMAND"));
+
+        // Long payload bounds test
+        let long_payload = format!("LAUNCH {}", "a".repeat(2048));
+        let long_res = handle_ipc_message(&long_payload).await;
+        assert!(long_res.starts_with("OK LAUNCHED"));
+    }
+
+    #[tokio::test]
+    async fn test_concurrent_ipc_connections() {
+        let test_socket = format!("/tmp/test-bobzilla-concurrent-{}.sock", std::process::id());
+        let _ = std::fs::remove_file(&test_socket);
+
+        let listener = UnixListener::bind(&test_socket).expect("Failed to bind concurrent socket");
+
+        // Spawn mock daemon accepting multiple connections
+        let server_socket = test_socket.clone();
+        let server_handle = tokio::spawn(async move {
+            for _ in 0..5 {
+                if let Ok((mut stream, _)) = listener.accept().await {
+                    let mut buf = [0u8; 512];
+                    if let Ok(n) = stream.read(&mut buf).await {
+                        let msg = String::from_utf8_lossy(&buf[..n]);
+                        let resp = handle_ipc_message(&msg).await;
+                        let _ = stream.write_all(resp.as_bytes()).await;
+                    }
+                }
+            }
+        });
+
+        // Spawn 5 concurrent clients connecting simultaneously
+        let mut tasks = Vec::new();
+        for i in 0..5 {
+            let sock = test_socket.clone();
+            tasks.push(tokio::spawn(async move {
+                let mut client = UnixStream::connect(&sock).await.expect("Failed to connect client");
+                let cmd = format!("LAUNCH concurrent-session-{}\n", i);
+                client.write_all(cmd.as_bytes()).await.expect("Failed to send command");
+                let mut resp_buf = [0u8; 512];
+                let n = client.read(&mut resp_buf).await.expect("Failed to read response");
+                let resp_str = String::from_utf8_lossy(&resp_buf[..n]);
+                assert!(resp_str.contains(&format!("OK LAUNCHED concurrent-session-{}", i)));
+            }));
+        }
+
+        for t in tasks {
+            t.await.expect("Client task failed");
+        }
+
+        let _ = server_handle.await;
+        let _ = std::fs::remove_file(&server_socket);
+    }
 }

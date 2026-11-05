@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.52] - 2026-11-05
+### Added
+- Authored comprehensive end-to-end user and developer guide `docs/JAVASANDBOX_GUIDE.md` covering URL scheme routing, FUSE streaming, MicroVM execution, daemon management, desktop system tray operations, socket discovery, and guest OS bundle packaging.
+- Expanded automated integration test suite in `runner-daemon/src/main.rs` to 9 tests, adding edge-case URI parsing validation, buffer boundary checks, and concurrent multi-client IPC connection load testing.
+
 ## [0.1.51] - 2026-11-04
 ### Changed
 - Hardened `settings/bobzilla.cfg` by locking Manifest V2 preferences with `lockPref` to permanently prevent runtime or experiment overrides (`extensions.manifestV3.enabled`, `extensions.legacy.enabled`).
