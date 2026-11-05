@@ -22,8 +22,9 @@
 - [x] Comprehensive Javasandbox user and developer documentation (`docs/JAVASANDBOX_GUIDE.md`).
 - [ ] Build and verify full Firefox source tree with all Phase 1 & 2 patches applied cleanly via `./scripts/build.sh`.
 
-## Phase 3: Features & System Integration (UPCOMING)
-- Vertical tabs and compact navigation toolbar styling (`patches/ui/vertical-tabs.patch`, `compact-urlbar.patch`).
+## Phase 3: Features & System Integration (ACTIVE / ADVANCING)
+- [x] Dynamic vertical tabs layout switching tied to `sidebar.verticalTabs` preference (`patches/ui/vertical-tabs.patch`).
+- Compact navigation toolbar styling (`patches/ui/compact-urlbar.patch`, `custom-layout.patch`).
 - Custom UI density and display scaling overrides (`patches/ui/custom-scaling.patch`).
 - End-to-end Javasandbox MicroVM tab lifecycle in live Gecko browser (tab open -> socket dispatch -> Firecracker boot -> snapshot on tab blur/close).
 - Desktop system tray GUI applet (GTK/Wayland) with daemon health telemetry, status monitoring, and graceful termination.

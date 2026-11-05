@@ -9,6 +9,7 @@
 - The Javasandbox integration is verified via automated end-to-end integration tests in `runner-daemon/src/main.rs` (9 tests passing), including concurrency and edge case validation.
 - Complete user and developer guide authored in `docs/JAVASANDBOX_GUIDE.md`.
 - Desktop companion tool `scripts/bobzilla-tray.py` communicates with the `runner-daemon` via Unix socket, providing live telemetry status, health pings, launch triggers, and graceful termination controls.
+- Dynamic vertical tabs (`patches/ui/vertical-tabs.patch`) observe `sidebar.verticalTabs` to switch tab strip orientation dynamically.
 - The Bobzilla Mission Control Dashboard (`patches/ui/bobzilla-dashboard-ui.patch`) is injected directly into `about:preferences#privacy`, consolidating high-value categories (Core Privacy, Javasandbox MicroVM, DRM & Hardware Acceleration) with tooltips and engine badges.
 - The `guest-os` directory contains Buildroot/Alpine integration details and an `inittab` setup to launch the JVM upon Firecracker boot.
 - Patch validation is automated via `scripts/validate-patches.sh` and `/home/jules/self_created_tools/patch_inspector.py`.
