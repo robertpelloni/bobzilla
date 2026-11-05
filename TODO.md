@@ -16,7 +16,9 @@
 - [x] Consolidate Bobzilla Mission Control Dashboard into high-value unified categories in `about:preferences#privacy`.
 - [x] Create automated patch validation and structural inspector tool (`patch_inspector.py`).
 - [x] Document configuration protocol and 5-layer hierarchy in `docs/architecture/config-protocol.md`.
-- [x] Implement automated end-to-end integration test suite in `runner-daemon` for browser IPC and snapshot management.
+- [x] Implement automated end-to-end integration test suite in `runner-daemon` for browser IPC, snapshot management, and concurrent load.
 - [x] Expand native network filtering domain blacklist in `patches/privacy/native-adblock.patch` to cover 12 major tracking networks.
 - [x] Implement desktop system tray companion applet (`scripts/bobzilla-tray.py`) interacting with runner-daemon status and shutdown commands.
+- [x] Lock Manifest V2 preservation in `settings/bobzilla.cfg`.
+- [x] Document comprehensive Javasandbox user and developer manual (`docs/JAVASANDBOX_GUIDE.md`).
 - [ ] Verify full Firefox compilation with applied patches via `./scripts/build.sh`.

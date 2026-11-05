@@ -6,7 +6,8 @@
 - Phase 1 (Foundation) is fully complete, encompassing submodule fetching, baseline configuration overrides (`settings/bobzilla.cfg`, `policies/policies.json`), runner daemon IPC architecture, patch validation pipelines, and comprehensive configuration hierarchy documentation (`docs/architecture/config-protocol.md`).
 - Phase 2 (Privacy Hardening & Core Architecture) is actively progressing. `patches/privacy/native-adblock.patch` contains an expanded list of 12 tracking, analytics, and surveillance domains blocked before socket negotiation.
 - Manifest V2 preservation is locked at the autoconfig layer (`settings/bobzilla.cfg`) using `lockPref`, forbidding `extensions.manifestV3.enabled`, enabling `extensions.legacy.enabled`, clearing `restrictedDomains`, and disabling extension quarantining.
-- The Javasandbox integration is verified via automated end-to-end integration tests in `runner-daemon/src/main.rs`. Interceptions in `nsIOService.cpp` route to `JavasandboxIPCClient` (`patches/javasandbox-ipc-client.patch`), establishing Unix socket communication to the Rust `runner-daemon`.
+- The Javasandbox integration is verified via automated end-to-end integration tests in `runner-daemon/src/main.rs` (9 tests passing), including concurrency and edge case validation.
+- Complete user and developer guide authored in `docs/JAVASANDBOX_GUIDE.md`.
 - Desktop companion tool `scripts/bobzilla-tray.py` communicates with the `runner-daemon` via Unix socket, providing live telemetry status, health pings, launch triggers, and graceful termination controls.
 - The Bobzilla Mission Control Dashboard (`patches/ui/bobzilla-dashboard-ui.patch`) is injected directly into `about:preferences#privacy`, consolidating high-value categories (Core Privacy, Javasandbox MicroVM, DRM & Hardware Acceleration) with tooltips and engine badges.
 - The `guest-os` directory contains Buildroot/Alpine integration details and an `inittab` setup to launch the JVM upon Firecracker boot.
