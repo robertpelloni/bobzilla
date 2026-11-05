@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.51] - 2026-11-04
+### Changed
+- Hardened `settings/bobzilla.cfg` by locking Manifest V2 preferences with `lockPref` to permanently prevent runtime or experiment overrides (`extensions.manifestV3.enabled`, `extensions.legacy.enabled`).
+- Removed synthetic domain restrictions on web extensions via `lockPref("extensions.webextensions.restrictedDomains", "")`, guaranteeing unrestricted ad-blocking across all sites for uBlock Origin.
+- Disabled automatic extension quarantine via `lockPref("extensions.quarantine.enabled", false)`.
+
 ## [0.1.50] - 2026-11-04
 ### Added
 - Created `scripts/bobzilla-tray.py`, providing a desktop system tray companion and IPC monitor for the Javasandbox runner daemon. Includes real-time subsystem telemetry, pinging, formatted mission control output, and graceful quit/shutdown capabilities with automated `--test` runner support.
