@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.54] - 2026-11-05
+### Changed
+- Expanded `patches/ui/custom-scaling.patch` to surface Compact Mode in UI customize settings (`browser.compactmode.show = true`), set compact density by default (`browser.uidensity = 1`), enforce base display scaling (`layout.css.devPixelsPerPx = 1.0`), and enable sub-pixel text anti-aliasing.
+
+## [0.1.53] - 2026-11-05
+### Changed
+- Expanded `patches/ui/vertical-tabs.patch` to dynamically bind to the `sidebar.verticalTabs` preference, auto-updating tab strip orientation and root document layout attributes for Floorp/Zen-style vertical tab workflows.
+
 ## [0.1.52] - 2026-11-05
 ### Added
 - Authored comprehensive end-to-end user and developer guide `docs/JAVASANDBOX_GUIDE.md` covering URL scheme routing, FUSE streaming, MicroVM execution, daemon management, desktop system tray operations, socket discovery, and guest OS bundle packaging.

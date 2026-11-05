@@ -1,13 +1,28 @@
 --- a/browser/components/tabbrowser/content/tabbrowser.js
 +++ b/browser/components/tabbrowser/content/tabbrowser.js
-@@ -102,6 +102,12 @@
+@@ -102,6 +102,28 @@
      // Standard horizontal layout
      this.tabContainer.setAttribute("orient", "horizontal");
    }
 +
-+  // BOBZILLA: Enable Vertical Tabs Support
-+  enableVerticalTabs() {
-+    this.tabContainer.setAttribute("orient", "vertical");
-+    this.tabContainer.classList.add("bobzilla-vertical-tabs");
++  // BOBZILLA: Floorp/Zen-inspired Dynamic Vertical Tabs Support
++  initVerticalTabs() {
++    const prefName = "sidebar.verticalTabs";
++    const applyLayout = () => {
++      let isVertical = Services.prefs.getBoolPref(prefName, true);
++      if (isVertical) {
++        this.tabContainer.setAttribute("orient", "vertical");
++        this.tabContainer.classList.add("bobzilla-vertical-tabs");
++        document.documentElement.setAttribute("bobzilla-vertical-tabs", "true");
++      } else {
++        this.tabContainer.setAttribute("orient", "horizontal");
++        this.tabContainer.classList.remove("bobzilla-vertical-tabs");
++        document.documentElement.removeAttribute("bobzilla-vertical-tabs");
++      }
++    };
++
++    // Observe changes to vertical tab preferences
++    Services.prefs.addObserver(prefName, applyLayout);
++    applyLayout();
 +  }
  }
