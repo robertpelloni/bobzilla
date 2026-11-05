@@ -1,5 +1,37 @@
 # Changelog
 
+## [0.1.51] - 2026-11-04
+### Changed
+- Hardened `settings/bobzilla.cfg` by locking Manifest V2 preferences with `lockPref` to permanently prevent runtime or experiment overrides (`extensions.manifestV3.enabled`, `extensions.legacy.enabled`).
+- Removed synthetic domain restrictions on web extensions via `lockPref("extensions.webextensions.restrictedDomains", "")`, guaranteeing unrestricted ad-blocking across all sites for uBlock Origin.
+- Disabled automatic extension quarantine via `lockPref("extensions.quarantine.enabled", false)`.
+
+## [0.1.50] - 2026-11-04
+### Added
+- Created `scripts/bobzilla-tray.py`, providing a desktop system tray companion and IPC monitor for the Javasandbox runner daemon. Includes real-time subsystem telemetry, pinging, formatted mission control output, and graceful quit/shutdown capabilities with automated `--test` runner support.
+
+## [0.1.49] - 2026-11-04
+### Added
+- Implemented comprehensive automated end-to-end integration tests in `runner-daemon/src/main.rs`, testing asynchronous tab IPC launches, URI protocol routing, tab background state serialization via `SnapshotManager`, and socket lifecycle termination.
+- Expanded native ad-blocker domain filtering in `patches/privacy/native-adblock.patch` (`nsHttpChannel.cpp`), adding native C++ interception for 12 major tracker and analytics networks (Google Tag Manager, Criteo, AppNexus, Outbrain, Taboola, Facebook Tracker, and background Mozilla telemetry hosts).
+
+## [0.1.48] - 2026-11-04
+### Added
+- Authored comprehensive architecture documentation `docs/architecture/config-protocol.md` defining the 5-layer configuration hierarchy, IPC socket discovery algorithm, Unix socket ASCII wire protocol, and Mission Control Dashboard preference wiring.
+- Formally concluded Phase 1 (Foundation) in `ROADMAP.md` and detailed immediate short-term milestones for Phase 2 (Privacy Hardening & Network Interception) and Phase 3 (UI & Virtualization Integration).
+- Updated `TODO.md` with targeted action items for live Gecko tab testing of the Javasandbox protocol and native network domain filtering list expansions.
+
+## [0.1.47] - 2026-11-04
+### Added
+- Implemented robust dynamic multi-path IPC socket discovery in `runner-daemon/src/main.rs`, resolving paths through `$BOBZILLA_SOCKET`, `$XDG_RUNTIME_DIR`, `/run/user/$UID`, `/run/user/1000`, and `/tmp` fallbacks.
+- Integrated full CLI daemon lifecycle management in `runner-daemon`, enabling direct querying and control (`ping`, `status`, `quit`/`shutdown`) for background operations and system tray tooling.
+- Added comprehensive unit tests in `runner-daemon` validating socket resolution, ping responses, status checks, and microvm launch commands.
+- Updated `patches/javasandbox-ipc-client.patch` to use multi-path socket discovery in `nsProcessBroker.cpp`, ensuring native Gecko hooks reach the runner-daemon regardless of container or desktop UID layout.
+- Consolidated and redesigned the Bobzilla Mission Control Dashboard in `patches/ui/bobzilla-dashboard-ui.patch` (`about:preferences#privacy`), categorizing settings into Core Privacy & Anti-Surveillance, Javasandbox MicroVM Engine, and Media DRM & Hardware Acceleration, with rich explanatory tooltips and distinct engine-level status indicators.
+- Upgraded `scripts/validate-patches.sh` to perform thorough structural verification and dry-run execution against Firefox source.
+- Created `/home/jules/self_created_tools/patch_inspector.py` to automate hunk and header validation across all patch files.
+- Configured clean `.gitignore` to prevent Rust compilation artifacts and object directories from polluting the tree.
+
 ## [0.1.3] - 2026-05-02
 ### Changed
 - Enforced Day 1 Privacy: Enabled `privacy.resistFingerprinting` in `settings/bobzilla.cfg`.

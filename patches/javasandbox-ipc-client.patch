@@ -1,29 +1,55 @@
 --- a/netwerk/base/nsProcessBroker.cpp
 +++ b/netwerk/base/nsProcessBroker.cpp
-@@ -200,6 +200,24 @@
+@@ -200,6 +200,53 @@
 
  nsresult nsProcessBroker::LaunchMicroVM(const char* aPayloadSpec) {
 +  // BOBZILLA: Javasandbox IPC Client Integration
-+  // This function establishes a Unix Domain Socket connection to the
-+  // external Rust `runner-daemon` (/run/user/1000/bobzilla-sandbox.sock)
-+  // and transmits the parsed javasandbox:// URI payload for execution.
++  // Connects to the external Rust `runner-daemon` using multi-path resolution
++  // (checking BOBZILLA_SOCKET, XDG_RUNTIME_DIR, /run/user/$UID, and /tmp fallbacks)
++  // to transmit the parsed javasandbox:// URI payload for Firecracker execution.
 +
-+  int sock = socket(AF_UNIX, SOCK_STREAM, 0);
-+  if (sock < 0) {
-+    return NS_ERROR_FAILURE;
++  uid_t current_uid = getuid();
++  char uid_run_path[128];
++  char uid_tmp_path[128];
++  snprintf(uid_run_path, sizeof(uid_run_path), "/run/user/%d/bobzilla-sandbox.sock", (int)current_uid);
++  snprintf(uid_tmp_path, sizeof(uid_tmp_path), "/tmp/bobzilla-sandbox-%d.sock", (int)current_uid);
++
++  const char* socket_paths[] = {
++    getenv("BOBZILLA_SOCKET"),
++    uid_run_path,
++    "/run/user/1000/bobzilla-sandbox.sock",
++    uid_tmp_path,
++    "/tmp/bobzilla-sandbox.sock"
++  };
++
++  int sock = -1;
++  for (size_t i = 0; i < sizeof(socket_paths)/sizeof(socket_paths[0]); ++i) {
++    const char* path = socket_paths[i];
++    if (!path || access(path, F_OK) != 0) continue;
++
++    sock = socket(AF_UNIX, SOCK_STREAM, 0);
++    if (sock < 0) continue;
++
++    struct sockaddr_un server_addr;
++    memset(&server_addr, 0, sizeof(server_addr));
++    server_addr.sun_family = AF_UNIX;
++    strncpy(server_addr.sun_path, path, sizeof(server_addr.sun_path) - 1);
++
++    if (connect(sock, (struct sockaddr *)&server_addr, sizeof(server_addr)) == 0) {
++      break; // Successfully connected!
++    }
++    close(sock);
++    sock = -1;
 +  }
 +
-+  struct sockaddr_un server_addr;
-+  server_addr.sun_family = AF_UNIX;
-+  strcpy(server_addr.sun_path, "/run/user/1000/bobzilla-sandbox.sock");
-+
-+  if (connect(sock, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0) {
-+    close(sock);
++  if (sock < 0) {
 +    return NS_ERROR_CONNECTION_REFUSED;
 +  }
 +
-+  // Send the payload string to the daemon
-+  send(sock, aPayloadSpec, strlen(aPayloadSpec), 0);
++  // Send the payload string to the daemon prefixed with LAUNCH
++  char msg_buf[1024];
++  snprintf(msg_buf, sizeof(msg_buf), "LAUNCH %s\n", aPayloadSpec);
++  send(sock, msg_buf, strlen(msg_buf), 0);
 +  close(sock);
 +
    return NS_OK;

@@ -1,14 +1,18 @@
 # Memory Document: Ongoing Observations
 
 ## Current State
-- The project is a Firefox fork using a patch-based approach. We do not modify Firefox source directly but maintain patches in the `patches/` directory.
+- The project is a Firefox fork using a patch-based approach. We do not modify Firefox source directly but maintain atomic patches in the `patches/` directory.
 - `mozilla-unified` submodule is large (~3GB) and requires explicit fetching to manipulate. A shallow clone script from the github gecko-dev mirror is used to bypass sandbox limits.
-- The base Phase 1 privacy baseline functionality (telemetry removal, pocket removal, safebrowsing disable) patches have been successfully applied and verified via build scripts.
-- The Phase 2 privacy hardening has continued, with functional patches like `remove-sponsored.patch`, `native-adblock.patch`, `remove-captive-portal.patch`, and `remove-newtab-telemetry.patch` replacing their mock counterparts. Settings have been locked down in `policies.json` to match.
-- The Javasandbox integration has transitioned to a functional native architecture. The `patches/javasandbox/` directory houses `javasandbox-uri-handler-functional.patch` which hooks `nsIOService.cpp` to correctly intercept `javasandbox://` URIs and route them to `JavasandboxIPCClient` (`javasandbox-ipc-client.patch`), establishing the Unix socket connection to the runner-daemon.
-- A dashboard UI was injected into `about:preferences` (`patches/ui/bobzilla-dashboard-ui.patch`) to track override status.
+- Phase 1 (Foundation) is fully complete, encompassing submodule fetching, baseline configuration overrides (`settings/bobzilla.cfg`, `policies/policies.json`), runner daemon IPC architecture, patch validation pipelines, and comprehensive configuration hierarchy documentation (`docs/architecture/config-protocol.md`).
+- Phase 2 (Privacy Hardening & Core Architecture) is actively progressing. `patches/privacy/native-adblock.patch` contains an expanded list of 12 tracking, analytics, and surveillance domains blocked before socket negotiation.
+- Manifest V2 preservation is locked at the autoconfig layer (`settings/bobzilla.cfg`) using `lockPref`, forbidding `extensions.manifestV3.enabled`, enabling `extensions.legacy.enabled`, clearing `restrictedDomains`, and disabling extension quarantining.
+- The Javasandbox integration is verified via automated end-to-end integration tests in `runner-daemon/src/main.rs`. Interceptions in `nsIOService.cpp` route to `JavasandboxIPCClient` (`patches/javasandbox-ipc-client.patch`), establishing Unix socket communication to the Rust `runner-daemon`.
+- Desktop companion tool `scripts/bobzilla-tray.py` communicates with the `runner-daemon` via Unix socket, providing live telemetry status, health pings, launch triggers, and graceful termination controls.
+- The Bobzilla Mission Control Dashboard (`patches/ui/bobzilla-dashboard-ui.patch`) is injected directly into `about:preferences#privacy`, consolidating high-value categories (Core Privacy, Javasandbox MicroVM, DRM & Hardware Acceleration) with tooltips and engine badges.
 - The `guest-os` directory contains Buildroot/Alpine integration details and an `inittab` setup to launch the JVM upon Firecracker boot.
+- Patch validation is automated via `scripts/validate-patches.sh` and `/home/jules/self_created_tools/patch_inspector.py`.
 
 ## Agent Directives
 - Follow the patch-based workflow carefully.
 - Prioritize atomic, well-documented changes over direct hacks.
+- Always increment the global version in `VERSION.md` and synchronize `CHANGELOG.md`.
