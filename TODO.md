@@ -22,4 +22,5 @@
 - [x] Implement dynamic vertical tabs observation and orientation switching in `patches/ui/vertical-tabs.patch`.
 - [x] Configure compact density defaults and sub-pixel text rendering in `patches/ui/custom-scaling.patch`.
 - [x] Integrate `browser.uidensity` compact mode into dynamic vertical tabs styling (`patches/ui/vertical-tabs.patch`).
+- [x] Suppress disruptive megabar expansion on focus in `patches/ui/compact-urlbar.patch`.
 - [ ] Verify full Firefox compilation with applied patches via `./scripts/build.sh`.

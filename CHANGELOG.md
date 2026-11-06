@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.57] - 2026-11-05
+### Changed
+- Enhanced `patches/ui/compact-urlbar.patch` in `UrlbarInput.sys.mjs` to suppress disruptive megabar breakout expansion during focus (`bobzilla-no-megabar-expand`) when compact density mode is active.
+
 ## [0.1.56] - 2026-11-05
 ### Changed
 - Refined `patches/ui/custom-layout.patch` to scope `#TabsToolbar` hiding strictly to `:root[bobzilla-vertical-tabs="true"]`, preserve horizontal layout fallback when vertical tabs are toggled off, and provide CSS transitions, sidebar border boundaries, and compact vertical tab sizing.

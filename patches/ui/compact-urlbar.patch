@@ -1,15 +1,21 @@
 --- a/browser/components/urlbar/UrlbarInput.sys.mjs
 +++ b/browser/components/urlbar/UrlbarInput.sys.mjs
-@@ -400,6 +400,12 @@
+@@ -400,6 +400,19 @@
      if (this.uninit) {
        this.uninit();
      }
 +
-+    // BOBZILLA: Force Compact URL Bar
-+    // Override the default Mozilla megabar styling for a tighter,
-+    // Floorp-inspired layout that respects vertical space.
++    // BOBZILLA: Force Compact URL Bar & Suppress Megabar Expansion
++    // Override default Mozilla megabar expansion on focus for a tighter,
++    // Floorp-inspired layout that respects vertical space and avoids layout shifting.
 +    this.textbox.setAttribute("compact", "true");
 +    this.panel.classList.add("bobzilla-compact-panel");
++
++    // Suppress pop-out visual expansion when compact mode is active
++    if (Services.prefs.getIntPref("browser.uidensity", 1) === 1) {
++      this.textbox.classList.add("bobzilla-no-megabar-expand");
++      this.textbox.removeAttribute("breakout-extend");
++    }
 
      this._uninit = null;
    }

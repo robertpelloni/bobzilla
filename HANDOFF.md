@@ -1,6 +1,7 @@
 # Handoff Document
 
 ## Session Summary
+- Enhanced `patches/ui/compact-urlbar.patch` in `UrlbarInput.sys.mjs` to suppress disruptive megabar expansion on focus (`bobzilla-no-megabar-expand`) when compact density mode is active, preventing layout shifting.
 - Refined `patches/ui/custom-layout.patch` in `browser.css`, scoping `#TabsToolbar` hiding strictly to active vertical tabs (`:root[bobzilla-vertical-tabs="true"]`), preserving horizontal layout when vertical tabs are toggled off, and adding smooth sidebar width transitions and compact tab heights.
 - Integrated `browser.uidensity` preference into `patches/ui/vertical-tabs.patch` (`tabbrowser.js`), dynamically applying compact density styling (`bobzilla-compact-tabs`, `density="compact"`) to the vertical tab strip without requiring browser restarts.
 - Expanded `patches/ui/custom-scaling.patch` to enable Compact Mode in Firefox customize menus (`browser.compactmode.show = true`), set compact density mode by default (`browser.uidensity = 1`), enforce base display scaling (`layout.css.devPixelsPerPx = 1.0`), and enable sub-pixel text rendering.
@@ -17,7 +18,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.56`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.57`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.
