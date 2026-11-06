@@ -23,7 +23,7 @@
 - [ ] Build and verify full Firefox source tree with all Phase 1 & 2 patches applied cleanly via `./scripts/build.sh`.
 
 ## Phase 3: Features & System Integration (ACTIVE / ADVANCING)
-- [x] Dynamic vertical tabs layout switching tied to `sidebar.verticalTabs` preference (`patches/ui/vertical-tabs.patch`).
+- [x] Dynamic vertical tabs layout switching tied to `sidebar.verticalTabs` and `browser.uidensity` (`patches/ui/vertical-tabs.patch`).
 - [x] Compact density UI and devPixelsPerPx display scaling defaults (`patches/ui/custom-scaling.patch`).
 - Compact navigation toolbar styling (`patches/ui/compact-urlbar.patch`, `custom-layout.patch`).
 - End-to-end Javasandbox MicroVM tab lifecycle in live Gecko browser (tab open -> socket dispatch -> Firecracker boot -> snapshot on tab blur/close).
