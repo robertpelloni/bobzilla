@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,40 @@
+@@ -1025,6 +1025,60 @@
    color: var(--lwt-tab-text);
  }
 
@@ -16,9 +16,28 @@
 +  width: 240px !important;
 +  min-width: 48px !important;
 +  max-width: 320px !important;
-+  transition: width 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) !important;
++  transition: width 0.22s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.22s ease !important;
 +  background-color: var(--toolbar-bgcolor, #1c1b22) !important;
 +  border-right: 1px solid var(--chrome-content-separator-color, rgba(255, 255, 255, 0.1)) !important;
++  z-index: 100 !important;
++}
++
++/* Collapsed icon-only mode with smooth auto-expand on hover */
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs {
++  width: 48px !important;
++  overflow: hidden !important;
++}
++
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover {
++  width: 240px !important;
++  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.35) !important;
++}
++
++/* Active tab indicator and accent bar */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[selected="true"] {
++  background-color: var(--tab-selected-bgcolor, rgba(255, 255, 255, 0.08)) !important;
++  border-left: 3px solid var(--tab-selected-accent, #3584e4) !important;
++  font-weight: 600 !important;
 +}
 +
 +/* Compact density styling for vertical tabs when browser.uidensity == 1 */

@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.58] - 2026-11-05
+### Changed
+- Refined `patches/ui/custom-layout.patch` in `browser.css` to implement collapsed icon-only sidebar mode (`bobzilla-sidebar-collapsed="true"` at 48px width) with smooth auto-hover expansion to 240px and active tab accent styling (`border-left: 3px solid #3584e4`).
+
 ## [0.1.57] - 2026-11-05
 ### Changed
 - Enhanced `patches/ui/compact-urlbar.patch` in `UrlbarInput.sys.mjs` to suppress disruptive megabar breakout expansion during focus (`bobzilla-no-megabar-expand`) when compact density mode is active.
