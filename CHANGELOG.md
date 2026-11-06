@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.56] - 2026-11-05
+### Changed
+- Refined `patches/ui/custom-layout.patch` to scope `#TabsToolbar` hiding strictly to `:root[bobzilla-vertical-tabs="true"]`, preserve horizontal layout fallback when vertical tabs are toggled off, and provide CSS transitions, sidebar border boundaries, and compact vertical tab sizing.
+
 ## [0.1.55] - 2026-11-05
 ### Changed
 - Integrated `browser.uidensity` preference into `patches/ui/vertical-tabs.patch` (`tabbrowser.js`), dynamically styling the vertical tab list for compact mode (`density="compact"`, `bobzilla-compact-tabs`) when `browser.uidensity == 1` and scaling for touch mode without requiring browser restarts.

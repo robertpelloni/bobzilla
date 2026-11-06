@@ -1,19 +1,40 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,18 @@
+@@ -1025,6 +1025,40 @@
    color: var(--lwt-tab-text);
  }
 
-+/* BOBZILLA: Floorp/Zen inspired minimal UI styling */
-+#TabsToolbar {
-+  /* Hide standard horizontal tab bar when vertical tabs are active */
++/* BOBZILLA: Floorp/Zen inspired minimal dynamic UI styling */
++:root[bobzilla-vertical-tabs="true"] #TabsToolbar {
++  /* Hide standard horizontal tab bar only when vertical tabs are active */
 +  display: none !important;
 +}
 +
-+#nav-bar {
++:root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs {
++  display: flex !important;
++  flex-direction: column !important;
++  width: 240px !important;
++  min-width: 48px !important;
++  max-width: 320px !important;
++  transition: width 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) !important;
++  background-color: var(--toolbar-bgcolor, #1c1b22) !important;
++  border-right: 1px solid var(--chrome-content-separator-color, rgba(255, 255, 255, 0.1)) !important;
++}
++
++/* Compact density styling for vertical tabs when browser.uidensity == 1 */
++:root[bobzilla-compact-ui="true"] .bobzilla-vertical-tabs .tabbrowser-tab {
++  min-height: 28px !important;
++  height: 28px !important;
++  padding-top: 1px !important;
++  padding-bottom: 1px !important;
++  font-size: 0.9em !important;
++}
++
++:root[bobzilla-compact-ui="true"] #nav-bar {
 +  /* Slimmer navigation bar for maximum screen real estate */
 +  padding-top: 2px !important;
 +  padding-bottom: 2px !important;
++  min-height: 32px !important;
 +}
 +
  .tabbrowser-tab {
