@@ -1,8 +1,8 @@
 # Handoff Document
 
 ## Session Summary
+- Integrated `browser.uidensity` preference into `patches/ui/vertical-tabs.patch` (`tabbrowser.js`), dynamically applying compact density styling (`bobzilla-compact-tabs`, `density="compact"`) to the vertical tab strip without requiring browser restarts.
 - Expanded `patches/ui/custom-scaling.patch` to enable Compact Mode in Firefox customize menus (`browser.compactmode.show = true`), set compact density mode by default (`browser.uidensity = 1`), enforce base display scaling (`layout.css.devPixelsPerPx = 1.0`), and enable sub-pixel text rendering.
-- Expanded `patches/ui/vertical-tabs.patch` in `tabbrowser.js` to observe the `sidebar.verticalTabs` preference dynamically and toggle DOM attributes and orientation between horizontal and vertical tab strip modes.
 - Authored comprehensive user and developer manual `docs/JAVASANDBOX_GUIDE.md` detailing end-to-end execution workflows for `javasandbox://` URLs, runner daemon operations, CLI management, desktop system tray operations, socket discovery, and guest OS bundle packaging.
 - Expanded the automated test suite in `runner-daemon/src/main.rs` to 9 tests, adding edge-case URI parsing validation, buffer boundary checks, and concurrent multi-client IPC connection load testing.
 - Hardened Manifest V2 and legacy extension preservation in `settings/bobzilla.cfg` using `lockPref`, locking `extensions.manifestV3.enabled` to `false`, `extensions.legacy.enabled` to `true`, clearing `extensions.webextensions.restrictedDomains` to enable ad-blockers on all origins, and disabling extension quarantining (`extensions.quarantine.enabled`).
@@ -16,7 +16,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.54`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.55`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.

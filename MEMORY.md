@@ -10,7 +10,7 @@
 - Complete user and developer guide authored in `docs/JAVASANDBOX_GUIDE.md`.
 - Desktop companion tool `scripts/bobzilla-tray.py` communicates with the `runner-daemon` via Unix socket, providing live telemetry status, health pings, launch triggers, and graceful termination controls.
 - Phase 3 features advancing:
-  - Dynamic vertical tabs (`patches/ui/vertical-tabs.patch`) observe `sidebar.verticalTabs` to switch tab strip orientation dynamically.
+  - Dynamic vertical tabs (`patches/ui/vertical-tabs.patch`) observe both `sidebar.verticalTabs` and `browser.uidensity` to dynamically switch tab strip orientation and apply compact styling.
   - Custom UI scaling (`patches/ui/custom-scaling.patch`) enables compact density mode (`browser.uidensity = 1`) by default, fixes base display scaling, and enables sub-pixel text anti-aliasing.
 - The Bobzilla Mission Control Dashboard (`patches/ui/bobzilla-dashboard-ui.patch`) is injected directly into `about:preferences#privacy`, consolidating high-value categories (Core Privacy, Javasandbox MicroVM, DRM & Hardware Acceleration) with tooltips and engine badges.
 - The `guest-os` directory contains Buildroot/Alpine integration details and an `inittab` setup to launch the JVM upon Firecracker boot.

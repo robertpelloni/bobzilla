@@ -1,28 +1,47 @@
 --- a/browser/components/tabbrowser/content/tabbrowser.js
 +++ b/browser/components/tabbrowser/content/tabbrowser.js
-@@ -102,6 +102,28 @@
+@@ -102,6 +102,46 @@
      // Standard horizontal layout
      this.tabContainer.setAttribute("orient", "horizontal");
    }
 +
-+  // BOBZILLA: Floorp/Zen-inspired Dynamic Vertical Tabs Support
++  // BOBZILLA: Dynamic Vertical Tabs with browser.uidensity Integration
 +  initVerticalTabs() {
-+    const prefName = "sidebar.verticalTabs";
++    const verticalPref = "sidebar.verticalTabs";
++    const densityPref = "browser.uidensity";
++
 +    const applyLayout = () => {
-+      let isVertical = Services.prefs.getBoolPref(prefName, true);
++      let isVertical = Services.prefs.getBoolPref(verticalPref, true);
++      let density = Services.prefs.getIntPref(densityPref, 1); // 1 = Compact default
++
 +      if (isVertical) {
 +        this.tabContainer.setAttribute("orient", "vertical");
 +        this.tabContainer.classList.add("bobzilla-vertical-tabs");
 +        document.documentElement.setAttribute("bobzilla-vertical-tabs", "true");
++
++        // Handle compact vs normal vs touch density for vertical tab list
++        if (density === 1) {
++          this.tabContainer.classList.add("bobzilla-compact-tabs");
++          this.tabContainer.setAttribute("density", "compact");
++          document.documentElement.setAttribute("bobzilla-compact-ui", "true");
++        } else if (density === 2) {
++          this.tabContainer.classList.remove("bobzilla-compact-tabs");
++          this.tabContainer.setAttribute("density", "touch");
++          document.documentElement.removeAttribute("bobzilla-compact-ui");
++        } else {
++          this.tabContainer.classList.remove("bobzilla-compact-tabs");
++          this.tabContainer.setAttribute("density", "normal");
++          document.documentElement.removeAttribute("bobzilla-compact-ui");
++        }
 +      } else {
 +        this.tabContainer.setAttribute("orient", "horizontal");
-+        this.tabContainer.classList.remove("bobzilla-vertical-tabs");
++        this.tabContainer.classList.remove("bobzilla-vertical-tabs", "bobzilla-compact-tabs");
 +        document.documentElement.removeAttribute("bobzilla-vertical-tabs");
 +      }
 +    };
 +
-+    // Observe changes to vertical tab preferences
-+    Services.prefs.addObserver(prefName, applyLayout);
++    Services.prefs.addObserver(verticalPref, applyLayout);
++    Services.prefs.addObserver(densityPref, applyLayout);
 +    applyLayout();
 +  }
  }

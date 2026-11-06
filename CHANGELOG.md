@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.55] - 2026-11-05
+### Changed
+- Integrated `browser.uidensity` preference into `patches/ui/vertical-tabs.patch` (`tabbrowser.js`), dynamically styling the vertical tab list for compact mode (`density="compact"`, `bobzilla-compact-tabs`) when `browser.uidensity == 1` and scaling for touch mode without requiring browser restarts.
+
 ## [0.1.54] - 2026-11-05
 ### Changed
 - Expanded `patches/ui/custom-scaling.patch` to surface Compact Mode in UI customize settings (`browser.compactmode.show = true`), set compact density by default (`browser.uidensity = 1`), enforce base display scaling (`layout.css.devPixelsPerPx = 1.0`), and enable sub-pixel text anti-aliasing.
