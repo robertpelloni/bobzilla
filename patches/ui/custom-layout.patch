@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,206 @@
+@@ -1025,6 +1025,236 @@
    color: var(--lwt-tab-text);
  }
 
@@ -24,6 +24,21 @@
 +  z-index: 100 !important;
 +  scrollbar-width: thin !important;
 +  scrollbar-color: rgba(255, 255, 255, 0.2) transparent !important;
++}
++
++/* Light theme contrast adaptation */
++@media (prefers-color-scheme: light) {
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs {
++    background-color: var(--toolbar-bgcolor, #f0f0f4) !important;
++    border-right: 1px solid var(--chrome-content-separator-color, rgba(0, 0, 0, 0.12)) !important;
++  }
++  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:hover {
++    background-color: var(--tab-hover-bgcolor, rgba(0, 0, 0, 0.06)) !important;
++  }
++  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[selected="true"] {
++    background-color: var(--tab-selected-bgcolor, #ffffff) !important;
++    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
++  }
 +}
 +
 +:root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs::-webkit-scrollbar {
@@ -110,13 +125,19 @@
 +  display: none !important;
 +}
 +
-+/* Tab styling ergonomics and hover feedback */
++/* Tab styling ergonomics, hover feedback, and closing animation */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab {
 +  position: relative !important;
 +  border-radius: 4px !important;
 +  margin: 1px 4px !important;
-+  will-change: transform, background-color !important;
-+  transition: background-color 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
++  will-change: transform, background-color, opacity !important;
++  transition: background-color 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s ease !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[closing="true"] {
++  opacity: 0 !important;
++  transform: translateX(-8px) !important;
++  pointer-events: none !important;
 +}
 +
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:hover {
@@ -202,6 +223,14 @@
 +  padding-top: 2px !important;
 +  padding-bottom: 2px !important;
 +  min-height: 32px !important;
++}
++
++/* High-DPI display font-smoothing and icon alignment */
++@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs {
++    font-smooth: always;
++    -webkit-font-smoothing: antialiased;
++  }
 +}
 +
  .tabbrowser-tab {

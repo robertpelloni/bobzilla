@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.64] - 2026-11-05
+### Changed
+- Added smooth tab closing exit animations (`opacity: 0; transform: translateX(-8px)`) in `patches/ui/custom-layout.patch`.
+- Refined light theme contrast styling for `.bobzilla-vertical-tabs` and selected tabs.
+- Added high-DPI display font-smoothing overrides (`-webkit-font-smoothing: antialiased`).
+
 ## [0.1.63] - 2026-11-05
 ### Changed
 - Refined vertical tab transitions and micro-animations in `patches/ui/custom-layout.patch` using GPU-accelerated cubic-bezier curves (`cubic-bezier(0.16, 1, 0.3, 1)`).

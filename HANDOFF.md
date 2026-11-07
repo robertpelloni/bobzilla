@@ -1,6 +1,9 @@
 # Handoff Document
 
 ## Session Summary
+- Added graceful tab exit micro-animations (`opacity: 0; transform: translateX(-8px)`) during tab close transitions in `patches/ui/custom-layout.patch`.
+- Refined light theme contrast styling for `.bobzilla-vertical-tabs` and selected tabs.
+- Added high-DPI display font-smoothing overrides (`-webkit-font-smoothing: antialiased`).
 - Refined vertical tab transitions and micro-animations in `patches/ui/custom-layout.patch` using GPU-accelerated cubic-bezier curves (`cubic-bezier(0.16, 1, 0.3, 1)`).
 - Added `contain: paint layout` to `.bobzilla-vertical-tabs` to eliminate repainting overhead and layout jitter during width transitions.
 - Added smooth tab hover micro-elevation (`transform: translateX(2px)`) and scale feedback (`transform: scale(1.02)`) on action buttons.
@@ -30,7 +33,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.63`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.64`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.
