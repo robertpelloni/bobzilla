@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,274 @@
+@@ -1025,6 +1025,302 @@
    color: var(--lwt-tab-text);
  }
 
@@ -145,6 +145,17 @@
 +  transform: translateX(2px) !important;
 +}
 +
++/* Discarded / unloaded memory-saving tab state */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[pending="true"],
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[discarded="true"] {
++  opacity: 0.72 !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[pending="true"]:hover,
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[discarded="true"]:hover {
++  opacity: 1 !important;
++}
++
 +/* Tab container contextual identity badges (Multi-Account Containers) */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[usercontextid] .tab-context {
 +  display: inline-block !important;
@@ -162,7 +173,7 @@
 +  height: 16px !important;
 +}
 +
-+/* Tab audio/mute indicator button overlay */
++/* Tab audio/mute indicator button overlay with active pulse */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound {
 +  display: inline-flex !important;
 +  margin-inline-end: 4px !important;
@@ -170,6 +181,16 @@
 +  border-radius: 3px !important;
 +  opacity: 0.8 !important;
 +  transition: opacity 0.15s ease, background-color 0.15s ease !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound[soundplaying="true"] {
++  opacity: 1 !important;
++  animation: bobzilla-pulse-sound 1.8s infinite ease-in-out !important;
++}
++
++@keyframes bobzilla-pulse-sound {
++  0%, 100% { transform: scale(1); }
++  50% { transform: scale(1.15); }
 +}
 +
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound:hover {
@@ -246,6 +267,12 @@
 +  padding-top: 1px !important;
 +  padding-bottom: 1px !important;
 +  font-size: 0.9em !important;
++}
++
++:root[bobzilla-compact-ui="true"] .bobzilla-vertical-tabs .tabbrowser-tab .tab-icon-image {
++  width: 14px !important;
++  height: 14px !important;
++  margin-inline-end: 6px !important;
 +}
 +
 +:root[bobzilla-compact-ui="true"] #nav-bar {

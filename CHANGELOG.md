@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.66] - 2026-11-05
+### Changed
+- Added visual styling for discarded and unloaded tabs (`.tabbrowser-tab[pending="true"]`, `.tabbrowser-tab[discarded="true"]`) with dimmed opacity (0.72) in `patches/ui/custom-layout.patch`.
+- Added sound playing pulse animation (`bobzilla-pulse-sound`) for `.tab-icon-sound[soundplaying="true"]`.
+- Refined icon scaling (14px x 14px) and spacing in compact density mode (`browser.uidensity == 1`).
+
 ## [0.1.65] - 2026-11-05
 ### Changed
 - Added tab container contextual identity badges (Multi-Account Containers color indicators) in `patches/ui/custom-layout.patch`.

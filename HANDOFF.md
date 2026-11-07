@@ -1,6 +1,9 @@
 # Handoff Document
 
 ## Session Summary
+- Added visual styling for discarded and unloaded tabs (`.tabbrowser-tab[pending="true"]`, `.tabbrowser-tab[discarded="true"]`) with dimmed opacity (0.72) in `patches/ui/custom-layout.patch`.
+- Added sound playing pulse animation (`bobzilla-pulse-sound`) for `.tab-icon-sound[soundplaying="true"]`.
+- Refined icon scaling (14px x 14px) and spacing in compact density mode (`browser.uidensity == 1`).
 - Added tab container contextual identity badges (Multi-Account Containers color indicators) in `patches/ui/custom-layout.patch`.
 - Added subtle active tab ambient glow (`box-shadow: 0 0 10px rgba(53, 132, 228, 0.25)`).
 - Added tab group header styling and collapse chevron animations (`rotate(-90deg)`).
@@ -36,7 +39,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.65`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.66`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.
