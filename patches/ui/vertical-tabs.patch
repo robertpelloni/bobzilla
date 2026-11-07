@@ -1,11 +1,11 @@
 --- a/browser/components/tabbrowser/content/tabbrowser.js
 +++ b/browser/components/tabbrowser/content/tabbrowser.js
-@@ -102,6 +102,46 @@
+@@ -102,6 +102,57 @@
      // Standard horizontal layout
      this.tabContainer.setAttribute("orient", "horizontal");
    }
 +
-+  // BOBZILLA: Dynamic Vertical Tabs with browser.uidensity Integration
++  // BOBZILLA: Dynamic Vertical Tabs with browser.uidensity & Responsive Resize Integration
 +  initVerticalTabs() {
 +    const verticalPref = "sidebar.verticalTabs";
 +    const densityPref = "browser.uidensity";
@@ -40,6 +40,17 @@
 +      }
 +    };
 +
++    // Dynamic responsive width listener for split-screen / tiled window ergonomics
++    const handleResize = () => {
++      if (window.innerWidth < 960) {
++        document.documentElement.setAttribute("bobzilla-compact-viewport", "true");
++      } else {
++        document.documentElement.removeAttribute("bobzilla-compact-viewport");
++      }
++    };
++
++    window.addEventListener("resize", handleResize, { passive: true });
++    handleResize();
 +    Services.prefs.addObserver(verticalPref, applyLayout);
 +    Services.prefs.addObserver(densityPref, applyLayout);
 +    applyLayout();

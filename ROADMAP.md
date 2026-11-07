@@ -24,8 +24,12 @@
 
 ## Phase 3: Features & System Integration (ACTIVE / ADVANCING)
 - [x] Dynamic vertical tabs layout switching tied to `sidebar.verticalTabs` and `browser.uidensity` (`patches/ui/vertical-tabs.patch`).
+- [x] Responsive window resize viewport adaptations (< 960px) for split-screen and tiled layouts (`patches/ui/vertical-tabs.patch`, `custom-layout.patch`).
+- [x] Pinned tabs horizontal grid arrangement in vertical orientation to conserve screen space (`patches/ui/custom-layout.patch`).
+- [x] Visual drag-and-drop drop target indicators and tab hover transitions (`patches/ui/custom-layout.patch`).
 - [x] Compact density UI and devPixelsPerPx display scaling defaults (`patches/ui/custom-scaling.patch`).
-- Compact navigation toolbar styling (`patches/ui/compact-urlbar.patch`, `custom-layout.patch`).
+- [x] Compact navigation toolbar styling & megabar expansion suppression (`patches/ui/compact-urlbar.patch`, `custom-layout.patch`).
+- [x] Collapsed icon-only vertical tabs with auto-hover expansion & transition ergonomics (`patches/ui/custom-layout.patch`).
 - End-to-end Javasandbox MicroVM tab lifecycle in live Gecko browser (tab open -> socket dispatch -> Firecracker boot -> snapshot on tab blur/close).
 - Desktop system tray GUI applet (GTK/Wayland) with daemon health telemetry, status monitoring, and graceful termination.
 - Widevine L1 Hardware DRM spoofing verification on streaming platforms.
