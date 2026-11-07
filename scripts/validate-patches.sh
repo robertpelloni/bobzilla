@@ -83,5 +83,8 @@ fi
 
 echo "=== Validation Complete ==="
 if [ $FAILED -gt 0 ]; then
-    return 1 2>/dev/null || (false)
+    echo "Failed patches: ${FAILED_PATCHES[*]}"
+    exit 1
 fi
+
+exit 0

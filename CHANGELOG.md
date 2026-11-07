@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.68] - 2026-11-05
+### Changed
+- Improved error handling in `scripts/validate-patches.sh` using standard `exit 1`/`exit 0` return codes and explicit reporting of any malformed patches.
+
 ## [0.1.67] - 2026-11-05
 ### Added
 - Enhanced `scripts/bobzilla-tray.py` with an interactive live terminal dashboard mode (`--dashboard`), latency profiling, and ANSI terminal refresh.
