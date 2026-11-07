@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,236 @@
+@@ -1025,6 +1025,274 @@
    color: var(--lwt-tab-text);
  }
 
@@ -145,6 +145,16 @@
 +  transform: translateX(2px) !important;
 +}
 +
++/* Tab container contextual identity badges (Multi-Account Containers) */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[usercontextid] .tab-context {
++  display: inline-block !important;
++  width: 4px !important;
++  height: 14px !important;
++  border-radius: 2px !important;
++  margin-inline-end: 6px !important;
++  background-color: var(--identity-tab-color, #3584e4) !important;
++}
++
 +/* Tab throbber / loading spinner alignment in vertical mode */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-throbber {
 +  margin-inline-end: 6px !important;
@@ -187,12 +197,32 @@
 +  border-top: 2px solid var(--tab-selected-accent, #3584e4) !important;
 +}
 +
-+/* Active tab indicator and accent bar */
++/* Active tab indicator, accent bar, and subtle ambient glow */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[selected="true"] {
 +  background-color: var(--tab-selected-bgcolor, rgba(255, 255, 255, 0.08)) !important;
 +  border-left: 3px solid var(--tab-selected-accent, #3584e4) !important;
 +  font-weight: 600 !important;
-+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
++  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(53, 132, 228, 0.25) !important;
++}
++
++/* Tab group header styling and collapse chevron */
++:root[bobzilla-vertical-tabs="true"] .tab-group-header {
++  display: flex !important;
++  align-items: center !important;
++  padding: 4px 8px !important;
++  font-size: 0.82em !important;
++  font-weight: 600 !important;
++  color: var(--chrome-content-separator-color, rgba(255, 255, 255, 0.6)) !important;
++  text-transform: uppercase !important;
++  letter-spacing: 0.5px !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tab-group-header .group-chevron {
++  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tab-group-header[collapsed="true"] .group-chevron {
++  transform: rotate(-90deg) !important;
 +}
 +
 +/* Smooth close button visibility on tab hover */

@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.65] - 2026-11-05
+### Changed
+- Added tab container contextual identity badges (Multi-Account Containers color indicators) in `patches/ui/custom-layout.patch`.
+- Added subtle active tab ambient glow (`box-shadow: 0 0 10px rgba(53, 132, 228, 0.25)`).
+- Added tab group header styling and collapse chevron animations (`rotate(-90deg)`).
+
 ## [0.1.64] - 2026-11-05
 ### Changed
 - Added smooth tab closing exit animations (`opacity: 0; transform: translateX(-8px)`) in `patches/ui/custom-layout.patch`.
