@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.70] - 2026-11-05
+### Added
+- Added unread numerical badge counters (`.tab-badge`) for vertical tabs in `patches/ui/custom-layout.patch`.
+- Added inline loading progress bar indicators (`.tab-progress-bar`) with smooth gradient animations for loading tabs (`[busy="true"]`).
+
 ## [0.1.69] - 2026-11-05
 ### Changed
 - Added high-visibility keyboard focus styling (`:focus-visible`) for tabs and action buttons in `patches/ui/custom-layout.patch`.
