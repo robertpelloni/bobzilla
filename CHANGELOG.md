@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.61] - 2026-11-05
+### Changed
+- Enhanced `patches/ui/custom-layout.patch` with audio playing/mute indicators for vertical tabs, allowing one-click muting without horizontal tab expansion.
+- Added attention and unread activity notification dot badges on background tabs in vertical orientation (`::after` pseudo-element with subtle glow).
+- Customized vertical tab container scrollbar with ultra-slim modern scrollbar geometry (`scrollbar-width: thin`).
+
 ## [0.1.60] - 2026-11-05
 ### Changed
 - Refined and enhanced dynamic vertical tabs in `patches/ui/custom-layout.patch` and `patches/ui/vertical-tabs.patch`.

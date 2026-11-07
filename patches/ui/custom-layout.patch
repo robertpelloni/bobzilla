@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,124 @@
+@@ -1025,6 +1025,160 @@
    color: var(--lwt-tab-text);
  }
 
@@ -21,6 +21,17 @@
 +  background-color: var(--toolbar-bgcolor, #1c1b22) !important;
 +  border-right: 1px solid var(--chrome-content-separator-color, rgba(255, 255, 255, 0.1)) !important;
 +  z-index: 100 !important;
++  scrollbar-width: thin !important;
++  scrollbar-color: rgba(255, 255, 255, 0.2) transparent !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs::-webkit-scrollbar {
++  width: 4px !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs::-webkit-scrollbar-thumb {
++  background: rgba(255, 255, 255, 0.2) !important;
++  border-radius: 4px !important;
 +}
 +
 +/* Responsive viewport adjustments for split-screen and tiled window managers (< 960px) */
@@ -70,6 +81,7 @@
 +
 +/* Tab styling ergonomics and hover feedback */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab {
++  position: relative !important;
 +  border-radius: 4px !important;
 +  margin: 1px 4px !important;
 +  transition: background-color 0.12s ease, transform 0.1s ease !important;
@@ -77,6 +89,35 @@
 +
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:hover {
 +  background-color: var(--tab-hover-bgcolor, rgba(255, 255, 255, 0.05)) !important;
++}
++
++/* Tab audio/mute indicator button overlay */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound {
++  display: inline-flex !important;
++  margin-inline-end: 4px !important;
++  padding: 2px !important;
++  border-radius: 3px !important;
++  opacity: 0.8 !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound:hover {
++  opacity: 1 !important;
++  background-color: rgba(255, 255, 255, 0.2) !important;
++}
++
++/* Tab unread activity dot indicator for background tabs */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[unread="true"]:not([selected="true"])::after,
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[attention="true"]:not([selected="true"])::after {
++  content: "" !important;
++  position: absolute !important;
++  left: 6px !important;
++  top: 50% !important;
++  transform: translateY(-50%) !important;
++  width: 6px !important;
++  height: 6px !important;
++  border-radius: 50% !important;
++  background-color: var(--tab-selected-accent, #3584e4) !important;
++  box-shadow: 0 0 6px var(--tab-selected-accent, #3584e4) !important;
 +}
 +
 +/* Drag-and-drop reordering drop target cues */
