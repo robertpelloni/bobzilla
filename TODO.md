@@ -24,4 +24,5 @@
 - [x] Integrate `browser.uidensity` compact mode into dynamic vertical tabs styling (`patches/ui/vertical-tabs.patch`).
 - [x] Suppress disruptive megabar expansion on focus in `patches/ui/compact-urlbar.patch`.
 - [x] Implement collapsed icon-only sidebar mode with smooth hover auto-expansion in `patches/ui/custom-layout.patch`.
+- [x] Polish hardware-accelerated vertical tab transitions and tab hover ergonomics in `patches/ui/custom-layout.patch`.
 - [ ] Verify full Firefox compilation with applied patches via `./scripts/build.sh`.

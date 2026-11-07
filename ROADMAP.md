@@ -26,7 +26,7 @@
 - [x] Dynamic vertical tabs layout switching tied to `sidebar.verticalTabs` and `browser.uidensity` (`patches/ui/vertical-tabs.patch`).
 - [x] Compact density UI and devPixelsPerPx display scaling defaults (`patches/ui/custom-scaling.patch`).
 - [x] Compact navigation toolbar styling & megabar expansion suppression (`patches/ui/compact-urlbar.patch`, `custom-layout.patch`).
-- [x] Collapsed icon-only vertical tabs with auto-hover expansion (`patches/ui/custom-layout.patch`).
+- [x] Collapsed icon-only vertical tabs with auto-hover expansion & transition ergonomics (`patches/ui/custom-layout.patch`).
 - End-to-end Javasandbox MicroVM tab lifecycle in live Gecko browser (tab open -> socket dispatch -> Firecracker boot -> snapshot on tab blur/close).
 - Desktop system tray GUI applet (GTK/Wayland) with daemon health telemetry, status monitoring, and graceful termination.
 - Widevine L1 Hardware DRM spoofing verification on streaming platforms.

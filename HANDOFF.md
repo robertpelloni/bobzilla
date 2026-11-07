@@ -1,7 +1,8 @@
 # Handoff Document
 
 ## Session Summary
-- Refined `patches/ui/custom-layout.patch` in `browser.css` to introduce collapsed icon-only sidebar mode (`bobzilla-sidebar-collapsed="true"` at 48px width) with smooth auto-hover expansion to 240px and active tab accent styling (`border-left: 3px solid #3584e4`).
+- Enhanced `patches/ui/custom-layout.patch` in `browser.css` with hardware-accelerated transitions (`will-change: width, box-shadow`), text label opacity fades on auto-hover expand, tab border-radius smoothing (`4px`), and interactive close button hover states for vertical tabs.
+- Refined `patches/ui/custom-layout.patch` in `browser.css` to implement collapsed icon-only sidebar mode (`bobzilla-sidebar-collapsed="true"` at 48px width) with smooth auto-hover expansion to 240px and active tab accent styling (`border-left: 3px solid #3584e4`).
 - Enhanced `patches/ui/compact-urlbar.patch` in `UrlbarInput.sys.mjs` to suppress disruptive megabar breakout expansion during focus (`bobzilla-no-megabar-expand`) when compact density mode is active, preventing layout shifting.
 - Integrated `browser.uidensity` preference into `patches/ui/vertical-tabs.patch` (`tabbrowser.js`), dynamically applying compact density styling (`bobzilla-compact-tabs`, `density="compact"`) to the vertical tab strip without requiring browser restarts.
 - Expanded `patches/ui/custom-scaling.patch` to enable Compact Mode in Firefox customize menus (`browser.compactmode.show = true`), set compact density mode by default (`browser.uidensity = 1`), enforce base display scaling (`layout.css.devPixelsPerPx = 1.0`), and enable sub-pixel text rendering.
@@ -18,7 +19,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.58`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.59`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.

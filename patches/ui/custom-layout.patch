@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,60 @@
+@@ -1025,6 +1025,84 @@
    color: var(--lwt-tab-text);
  }
 
@@ -16,6 +16,7 @@
 +  width: 240px !important;
 +  min-width: 48px !important;
 +  max-width: 320px !important;
++  will-change: width, box-shadow !important;
 +  transition: width 0.22s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.22s ease !important;
 +  background-color: var(--toolbar-bgcolor, #1c1b22) !important;
 +  border-right: 1px solid var(--chrome-content-separator-color, rgba(255, 255, 255, 0.1)) !important;
@@ -28,9 +29,26 @@
 +  overflow: hidden !important;
 +}
 +
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .tab-label {
++  opacity: 0 !important;
++  transition: opacity 0.15s ease !important;
++}
++
 +:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover {
 +  width: 240px !important;
 +  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.35) !important;
++}
++
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover .tab-label {
++  opacity: 1 !important;
++  transition: opacity 0.2s ease 0.08s !important;
++}
++
++/* Tab styling ergonomics */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab {
++  border-radius: 4px !important;
++  margin: 1px 4px !important;
++  transition: background-color 0.12s ease !important;
 +}
 +
 +/* Active tab indicator and accent bar */
@@ -38,6 +56,15 @@
 +  background-color: var(--tab-selected-bgcolor, rgba(255, 255, 255, 0.08)) !important;
 +  border-left: 3px solid var(--tab-selected-accent, #3584e4) !important;
 +  font-weight: 600 !important;
++}
++
++/* Smooth close button visibility on tab hover */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-close-button {
++  opacity: 0.6 !important;
++  transition: opacity 0.12s ease !important;
++}
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:hover .tab-close-button {
++  opacity: 1 !important;
 +}
 +
 +/* Compact density styling for vertical tabs when browser.uidensity == 1 */

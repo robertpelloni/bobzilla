@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.59] - 2026-11-05
+### Changed
+- Enhanced `patches/ui/custom-layout.patch` in `browser.css` with hardware-accelerated transitions (`will-change: width, box-shadow`), text label opacity fades on auto-hover expand, tab border-radius smoothing, and interactive close button hover states for vertical tabs.
+
 ## [0.1.58] - 2026-11-05
 ### Changed
 - Refined `patches/ui/custom-layout.patch` in `browser.css` to implement collapsed icon-only sidebar mode (`bobzilla-sidebar-collapsed="true"` at 48px width) with smooth auto-hover expansion to 240px and active tab accent styling (`border-left: 3px solid #3584e4`).

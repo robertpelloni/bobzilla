@@ -11,7 +11,7 @@
 - Desktop companion tool `scripts/bobzilla-tray.py` communicates with the `runner-daemon` via Unix socket, providing live telemetry status, health pings, launch triggers, and graceful termination controls.
 - Phase 3 features advancing:
   - Dynamic vertical tabs (`patches/ui/vertical-tabs.patch`) observe both `sidebar.verticalTabs` and `browser.uidensity` to dynamically switch tab strip orientation and apply compact tab styling.
-  - Custom UI layout (`patches/ui/custom-layout.patch`) scopes tab toolbar hiding strictly to active vertical tabs, styles the vertical sidebar with transition animations, supports collapsed icon-only mode with auto-hover expansion, and enforces compact navbar heights.
+  - Custom UI layout (`patches/ui/custom-layout.patch`) scopes tab toolbar hiding strictly to active vertical tabs, styles the vertical sidebar with hardware-accelerated transitions, supports collapsed icon-only mode with auto-hover expansion, label fading, tab border-radius, close button hover animations, and compact navbar heights.
   - Compact URL bar optimization (`patches/ui/compact-urlbar.patch`) suppresses intrusive megabar expansion during typing and focus.
   - Custom UI scaling (`patches/ui/custom-scaling.patch`) enables compact density mode (`browser.uidensity = 1`) by default, fixes base display scaling, and enables sub-pixel text anti-aliasing.
 - The Bobzilla Mission Control Dashboard (`patches/ui/bobzilla-dashboard-ui.patch`) is injected directly into `about:preferences#privacy`, consolidating high-value categories (Core Privacy, Javasandbox MicroVM, DRM & Hardware Acceleration) with tooltips and engine badges.
