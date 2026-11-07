@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,200 @@
+@@ -1025,6 +1025,206 @@
    color: var(--lwt-tab-text);
  }
 
@@ -16,8 +16,9 @@
 +  width: 240px !important;
 +  min-width: 48px !important;
 +  max-width: 320px !important;
++  contain: paint layout !important;
 +  will-change: width, box-shadow !important;
-+  transition: width 0.22s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.22s ease !important;
++  transition: width 0.24s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.24s ease !important;
 +  background-color: var(--toolbar-bgcolor, #1c1b22) !important;
 +  border-right: 1px solid var(--chrome-content-separator-color, rgba(255, 255, 255, 0.1)) !important;
 +  z-index: 100 !important;
@@ -53,12 +54,13 @@
 +  border: none !important;
 +  color: var(--lwt-tab-text, #ffffff) !important;
 +  font-size: 0.9em !important;
-+  transition: background-color 0.12s ease !important;
++  transition: background-color 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.15s ease !important;
 +}
 +
 +:root[bobzilla-vertical-tabs="true"] .bobzilla-new-tab-button:hover,
 +:root[bobzilla-vertical-tabs="true"] .bobzilla-collapse-toggle-button:hover {
 +  background-color: rgba(255, 255, 255, 0.12) !important;
++  transform: scale(1.02) !important;
 +}
 +
 +/* Responsive viewport adjustments for split-screen and tiled window managers (< 960px) */
@@ -76,7 +78,7 @@
 +:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .tab-label,
 +:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .bobzilla-action-label {
 +  opacity: 0 !important;
-+  transition: opacity 0.15s ease !important;
++  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
 +}
 +
 +:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover {
@@ -87,7 +89,7 @@
 +:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover .tab-label,
 +:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover .bobzilla-action-label {
 +  opacity: 1 !important;
-+  transition: opacity 0.2s ease 0.08s !important;
++  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1) 0.06s !important;
 +}
 +
 +/* Pinned tabs horizontal grid arrangement in vertical mode to save vertical screen space */
@@ -113,11 +115,13 @@
 +  position: relative !important;
 +  border-radius: 4px !important;
 +  margin: 1px 4px !important;
-+  transition: background-color 0.12s ease, transform 0.1s ease !important;
++  will-change: transform, background-color !important;
++  transition: background-color 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
 +}
 +
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:hover {
 +  background-color: var(--tab-hover-bgcolor, rgba(255, 255, 255, 0.05)) !important;
++  transform: translateX(2px) !important;
 +}
 +
 +/* Tab throbber / loading spinner alignment in vertical mode */
@@ -134,6 +138,7 @@
 +  padding: 2px !important;
 +  border-radius: 3px !important;
 +  opacity: 0.8 !important;
++  transition: opacity 0.15s ease, background-color 0.15s ease !important;
 +}
 +
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound:hover {
@@ -166,13 +171,14 @@
 +  background-color: var(--tab-selected-bgcolor, rgba(255, 255, 255, 0.08)) !important;
 +  border-left: 3px solid var(--tab-selected-accent, #3584e4) !important;
 +  font-weight: 600 !important;
++  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
 +}
 +
 +/* Smooth close button visibility on tab hover */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-close-button {
 +  opacity: 0.6 !important;
 +  border-radius: 3px !important;
-+  transition: opacity 0.12s ease, background-color 0.12s ease !important;
++  transition: opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease !important;
 +}
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-close-button:hover {
 +  opacity: 1 !important;

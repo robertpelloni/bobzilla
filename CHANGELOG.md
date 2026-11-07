@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.63] - 2026-11-05
+### Changed
+- Refined vertical tab transitions and micro-animations in `patches/ui/custom-layout.patch` using GPU-accelerated cubic-bezier curves (`cubic-bezier(0.16, 1, 0.3, 1)`).
+- Added `contain: paint layout` to `.bobzilla-vertical-tabs` to eliminate layout jitter and repainting overhead during width transitions.
+- Added smooth tab hover micro-elevation (`transform: translateX(2px)`) and scale feedback on action buttons.
+
 ## [0.1.62] - 2026-11-05
 ### Changed
 - Added sidebar collapse/expand toggle controls (`sidebar.verticalTabs.collapsed`) in `patches/ui/vertical-tabs.patch`.
