@@ -1,6 +1,6 @@
 --- a/browser/components/tabbrowser/content/tabbrowser.js
 +++ b/browser/components/tabbrowser/content/tabbrowser.js
-@@ -102,6 +102,57 @@
+@@ -102,6 +102,78 @@
      // Standard horizontal layout
      this.tabContainer.setAttribute("orient", "horizontal");
    }
@@ -9,15 +9,23 @@
 +  initVerticalTabs() {
 +    const verticalPref = "sidebar.verticalTabs";
 +    const densityPref = "browser.uidensity";
++    const collapsedPref = "sidebar.verticalTabs.collapsed";
 +
 +    const applyLayout = () => {
 +      let isVertical = Services.prefs.getBoolPref(verticalPref, true);
 +      let density = Services.prefs.getIntPref(densityPref, 1); // 1 = Compact default
++      let isCollapsed = Services.prefs.getBoolPref(collapsedPref, false);
 +
 +      if (isVertical) {
 +        this.tabContainer.setAttribute("orient", "vertical");
 +        this.tabContainer.classList.add("bobzilla-vertical-tabs");
 +        document.documentElement.setAttribute("bobzilla-vertical-tabs", "true");
++
++        if (isCollapsed) {
++          document.documentElement.setAttribute("bobzilla-sidebar-collapsed", "true");
++        } else {
++          document.documentElement.removeAttribute("bobzilla-sidebar-collapsed");
++        }
 +
 +        // Handle compact vs normal vs touch density for vertical tab list
 +        if (density === 1) {
@@ -37,6 +45,7 @@
 +        this.tabContainer.setAttribute("orient", "horizontal");
 +        this.tabContainer.classList.remove("bobzilla-vertical-tabs", "bobzilla-compact-tabs");
 +        document.documentElement.removeAttribute("bobzilla-vertical-tabs");
++        document.documentElement.removeAttribute("bobzilla-sidebar-collapsed");
 +      }
 +    };
 +
@@ -49,10 +58,22 @@
 +      }
 +    };
 +
++    // Toggle collapsed sidebar state helper
++    this.toggleVerticalTabsCollapsed = () => {
++      let current = Services.prefs.getBoolPref(collapsedPref, false);
++      Services.prefs.setBoolPref(collapsedPref, !current);
++    };
++
++    // Create new tab helper inside vertical tab strip
++    this.createNewVerticalTab = () => {
++      this.addTab("about:blank", { triggeringPrincipal: Services.scriptSecurityManager.getSystemPrincipal() });
++    };
++
 +    window.addEventListener("resize", handleResize, { passive: true });
 +    handleResize();
 +    Services.prefs.addObserver(verticalPref, applyLayout);
 +    Services.prefs.addObserver(densityPref, applyLayout);
++    Services.prefs.addObserver(collapsedPref, applyLayout);
 +    applyLayout();
 +  }
  }

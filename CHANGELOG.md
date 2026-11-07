@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.62] - 2026-11-05
+### Changed
+- Added sidebar collapse/expand toggle controls (`sidebar.verticalTabs.collapsed`) in `patches/ui/vertical-tabs.patch`.
+- Added header action bar in `patches/ui/custom-layout.patch` with dedicated compact "New Tab" button and sidebar collapse toggle button.
+- Refined tab loading spinner (throbber) positioning and alignment in vertical tab strip.
+
 ## [0.1.61] - 2026-11-05
 ### Changed
 - Enhanced `patches/ui/custom-layout.patch` with audio playing/mute indicators for vertical tabs, allowing one-click muting without horizontal tab expansion.

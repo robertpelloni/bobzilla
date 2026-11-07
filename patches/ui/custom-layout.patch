@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,160 @@
+@@ -1025,6 +1025,200 @@
    color: var(--lwt-tab-text);
  }
 
@@ -34,6 +34,33 @@
 +  border-radius: 4px !important;
 +}
 +
++/* Header action bar with collapse toggle and new tab buttons */
++:root[bobzilla-vertical-tabs="true"] .bobzilla-tabs-header-actions {
++  display: flex !important;
++  align-items: center !important;
++  justify-content: space-between !important;
++  padding: 6px 8px !important;
++  border-bottom: 1px solid var(--chrome-content-separator-color, rgba(255, 255, 255, 0.08)) !important;
++  min-height: 36px !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .bobzilla-new-tab-button,
++:root[bobzilla-vertical-tabs="true"] .bobzilla-collapse-toggle-button {
++  cursor: pointer !important;
++  border-radius: 4px !important;
++  padding: 4px 8px !important;
++  background: transparent !important;
++  border: none !important;
++  color: var(--lwt-tab-text, #ffffff) !important;
++  font-size: 0.9em !important;
++  transition: background-color 0.12s ease !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .bobzilla-new-tab-button:hover,
++:root[bobzilla-vertical-tabs="true"] .bobzilla-collapse-toggle-button:hover {
++  background-color: rgba(255, 255, 255, 0.12) !important;
++}
++
 +/* Responsive viewport adjustments for split-screen and tiled window managers (< 960px) */
 +:root[bobzilla-vertical-tabs="true"][bobzilla-compact-viewport="true"] .bobzilla-vertical-tabs {
 +  width: 180px !important;
@@ -46,7 +73,8 @@
 +  overflow: hidden !important;
 +}
 +
-+:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .tab-label {
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .tab-label,
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .bobzilla-action-label {
 +  opacity: 0 !important;
 +  transition: opacity 0.15s ease !important;
 +}
@@ -56,7 +84,8 @@
 +  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.35) !important;
 +}
 +
-+:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover .tab-label {
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover .tab-label,
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover .bobzilla-action-label {
 +  opacity: 1 !important;
 +  transition: opacity 0.2s ease 0.08s !important;
 +}
@@ -89,6 +118,13 @@
 +
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:hover {
 +  background-color: var(--tab-hover-bgcolor, rgba(255, 255, 255, 0.05)) !important;
++}
++
++/* Tab throbber / loading spinner alignment in vertical mode */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-throbber {
++  margin-inline-end: 6px !important;
++  width: 16px !important;
++  height: 16px !important;
 +}
 +
 +/* Tab audio/mute indicator button overlay */

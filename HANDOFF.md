@@ -1,6 +1,9 @@
 # Handoff Document
 
 ## Session Summary
+- Added sidebar collapse/expand toggle controls (`sidebar.verticalTabs.collapsed`) in `patches/ui/vertical-tabs.patch`, integrating `toggleVerticalTabsCollapsed()` and `createNewVerticalTab()`.
+- Implemented header action bar styling in `patches/ui/custom-layout.patch` with dedicated compact "New Tab" button and sidebar collapse toggle button.
+- Refined tab loading spinner (throbber) positioning and alignment in vertical tab strip (`patches/ui/custom-layout.patch`).
 - Enhanced `patches/ui/custom-layout.patch` in `browser.css` with tab audio/mute indicator overlays (`.tab-icon-sound`), background unread activity/attention notification glow dots (`.tabbrowser-tab[unread="true"]::after`), and modern ultra-slim custom scrollbars (`scrollbar-width: thin`).
 - Enhanced dynamic vertical tabs and workspace layout across `patches/ui/custom-layout.patch` and `patches/ui/vertical-tabs.patch`.
 - Added window resize listener in `tabbrowser.js` dynamically setting `bobzilla-compact-viewport="true"` on viewport widths below 960px (ideal for split-screen and tiled window manager setups), automatically narrowing vertical tabs to 180px.
@@ -24,7 +27,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.61`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.62`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.
