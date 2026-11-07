@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.67] - 2026-11-05
+### Added
+- Enhanced `scripts/bobzilla-tray.py` with an interactive live terminal dashboard mode (`--dashboard`), latency profiling, and ANSI terminal refresh.
+- Added discovery resolution assertions and telemetry output validation to `bobzilla-tray.py --test`.
+
 ## [0.1.66] - 2026-11-05
 ### Changed
 - Added visual styling for discarded and unloaded tabs (`.tabbrowser-tab[pending="true"]`, `.tabbrowser-tab[discarded="true"]`) with dimmed opacity (0.72) in `patches/ui/custom-layout.patch`.

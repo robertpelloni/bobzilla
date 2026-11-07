@@ -3,7 +3,7 @@
 bobzilla-tray.py - Bobzilla Desktop System Tray Companion & Status Monitor
 Connects to the Bobzilla Javasandbox Runner Daemon via Unix Domain Socket.
 Provides real-time health checks, MicroVM status metrics, launch triggers,
-and graceful server quit/shutdown capability.
+an interactive live terminal dashboard, and graceful server quit/shutdown capability.
 """
 
 import os
@@ -55,7 +55,7 @@ def send_ipc_command(sock_path, cmd, timeout=2.0):
     except Exception as e:
         return None, str(e)
 
-def format_dashboard(status_str, sock_path):
+def format_dashboard(status_str, sock_path, latency_ms=None):
     """Formats status metrics for terminal / desktop tray display."""
     output = []
     output.append("==================================================")
@@ -66,6 +66,8 @@ def format_dashboard(status_str, sock_path):
     if status_str:
         output.append("Daemon Status   : ONLINE (Connected)")
         output.append(f"Subsystems      : {status_str}")
+        if latency_ms is not None:
+            output.append(f"IPC Latency     : {latency_ms:.2f} ms")
     else:
         output.append("Daemon Status   : OFFLINE (Daemon not running)")
         output.append("Notice          : Run 'cargo run --manifest-path runner-daemon/Cargo.toml' to start.")
@@ -75,10 +77,33 @@ def format_dashboard(status_str, sock_path):
     output.append("==================================================")
     return "\n".join(output)
 
+def run_interactive_dashboard(sock_path, interval=2.0, max_ticks=None):
+    """Continuously polls daemon status and displays live telemetry."""
+    print(f"Starting Bobzilla live telemetry loop on {sock_path} (interval: {interval}s)...")
+    ticks = 0
+    try:
+        while max_ticks is None or ticks < max_ticks:
+            t0 = time.time()
+            resp, err = send_ipc_command(sock_path, "STATUS")
+            latency = (time.time() - t0) * 1000.0 if not err else None
+            # Clear terminal screen ansi escape code
+            sys.stdout.write("\033[H\033[J")
+            print(format_dashboard(resp, sock_path, latency_ms=latency))
+            if err:
+                print(f"Connection Alert: {err}")
+            ticks += 1
+            time.sleep(interval)
+    except KeyboardInterrupt:
+        print("\nExiting Bobzilla companion telemetry loop.")
+
 def run_test_suite(sock_path):
     """Automated verification mode for CI and headless testing."""
     print(f"=== Bobzilla Tray IPC Verification ===")
     print(f"Target Socket: {sock_path}")
+
+    # Unit test discovery logic
+    resolved = find_ipc_socket()
+    assert isinstance(resolved, str) and len(resolved) > 0, "Socket resolution failed"
 
     # Test 1: Ping
     resp, err = send_ipc_command(sock_path, "PING")
@@ -94,10 +119,15 @@ def run_test_suite(sock_path):
     print(f"STATUS response: {resp}")
     assert "READY" in resp, f"Unexpected status response: {resp}"
 
-    # Test 3: Dashboard Formatting
-    formatted = format_dashboard(resp, sock_path)
+    # Test 3: Dashboard Formatting with latency
+    formatted = format_dashboard(resp, sock_path, latency_ms=1.25)
     assert "ONLINE" in formatted
+    assert "1.25 ms" in formatted
     print("Dashboard visual formatting verified.")
+
+    # Test 4: Interactive Dashboard single-tick verification
+    run_interactive_dashboard(sock_path, interval=0.1, max_ticks=1)
+
     print("=== Verification Complete [OK] ===")
     return True
 
@@ -106,6 +136,7 @@ def main():
     parser.add_argument("--socket", type=str, default=None, help="Explicit IPC socket path")
     parser.add_argument("--status", action="store_true", help="Print status and exit")
     parser.add_argument("--ping", action="store_true", help="Ping daemon and exit")
+    parser.add_argument("--dashboard", action="store_true", help="Launch live terminal dashboard")
     parser.add_argument("--quit-daemon", action="store_true", help="Send shutdown command to daemon")
     parser.add_argument("--test", action="store_true", help="Run automated test suite")
 
@@ -129,6 +160,10 @@ def main():
             print(f"Error sending quit: {err}")
             sys.exit(1)
         print(resp)
+        return
+
+    if args.dashboard:
+        run_interactive_dashboard(sock_path)
         return
 
     if args.status:
