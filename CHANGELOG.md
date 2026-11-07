@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.69] - 2026-11-05
+### Changed
+- Added high-visibility keyboard focus styling (`:focus-visible`) for tabs and action buttons in `patches/ui/custom-layout.patch`.
+- Added tab context menu active state feedback (`.tabbrowser-tab[contextmenu-active="true"]`).
+- Added vertical tab scroll padding (`scroll-padding-top: 8px; scroll-padding-bottom: 8px`) for smooth tab list centering.
+
 ## [0.1.68] - 2026-11-05
 ### Changed
 - Improved error handling in `scripts/validate-patches.sh` using standard `exit 1`/`exit 0` return codes and explicit reporting of any malformed patches.
