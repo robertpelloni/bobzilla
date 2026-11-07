@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,84 @@
+@@ -1025,6 +1025,124 @@
    color: var(--lwt-tab-text);
  }
 
@@ -21,6 +21,12 @@
 +  background-color: var(--toolbar-bgcolor, #1c1b22) !important;
 +  border-right: 1px solid var(--chrome-content-separator-color, rgba(255, 255, 255, 0.1)) !important;
 +  z-index: 100 !important;
++}
++
++/* Responsive viewport adjustments for split-screen and tiled window managers (< 960px) */
++:root[bobzilla-vertical-tabs="true"][bobzilla-compact-viewport="true"] .bobzilla-vertical-tabs {
++  width: 180px !important;
++  font-size: 0.92em !important;
 +}
 +
 +/* Collapsed icon-only mode with smooth auto-expand on hover */
@@ -44,11 +50,38 @@
 +  transition: opacity 0.2s ease 0.08s !important;
 +}
 +
-+/* Tab styling ergonomics */
++/* Pinned tabs horizontal grid arrangement in vertical mode to save vertical screen space */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[pinned] {
++  display: inline-flex !important;
++  width: 38px !important;
++  min-width: 38px !important;
++  max-width: 38px !important;
++  height: 34px !important;
++  min-height: 34px !important;
++  margin: 2px !important;
++  justify-content: center !important;
++  align-items: center !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[pinned] .tab-label-container,
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[pinned] .tab-close-button {
++  display: none !important;
++}
++
++/* Tab styling ergonomics and hover feedback */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab {
 +  border-radius: 4px !important;
 +  margin: 1px 4px !important;
-+  transition: background-color 0.12s ease !important;
++  transition: background-color 0.12s ease, transform 0.1s ease !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:hover {
++  background-color: var(--tab-hover-bgcolor, rgba(255, 255, 255, 0.05)) !important;
++}
++
++/* Drag-and-drop reordering drop target cues */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[dragover="true"] {
++  border-top: 2px solid var(--tab-selected-accent, #3584e4) !important;
 +}
 +
 +/* Active tab indicator and accent bar */
@@ -61,10 +94,15 @@
 +/* Smooth close button visibility on tab hover */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-close-button {
 +  opacity: 0.6 !important;
-+  transition: opacity 0.12s ease !important;
++  border-radius: 3px !important;
++  transition: opacity 0.12s ease, background-color 0.12s ease !important;
++}
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-close-button:hover {
++  opacity: 1 !important;
++  background-color: rgba(255, 255, 255, 0.15) !important;
 +}
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:hover .tab-close-button {
-+  opacity: 1 !important;
++  opacity: 0.8 !important;
 +}
 +
 +/* Compact density styling for vertical tabs when browser.uidensity == 1 */

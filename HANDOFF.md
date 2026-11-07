@@ -1,6 +1,10 @@
 # Handoff Document
 
 ## Session Summary
+- Enhanced dynamic vertical tabs and workspace layout across `patches/ui/custom-layout.patch` and `patches/ui/vertical-tabs.patch`.
+- Added window resize listener in `tabbrowser.js` dynamically setting `bobzilla-compact-viewport="true"` on viewport widths below 960px (ideal for split-screen and tiled window manager setups), automatically narrowing vertical tabs to 180px.
+- Implemented horizontal pinned tab layout in vertical tab strip (`patches/ui/custom-layout.patch`), rendering pinned tabs as compact square icon tiles (`38px x 34px`) to preserve precious vertical tab space.
+- Added drag-and-drop drop-target visual indicators (`border-top: 2px solid #3584e4`) and tab hover transitions in vertical tabs.
 - Enhanced `patches/ui/custom-layout.patch` in `browser.css` with hardware-accelerated transitions (`will-change: width, box-shadow`), text label opacity fades on auto-hover expand, tab border-radius smoothing (`4px`), and interactive close button hover states for vertical tabs.
 - Refined `patches/ui/custom-layout.patch` in `browser.css` to implement collapsed icon-only sidebar mode (`bobzilla-sidebar-collapsed="true"` at 48px width) with smooth auto-hover expansion to 240px and active tab accent styling (`border-left: 3px solid #3584e4`).
 - Enhanced `patches/ui/compact-urlbar.patch` in `UrlbarInput.sys.mjs` to suppress disruptive megabar breakout expansion during focus (`bobzilla-no-megabar-expand`) when compact density mode is active, preventing layout shifting.
@@ -15,11 +19,11 @@
 - Formally concluded Phase 1 (Foundation) in `ROADMAP.md` and detailed active Phase 2 and advancing Phase 3 milestones.
 - Upgraded the `runner-daemon` with dynamic multi-path IPC socket resolution, supporting `$BOBZILLA_SOCKET`, `$XDG_RUNTIME_DIR`, `/run/user/$UID`, `/run/user/1000`, and `/tmp` fallbacks.
 - Updated `patches/javasandbox-ipc-client.patch` in `nsProcessBroker.cpp` with dynamic `getuid()` and multi-path socket discovery.
-- Redesigned and consolidated the Bobzilla Mission Control Dashboard in `patches/ui/bobzilla-dashboard-ui.patch` (`about:preferences#privacy`) into high-value organized sections (Core Privacy & Anti-Surveillance, Javasandbox MicroVM Engine, and Media DRM & Hardware Acceleration) with rich tooltips and clear status badges.
+- Redesigned and consolidated the Bobzilla Mission Control Dashboard in `patches/ui/bobzilla-dashboard-ui.patch` (`about:preferences#privacy`) into high-value organized sections (Core Privacy & Anti-Surveillance, Javasandbox MicroVM Engine, and Media DRM & Hardware Capabilities) with rich tooltips and clear status badges.
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.59`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.60`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.
