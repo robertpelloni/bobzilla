@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.71] - 2026-11-05
+### Changed
+- Expanded `patches/performance/webgpu-passthrough.patch` in `dom/canvas/WebGLContext.cpp` to integrate zero-copy VirtIO-GPU dma-buf surface synchronization and virtqueue flushing.
+
 ## [0.1.70] - 2026-11-05
 ### Added
 - Added unread numerical badge counters (`.tab-badge`) for vertical tabs in `patches/ui/custom-layout.patch`.
