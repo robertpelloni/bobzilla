@@ -1,6 +1,7 @@
 # Handoff Document
 
 ## Session Summary
+- Added `contain-intrinsic-width: 240px` and `text-rendering: optimizeLegibility` to tab labels in `patches/ui/custom-layout.patch` to eliminate rasterization jitter during vertical tab width transitions.
 - Enhanced tracking protection panel telemetry in `patches/ui/tracking-protection-ui.patch` (`trackingProtection.sys.mjs`), adding `bobzillaEngineStatus` diagnostics object for native adblock, excised telemetry, fingerprinting resistance, and leakproof WebRTC.
 - Added `Ctrl+Alt+B` / `Accel+Alt+B` keyboard shortcut handler in `patches/ui/vertical-tabs.patch` (`tabbrowser.js`) to toggle vertical sidebar collapsed and expanded mode.
 - Added `Ctrl+Alt+V` / `Accel+Alt+V` keyboard shortcut listener in `patches/ui/vertical-tabs.patch` (`tabbrowser.js`) to toggle vertical tabs orientation instantly.
@@ -65,7 +66,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.86`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.87`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.

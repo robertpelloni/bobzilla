@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.87] - 2026-11-05
+### Changed
+- Added `contain-intrinsic-width: 240px` and `text-rendering: optimizeLegibility` to tab labels in `patches/ui/custom-layout.patch` to eliminate rasterization jitter during vertical tab width transitions.
+
 ## [0.1.86] - 2026-11-05
 ### Changed
 - Enhanced tracking protection panel telemetry in `patches/ui/tracking-protection-ui.patch` (`trackingProtection.sys.mjs`), adding `bobzillaEngineStatus` diagnostics object for native adblock, excised telemetry, fingerprinting resistance, and leakproof WebRTC.

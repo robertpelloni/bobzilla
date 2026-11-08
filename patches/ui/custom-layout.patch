@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,465 @@
+@@ -1025,6 +1025,467 @@
    color: var(--lwt-tab-text);
  }
 
@@ -138,6 +138,8 @@
 +:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .tab-label,
 +:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .bobzilla-action-label {
 +  opacity: 0 !important;
++  contain-intrinsic-width: 240px !important;
++  text-rendering: optimizeLegibility !important;
 +  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
 +}
 +
