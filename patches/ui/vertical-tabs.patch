@@ -1,6 +1,6 @@
 --- a/browser/components/tabbrowser/content/tabbrowser.js
 +++ b/browser/components/tabbrowser/content/tabbrowser.js
-@@ -102,6 +102,78 @@
+@@ -102,6 +102,96 @@
      // Standard horizontal layout
      this.tabContainer.setAttribute("orient", "horizontal");
    }
@@ -69,6 +69,16 @@
 +      this.addTab("about:blank", { triggeringPrincipal: Services.scriptSecurityManager.getSystemPrincipal() });
 +    };
 +
++    // Keyboard shortcut handler: Accel+Alt+V toggles vertical tab mode
++    const handleKeyDown = (e) => {
++      if ((e.ctrlKey || e.metaKey) && e.altKey && (e.key === "v" || e.key === "V")) {
++        let current = Services.prefs.getBoolPref(verticalPref, true);
++        Services.prefs.setBoolPref(verticalPref, !current);
++        e.preventDefault();
++      }
++    };
++
++    window.addEventListener("keydown", handleKeyDown, { capture: true });
 +    window.addEventListener("resize", handleResize, { passive: true });
 +    handleResize();
 +    Services.prefs.addObserver(verticalPref, applyLayout);

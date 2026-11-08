@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.84] - 2026-11-05
+### Added
+- Added `Ctrl+Alt+V` / `Accel+Alt+V` keyboard shortcut listener in `patches/ui/vertical-tabs.patch` (`tabbrowser.js`) to toggle vertical tabs orientation instantly.
+
 ## [0.1.83] - 2026-11-05
 ### Changed
 - Enhanced `patches/ui/compact-urlbar.patch` in `UrlbarInput.sys.mjs` to dynamically observe `browser.uidensity` preference updates and toggle compact attributes and megabar expansion suppression without requiring browser restarts.
