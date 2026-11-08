@@ -1,6 +1,7 @@
 # Handoff Document
 
 ## Session Summary
+- Added `@media (forced-colors: active)` high-contrast accessibility styles in `patches/ui/custom-layout.patch` with `CanvasText` boundaries, `Highlight` selections, and pinned tab dividers.
 - Added `@media (prefers-reduced-motion: reduce)` accessibility overrides in `patches/ui/custom-layout.patch` to disable tab hover translations, scale feedback, and pulse animations for users with motion sensitivity.
 - Enhanced `patches/ui/custom-layout.patch` with neon glow drop indicators (`box-shadow: 0 -2px 8px rgba(53, 132, 228, 0.6)`), Wayland/macOS subpixel anti-aliasing easing (`backface-visibility: hidden; transform: translateZ(0)`), and pinned tabs separator divider styling (`.bobzilla-pinned-tabs-separator`).
 - Hardened Pocket integration bypass in `patches/privacy/remove-pocket.patch` with immediate Promise rejection/resolution for save and article retrieval endpoints (`savePage`, `deleteItem`, `getArticle`).
@@ -58,7 +59,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.79`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.80`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.

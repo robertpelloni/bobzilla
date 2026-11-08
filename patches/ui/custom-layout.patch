@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,416 @@
+@@ -1025,6 +1025,436 @@
    color: var(--lwt-tab-text);
  }
 
@@ -42,6 +42,23 @@
 +  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[selected="true"] {
 +    background-color: var(--tab-selected-bgcolor, #ffffff) !important;
 +    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
++  }
++}
++
++/* Forced colors / high-contrast mode accessibility adaptation */
++@media (forced-colors: active) {
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs {
++    border-right: 2px solid CanvasText !important;
++  }
++  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[selected="true"] {
++    border: 2px solid Highlight !important;
++    outline: 2px solid Highlight !important;
++  }
++  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:focus-visible {
++    outline: 3px solid Highlight !important;
++  }
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-pinned-tabs-separator {
++    background: CanvasText !important;
 +  }
 +}
 +

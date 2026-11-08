@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.80] - 2026-11-05
+### Changed
+- Added `@media (forced-colors: active)` high-contrast accessibility styles in `patches/ui/custom-layout.patch` with `CanvasText` boundaries, `Highlight` selections, and pinned tab dividers.
+
 ## [0.1.79] - 2026-11-05
 ### Changed
 - Added `@media (prefers-reduced-motion: reduce)` accessibility overrides in `patches/ui/custom-layout.patch` to disable tab hover translations, scale feedback, and pulse animations for users with motion sensitivity.
