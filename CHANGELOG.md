@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.86] - 2026-11-05
+### Changed
+- Enhanced tracking protection panel telemetry in `patches/ui/tracking-protection-ui.patch` (`trackingProtection.sys.mjs`), adding `bobzillaEngineStatus` diagnostics object for native adblock, excised telemetry, fingerprinting resistance, and leakproof WebRTC.
+
 ## [0.1.85] - 2026-11-05
 ### Added
 - Added `Ctrl+Alt+B` / `Accel+Alt+B` keyboard shortcut handler in `patches/ui/vertical-tabs.patch` (`tabbrowser.js`) to toggle vertical sidebar collapsed and expanded mode.

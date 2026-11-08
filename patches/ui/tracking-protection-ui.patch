@@ -1,6 +1,6 @@
 --- a/browser/components/controlcenter/content/trackingProtection.sys.mjs
 +++ b/browser/components/controlcenter/content/trackingProtection.sys.mjs
-@@ -140,6 +140,14 @@
+@@ -140,6 +140,20 @@
    _updateState() {
      let isPrivate = PrivateBrowsingUtils.isWindowPrivate(window);
 
@@ -10,6 +10,12 @@
 +    this.protectionState = "strict";
 +    this.hasActiveNativeAdblock = true;
 +    this.telemetryExcised = true;
++    this.bobzillaEngineStatus = {
++      nativeAdblock: true,
++      telemetryExcised: true,
++      fingerprintingResistance: true,
++      leakProofWebRTC: true,
++    };
 +    this._updateUI("strict");
 +
      if (this.isBlockingEnabled) {
