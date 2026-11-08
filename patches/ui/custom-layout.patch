@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,436 @@
+@@ -1025,6 +1025,454 @@
    color: var(--lwt-tab-text);
  }
 
@@ -394,6 +394,21 @@
 +  :root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs {
 +    font-smooth: always;
 +    -webkit-font-smoothing: antialiased;
++  }
++}
++
++/* Collapsed sidebar container identity border accent */
++:root[bobzilla-sidebar-collapsed="true"] .tabbrowser-tab[usercontextid] {
++  border-left: 3px solid var(--identity-tab-color, #3584e4) !important;
++}
++
++/* Touch pointer ergonomics */
++@media (pointer: coarse) {
++  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab {
++    min-height: 38px !important;
++  }
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-tabs-header-actions {
++    min-height: 42px !important;
 +  }
 +}
 +

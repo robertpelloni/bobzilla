@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.81] - 2026-11-05
+### Changed
+- Added `@media (pointer: coarse)` touch ergonomics styles (38px tab min-height, 42px header min-height) and collapsed sidebar container identity border accents in `patches/ui/custom-layout.patch`.
+
 ## [0.1.80] - 2026-11-05
 ### Changed
 - Added `@media (forced-colors: active)` high-contrast accessibility styles in `patches/ui/custom-layout.patch` with `CanvasText` boundaries, `Highlight` selections, and pinned tab dividers.
