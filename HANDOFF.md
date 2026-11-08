@@ -1,6 +1,9 @@
 # Handoff Document
 
 ## Session Summary
+- Added split-view / multi-selected tab border styling (`.tabbrowser-tab[multiselected="true"]`) in `patches/ui/custom-layout.patch`.
+- Added drag-over ghosting styling (`.tabbrowser-tab[dragging="true"]`) with dashed boundaries and dimmed opacity.
+- Enhanced vertical tab scrollbar thumb contrast on container hover.
 - Enhanced `patches/performance/oom-tuning.patch` in `memory/build/mozjemalloc.cpp` with active jemalloc mallctl tuning: configuring `arenas.dirty_decay_ms = 0` and `arenas.muzzy_decay_ms = 0` for rapid dirty page reclamation and invoking idle arena purging.
 - Enhanced Widevine L1 DRM spoofing capabilities in `patches/drm/widevine-l1.patch` (`MediaKeySystemAccessManager.cpp`) with HDCP 2.2 advertising and hardware-secure video decoding robustness (`HW_SECURE_ALL`) for 4K streaming.
 - Expanded `patches/performance/webgpu-passthrough.patch` in `dom/canvas/WebGLContext.cpp` to integrate zero-copy VirtIO-GPU dma-buf surface synchronization (`mSharedDmaBufFd`) and virtqueue flushing.
@@ -50,7 +53,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.73`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.74`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.

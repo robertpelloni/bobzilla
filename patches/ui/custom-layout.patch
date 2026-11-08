@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,354 @@
+@@ -1025,6 +1025,376 @@
    color: var(--lwt-tab-text);
  }
 
@@ -50,6 +50,10 @@
 +:root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs::-webkit-scrollbar-thumb {
 +  background: rgba(255, 255, 255, 0.2) !important;
 +  border-radius: 4px !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs:hover::-webkit-scrollbar-thumb {
++  background: rgba(255, 255, 255, 0.35) !important;
 +}
 +
 +/* Header action bar with collapse toggle and new tab buttons */
@@ -148,6 +152,11 @@
 +  pointer-events: none !important;
 +}
 +
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[dragging="true"] {
++  opacity: 0.45 !important;
++  border: 1px dashed var(--tab-selected-accent, #3584e4) !important;
++}
++
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:hover {
 +  background-color: var(--tab-hover-bgcolor, rgba(255, 255, 255, 0.05)) !important;
 +  transform: translateX(2px) !important;
@@ -156,6 +165,12 @@
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:focus-visible {
 +  outline: 2px solid var(--tab-selected-accent, #3584e4) !important;
 +  outline-offset: -1px !important;
++}
++
++/* Split-view / multi-selected tabs styling */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[multiselected="true"] {
++  border-right: 3px solid var(--tab-selected-accent, #3584e4) !important;
++  background-color: rgba(53, 132, 228, 0.1) !important;
 +}
 +
 +/* Discarded / unloaded memory-saving tab state */

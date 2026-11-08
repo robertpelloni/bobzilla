@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.74] - 2026-11-05
+### Changed
+- Added split-view / multi-selected tab border styling (`.tabbrowser-tab[multiselected="true"]`) in `patches/ui/custom-layout.patch`.
+- Added drag-over ghosting styling (`.tabbrowser-tab[dragging="true"]`) with dashed boundaries and dimmed opacity.
+- Enhanced vertical tab scrollbar thumb contrast on container hover.
+
 ## [0.1.73] - 2026-11-05
 ### Changed
 - Enhanced `patches/performance/oom-tuning.patch` with active jemalloc mallctl tuning: setting dirty and muzzy page decay to 0ms and invoking idle arena purging for aggressive background RAM reclamation.
