@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.72] - 2026-11-05
+### Changed
+- Enhanced `patches/drm/widevine-l1.patch` with HDCP 2.2 advertising and hardware-secure video decoding robustness (`HW_SECURE_ALL`) for 4K streaming.
+
 ## [0.1.71] - 2026-11-05
 ### Changed
 - Expanded `patches/performance/webgpu-passthrough.patch` in `dom/canvas/WebGLContext.cpp` to integrate zero-copy VirtIO-GPU dma-buf surface synchronization and virtqueue flushing.
