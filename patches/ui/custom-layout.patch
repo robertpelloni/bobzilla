@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,481 @@
+@@ -1025,6 +1025,483 @@
    color: var(--lwt-tab-text);
  }
 
@@ -381,11 +381,13 @@
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-close-button {
 +  opacity: 0.6 !important;
 +  border-radius: 3px !important;
-+  transition: opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease !important;
++  margin-inline-start: auto !important;
++  transition: opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease, transform 0.15s ease !important;
 +}
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-close-button:hover {
 +  opacity: 1 !important;
 +  background-color: rgba(255, 255, 255, 0.15) !important;
++  transform: scale(1.08) !important;
 +}
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:hover .tab-close-button {
 +  opacity: 0.8 !important;
