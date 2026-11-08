@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.78] - 2026-11-05
+### Changed
+- Enhanced `patches/ui/custom-layout.patch` with neon glow drop indicators (`box-shadow: 0 -2px 8px rgba(53, 132, 228, 0.6)`), Wayland/macOS subpixel anti-aliasing easing, and pinned tabs separator divider styling.
+
 ## [0.1.77] - 2026-11-05
 ### Changed
 - Hardened Pocket integration bypass in `patches/privacy/remove-pocket.patch` with immediate Promise rejection/resolution for save and article retrieval endpoints.

@@ -1,6 +1,7 @@
 # Handoff Document
 
 ## Session Summary
+- Enhanced `patches/ui/custom-layout.patch` with neon glow drop indicators (`box-shadow: 0 -2px 8px rgba(53, 132, 228, 0.6)`), Wayland/macOS subpixel anti-aliasing easing (`backface-visibility: hidden; transform: translateZ(0)`), and pinned tabs separator divider styling (`.bobzilla-pinned-tabs-separator`).
 - Hardened Pocket integration bypass in `patches/privacy/remove-pocket.patch` with immediate Promise rejection/resolution for save and article retrieval endpoints (`savePage`, `deleteItem`, `getArticle`).
 - Refined tracking protection panel UI in `patches/ui/tracking-protection-ui.patch` (`trackingProtection.sys.mjs`) to visually indicate active native C++ network ad-blocking (`hasActiveNativeAdblock`) and telemetry removal (`telemetryExcised`).
 - Enhanced `about:support` troubleshooting diagnostics (`patches/ui/about-support.patch`) to report `bobzillaDiagnostics` (Javasandbox IPC status, VirtIO-GPU DMA-BUF passthrough, Widevine L1 spoofing, and Jemalloc memory tuning).
@@ -56,7 +57,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.77`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.78`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.

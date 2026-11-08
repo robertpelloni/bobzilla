@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,376 @@
+@@ -1025,6 +1025,394 @@
    color: var(--lwt-tab-text);
  }
 
@@ -17,6 +17,8 @@
 +  min-width: 48px !important;
 +  max-width: 320px !important;
 +  contain: paint layout !important;
++  backface-visibility: hidden !important;
++  transform: translateZ(0) !important;
 +  will-change: width, box-shadow !important;
 +  transition: width 0.24s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.24s ease !important;
 +  background-color: var(--toolbar-bgcolor, #1c1b22) !important;
@@ -135,6 +137,13 @@
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[pinned] .tab-label-container,
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[pinned] .tab-close-button {
 +  display: none !important;
++}
++
++/* Pinned tabs separator divider */
++:root[bobzilla-vertical-tabs="true"] .bobzilla-pinned-tabs-separator {
++  height: 1px !important;
++  background: var(--chrome-content-separator-color, rgba(255, 255, 255, 0.08)) !important;
++  margin: 4px 8px !important;
 +}
 +
 +/* Tab styling ergonomics, hover feedback, and closing animation */
@@ -274,9 +283,10 @@
 +  box-shadow: 0 0 6px var(--tab-selected-accent, #3584e4) !important;
 +}
 +
-+/* Drag-and-drop reordering drop target cues */
++/* Drag-and-drop reordering drop target cues with neon glow */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[dragover="true"] {
 +  border-top: 2px solid var(--tab-selected-accent, #3584e4) !important;
++  box-shadow: 0 -2px 8px rgba(53, 132, 228, 0.6) !important;
 +}
 +
 +/* Active tab indicator, accent bar, and subtle ambient glow */
