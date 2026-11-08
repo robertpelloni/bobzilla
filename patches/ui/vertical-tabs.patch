@@ -1,6 +1,6 @@
 --- a/browser/components/tabbrowser/content/tabbrowser.js
 +++ b/browser/components/tabbrowser/content/tabbrowser.js
-@@ -102,6 +102,96 @@
+@@ -102,6 +102,104 @@
      // Standard horizontal layout
      this.tabContainer.setAttribute("orient", "horizontal");
    }
@@ -69,12 +69,19 @@
 +      this.addTab("about:blank", { triggeringPrincipal: Services.scriptSecurityManager.getSystemPrincipal() });
 +    };
 +
-+    // Keyboard shortcut handler: Accel+Alt+V toggles vertical tab mode
++    // Keyboard shortcut handlers:
++    // Accel+Alt+V toggles vertical tab mode
++    // Accel+Alt+B toggles collapsed sidebar state
 +    const handleKeyDown = (e) => {
-+      if ((e.ctrlKey || e.metaKey) && e.altKey && (e.key === "v" || e.key === "V")) {
-+        let current = Services.prefs.getBoolPref(verticalPref, true);
-+        Services.prefs.setBoolPref(verticalPref, !current);
-+        e.preventDefault();
++      if ((e.ctrlKey || e.metaKey) && e.altKey) {
++        if (e.key === "v" || e.key === "V") {
++          let current = Services.prefs.getBoolPref(verticalPref, true);
++          Services.prefs.setBoolPref(verticalPref, !current);
++          e.preventDefault();
++        } else if (e.key === "b" || e.key === "B") {
++          this.toggleVerticalTabsCollapsed();
++          e.preventDefault();
++        }
 +      }
 +    };
 +

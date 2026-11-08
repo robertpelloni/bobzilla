@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.85] - 2026-11-05
+### Added
+- Added `Ctrl+Alt+B` / `Accel+Alt+B` keyboard shortcut handler in `patches/ui/vertical-tabs.patch` (`tabbrowser.js`) to toggle vertical sidebar collapsed and expanded mode.
+
 ## [0.1.84] - 2026-11-05
 ### Added
 - Added `Ctrl+Alt+V` / `Accel+Alt+V` keyboard shortcut listener in `patches/ui/vertical-tabs.patch` (`tabbrowser.js`) to toggle vertical tabs orientation instantly.
