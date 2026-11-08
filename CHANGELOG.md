@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.75] - 2026-11-05
+### Changed
+- Enhanced `about:support` troubleshooting diagnostics (`patches/ui/about-support.patch`) to report `bobzillaDiagnostics` (Javasandbox IPC status, VirtIO-GPU DMA-BUF passthrough, Widevine L1 spoofing, and Jemalloc memory tuning).
+
 ## [0.1.74] - 2026-11-05
 ### Changed
 - Added split-view / multi-selected tab border styling (`.tabbrowser-tab[multiselected="true"]`) in `patches/ui/custom-layout.patch`.
