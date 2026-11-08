@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.77] - 2026-11-05
+### Changed
+- Hardened Pocket integration bypass in `patches/privacy/remove-pocket.patch` with immediate Promise rejection/resolution for save and article retrieval endpoints.
+
 ## [0.1.76] - 2026-11-05
 ### Changed
 - Refined tracking protection UI in `patches/ui/tracking-protection-ui.patch` to advertise active native C++ network ad-blocking and excised telemetry indicators.
