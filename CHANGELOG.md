@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.89] - 2026-11-05
+### Changed
+- Added border-radius curvature (`border-top-left-radius: 2px; border-bottom-left-radius: 2px`) to the active vertical tab left accent bar in `patches/ui/custom-layout.patch`.
+
 ## [0.1.88] - 2026-11-05
 ### Changed
 - Added collapsed action bar icon centering (`justify-content: center`) and hover expansion transitions in `patches/ui/custom-layout.patch`.

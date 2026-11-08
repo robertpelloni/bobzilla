@@ -1,6 +1,7 @@
 # Handoff Document
 
 ## Session Summary
+- Added border-radius curvature (`border-top-left-radius: 2px; border-bottom-left-radius: 2px`) to the active vertical tab left accent bar in `patches/ui/custom-layout.patch`.
 - Added collapsed action bar icon centering (`justify-content: center`) and hover expansion transitions in `patches/ui/custom-layout.patch`.
 - Added `contain-intrinsic-width: 240px` and `text-rendering: optimizeLegibility` to tab labels in `patches/ui/custom-layout.patch` to eliminate rasterization jitter during vertical tab width transitions.
 - Enhanced tracking protection panel telemetry in `patches/ui/tracking-protection-ui.patch` (`trackingProtection.sys.mjs`), adding `bobzillaEngineStatus` diagnostics object for native adblock, excised telemetry, fingerprinting resistance, and leakproof WebRTC.
@@ -67,7 +68,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.88`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.89`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.
