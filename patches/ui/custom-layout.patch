@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,467 @@
+@@ -1025,6 +1025,479 @@
    color: var(--lwt-tab-text);
  }
 
@@ -121,6 +121,17 @@
 +:root[bobzilla-vertical-tabs="true"] .bobzilla-collapse-toggle-button:focus-visible {
 +  outline: 2px solid var(--tab-selected-accent, #3584e4) !important;
 +  outline-offset: 1px !important;
++}
++
++/* Action bar collapsed state icon centering */
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-tabs-header-actions {
++  justify-content: center !important;
++  padding: 6px 4px !important;
++}
++
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover .bobzilla-tabs-header-actions {
++  justify-content: space-between !important;
++  padding: 6px 8px !important;
 +}
 +
 +/* Responsive viewport adjustments for split-screen and tiled window managers (< 960px) */

@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.88] - 2026-11-05
+### Changed
+- Added collapsed action bar icon centering (`justify-content: center`) and hover expansion transitions in `patches/ui/custom-layout.patch`.
+
 ## [0.1.87] - 2026-11-05
 ### Changed
 - Added `contain-intrinsic-width: 240px` and `text-rendering: optimizeLegibility` to tab labels in `patches/ui/custom-layout.patch` to eliminate rasterization jitter during vertical tab width transitions.
