@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,454 @@
+@@ -1025,6 +1025,465 @@
    color: var(--lwt-tab-text);
  }
 
@@ -297,6 +297,15 @@
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound:hover {
 +  opacity: 1 !important;
 +  background-color: rgba(255, 255, 255, 0.2) !important;
++}
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound[muted="true"] {
++  opacity: 0.95 !important;
++  color: #e01b24 !important;
++  background-color: rgba(224, 27, 36, 0.15) !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound[muted="true"]:hover {
++  background-color: rgba(224, 27, 36, 0.3) !important;
 +}
 +
 +/* Tab unread activity dot indicator for background tabs */
