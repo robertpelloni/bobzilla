@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.83] - 2026-11-05
+### Changed
+- Enhanced `patches/ui/compact-urlbar.patch` in `UrlbarInput.sys.mjs` to dynamically observe `browser.uidensity` preference updates and toggle compact attributes and megabar expansion suppression without requiring browser restarts.
+
 ## [0.1.82] - 2026-11-05
 ### Changed
 - Added interactive muted audio indicator styling (`.tab-icon-sound[muted="true"]`) with red contrast background and hover transitions in `patches/ui/custom-layout.patch`.
