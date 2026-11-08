@@ -1,17 +1,23 @@
 --- a/memory/build/mozjemalloc.cpp
 +++ b/memory/build/mozjemalloc.cpp
-@@ -102,6 +102,15 @@
+@@ -102,6 +102,23 @@
    return true;
  }
 
-+/* BOBZILLA: Aggressive Memory Tuning
++/* BOBZILLA: Aggressive Memory Tuning & Dirty Page Reclamation
 + * This intercepts the default memory allocation limits and raises the out-of-memory
 + * (OOM) threshold, instructing the jemalloc allocator to reclaim background
 + * tab memory far more aggressively before triggering an OOM crash.
 + */
 +void BobzillaTuneMemoryLimits() {
-+  // Mock implementation for setting aggressive memory reclamation
-+  // e.g., mallctl("opt.retain", ...);
++  // Set dirty page purging decay to 0ms for active arenas to return freed RAM immediately
++  ssize_t dirty_decay_ms = 0;
++  mallctl("arenas.dirty_decay_ms", nullptr, nullptr, &dirty_decay_ms, sizeof(dirty_decay_ms));
++  // Set muzzy page decay to 0ms for rapid background reclamation
++  ssize_t muzzy_decay_ms = 0;
++  mallctl("arenas.muzzy_decay_ms", nullptr, nullptr, &muzzy_decay_ms, sizeof(muzzy_decay_ms));
++  // Explicitly purge arenas when background tabs go idle
++  mallctl("arena." JEMALLOC_STRINGIZE(MALLCTL_ARENAS_ALL) ".purge", nullptr, nullptr, nullptr, 0);
 +}
 +
  void moz_jemalloc_init() {

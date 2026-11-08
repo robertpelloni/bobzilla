@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.73] - 2026-11-05
+### Changed
+- Enhanced `patches/performance/oom-tuning.patch` with active jemalloc mallctl tuning: setting dirty and muzzy page decay to 0ms and invoking idle arena purging for aggressive background RAM reclamation.
+
 ## [0.1.72] - 2026-11-05
 ### Changed
 - Enhanced `patches/drm/widevine-l1.patch` with HDCP 2.2 advertising and hardware-secure video decoding robustness (`HW_SECURE_ALL`) for 4K streaming.
