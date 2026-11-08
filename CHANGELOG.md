@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.79] - 2026-11-05
+### Changed
+- Added `@media (prefers-reduced-motion: reduce)` accessibility overrides in `patches/ui/custom-layout.patch` to disable tab hover translations, scale feedback, and pulse animations for users with motion sensitivity.
+
 ## [0.1.78] - 2026-11-05
 ### Changed
 - Enhanced `patches/ui/custom-layout.patch` with neon glow drop indicators (`box-shadow: 0 -2px 8px rgba(53, 132, 228, 0.6)`), Wayland/macOS subpixel anti-aliasing easing, and pinned tabs separator divider styling.

@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,394 @@
+@@ -1025,6 +1025,416 @@
    color: var(--lwt-tab-text);
  }
 
@@ -42,6 +42,20 @@
 +  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[selected="true"] {
 +    background-color: var(--tab-selected-bgcolor, #ffffff) !important;
 +    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
++  }
++}
++
++/* Reduced motion accessibility support */
++@media (prefers-reduced-motion: reduce) {
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs,
++  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab,
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-new-tab-button,
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-collapse-toggle-button,
++  :root[bobzilla-vertical-tabs="true"] .tab-group-header .group-chevron,
++  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound {
++    transition: none !important;
++    animation: none !important;
++    transform: none !important;
 +  }
 +}
 +
