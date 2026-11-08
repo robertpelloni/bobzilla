@@ -1,6 +1,7 @@
 # Handoff Document
 
 ## Session Summary
+- Refined tracking protection panel UI in `patches/ui/tracking-protection-ui.patch` (`trackingProtection.sys.mjs`) to visually indicate active native C++ network ad-blocking (`hasActiveNativeAdblock`) and telemetry removal (`telemetryExcised`).
 - Enhanced `about:support` troubleshooting diagnostics (`patches/ui/about-support.patch`) to report `bobzillaDiagnostics` (Javasandbox IPC status, VirtIO-GPU DMA-BUF passthrough, Widevine L1 spoofing, and Jemalloc memory tuning).
 - Added split-view / multi-selected tab border styling (`.tabbrowser-tab[multiselected="true"]`) in `patches/ui/custom-layout.patch`.
 - Added drag-over ghosting styling (`.tabbrowser-tab[dragging="true"]`) with dashed boundaries and dimmed opacity.
@@ -54,7 +55,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.75`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.76`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.

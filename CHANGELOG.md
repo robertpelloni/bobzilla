@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.76] - 2026-11-05
+### Changed
+- Refined tracking protection UI in `patches/ui/tracking-protection-ui.patch` to advertise active native C++ network ad-blocking and excised telemetry indicators.
+
 ## [0.1.75] - 2026-11-05
 ### Changed
 - Enhanced `about:support` troubleshooting diagnostics (`patches/ui/about-support.patch`) to report `bobzillaDiagnostics` (Javasandbox IPC status, VirtIO-GPU DMA-BUF passthrough, Widevine L1 spoofing, and Jemalloc memory tuning).

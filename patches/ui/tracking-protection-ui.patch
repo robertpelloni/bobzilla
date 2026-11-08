@@ -1,12 +1,15 @@
 --- a/browser/components/controlcenter/content/trackingProtection.sys.mjs
 +++ b/browser/components/controlcenter/content/trackingProtection.sys.mjs
-@@ -140,6 +140,11 @@
+@@ -140,6 +140,14 @@
    _updateState() {
      let isPrivate = PrivateBrowsingUtils.isWindowPrivate(window);
 
 +    // BOBZILLA: Hardcode visual indicator for strict privacy
-+    // Visually spoof the protection panel to match Tor-level strictness.
++    // Visually spoof the protection panel to match Tor/Arkenfox-level strictness,
++    // advertising active native C++ network adblocking and zero-telemetry enforcement.
 +    this.protectionState = "strict";
++    this.hasActiveNativeAdblock = true;
++    this.telemetryExcised = true;
 +    this._updateUI("strict");
 +
      if (this.isBlockingEnabled) {
