@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.96] - 2026-11-05
+### Changed
+- Added centered throbber alignment (`margin-inline-end: 0`) and opacity transition smoothing for tab loading spinners in collapsed sidebars in `patches/ui/custom-layout.patch`.
+
 ## [0.1.95] - 2026-11-05
 ### Changed
 - Added icon-only tab centering (`justify-content: center; margin: 1px 2px`) for collapsed vertical tab sidebars in `patches/ui/custom-layout.patch`.

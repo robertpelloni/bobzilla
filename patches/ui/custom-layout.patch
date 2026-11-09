@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,508 @@
+@@ -1025,6 +1025,513 @@
    color: var(--lwt-tab-text);
  }
 
@@ -302,6 +302,11 @@
 +  margin-inline-end: 6px !important;
 +  width: 16px !important;
 +  height: 16px !important;
++  transition: opacity 0.15s ease !important;
++}
++
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .tabbrowser-tab .tab-throbber {
++  margin-inline-end: 0 !important;
 +}
 +
 +/* Tab audio/mute indicator button overlay with active pulse */
