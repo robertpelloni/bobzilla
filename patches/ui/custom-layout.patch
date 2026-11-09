@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,496 @@
+@@ -1025,6 +1025,497 @@
    color: var(--lwt-tab-text);
  }
 
@@ -83,6 +83,7 @@
 +:root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs::-webkit-scrollbar-thumb {
 +  background: rgba(255, 255, 255, 0.2) !important;
 +  border-radius: 4px !important;
++  transition: background-color 0.2s ease !important;
 +}
 +
 +:root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs:hover::-webkit-scrollbar-thumb {

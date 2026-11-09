@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.94] - 2026-11-05
+### Changed
+- Added scrollbar thumb transition smoothing (`transition: background-color 0.2s ease`) on `.bobzilla-vertical-tabs::-webkit-scrollbar-thumb` in `patches/ui/custom-layout.patch`.
+
 ## [0.1.93] - 2026-11-05
 ### Changed
 - Added gentle pulsing micro-animation (`bobzilla-pulse-dot`) to background unread activity indicators in `patches/ui/custom-layout.patch` for subtle visual feedback.
