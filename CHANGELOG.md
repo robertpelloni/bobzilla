@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.101] - 2026-11-05
+### Changed
+- Added attention-specific amber notification dot styling (`background-color: #f6d32d; box-shadow: 0 0 6px #f6d32d`) to `.tabbrowser-tab[attention="true"]` in `patches/ui/custom-layout.patch`.
+
 ## [0.1.100] - 2026-11-05
 ### Changed
 - Added dedicated selected state styling (`.tabbrowser-tab[pinned][selected="true"]`) with bottom accent border and glow in `patches/ui/custom-layout.patch` to distinguish selected pinned tiles in vertical layout.
