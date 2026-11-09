@@ -1,6 +1,7 @@
 # Handoff Document
 
 ## Session Summary
+- Enhanced keyboard focus indicator contrast in `patches/ui/custom-layout.patch` (`.tabbrowser-tab:focus-visible`) with accent ambient glow (`box-shadow: 0 0 6px rgba(53, 132, 228, 0.4)`).
 - Added active press feedback (`transform: scale(0.96)`) to header action buttons in `patches/ui/custom-layout.patch` for tactile responsive feel.
 - Added auto margin alignment (`margin-inline-start: auto`) and scale hover micro-interactions (`transform: scale(1.08)`) to vertical tab close buttons in `patches/ui/custom-layout.patch`.
 - Added border-radius curvature (`border-top-left-radius: 2px; border-bottom-left-radius: 2px`) to the active vertical tab left accent bar in `patches/ui/custom-layout.patch`.
@@ -70,7 +71,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.91`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.92`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.

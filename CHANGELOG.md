@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.92] - 2026-11-05
+### Changed
+- Enhanced keyboard focus indicator contrast in `patches/ui/custom-layout.patch` (`.tabbrowser-tab:focus-visible`) with accent ambient glow (`box-shadow: 0 0 6px rgba(53, 132, 228, 0.4)`).
+
 ## [0.1.91] - 2026-11-05
 ### Changed
 - Added active press feedback (`transform: scale(0.96)`) to header action buttons in `patches/ui/custom-layout.patch` for tactile responsive feel.
