@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.100] - 2026-11-05
+### Changed
+- Added dedicated selected state styling (`.tabbrowser-tab[pinned][selected="true"]`) with bottom accent border and glow in `patches/ui/custom-layout.patch` to distinguish selected pinned tiles in vertical layout.
+
 ## [0.1.99] - 2026-11-05
 ### Changed
 - Added opacity transition smoothing (`transition: opacity 0.2s ease`) for pending and discarded tab states in `patches/ui/custom-layout.patch` to prevent visual jarring upon tab reactivation.
