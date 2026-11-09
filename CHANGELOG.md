@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.91] - 2026-11-05
+### Changed
+- Added active press feedback (`transform: scale(0.96)`) to header action buttons in `patches/ui/custom-layout.patch` for tactile responsive feel.
+
 ## [0.1.90] - 2026-11-05
 ### Changed
 - Added auto margin alignment (`margin-inline-start: auto`) and scale hover micro-interactions (`transform: scale(1.08)`) to vertical tab close buttons in `patches/ui/custom-layout.patch`.

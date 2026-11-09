@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,483 @@
+@@ -1025,6 +1025,488 @@
    color: var(--lwt-tab-text);
  }
 
@@ -115,6 +115,11 @@
 +:root[bobzilla-vertical-tabs="true"] .bobzilla-collapse-toggle-button:hover {
 +  background-color: rgba(255, 255, 255, 0.12) !important;
 +  transform: scale(1.02) !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .bobzilla-new-tab-button:active,
++:root[bobzilla-vertical-tabs="true"] .bobzilla-collapse-toggle-button:active {
++  transform: scale(0.96) !important;
 +}
 +
 +:root[bobzilla-vertical-tabs="true"] .bobzilla-new-tab-button:focus-visible,
