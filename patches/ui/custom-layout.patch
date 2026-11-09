@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,516 @@
+@@ -1025,6 +1025,517 @@
    color: var(--lwt-tab-text);
  }
 
@@ -248,6 +248,7 @@
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[pending="true"],
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[discarded="true"] {
 +  opacity: 0.72 !important;
++  transition: opacity 0.2s ease !important;
 +}
 +
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[pending="true"]:hover,

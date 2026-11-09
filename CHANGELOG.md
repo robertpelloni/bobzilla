@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.99] - 2026-11-05
+### Changed
+- Added opacity transition smoothing (`transition: opacity 0.2s ease`) for pending and discarded tab states in `patches/ui/custom-layout.patch` to prevent visual jarring upon tab reactivation.
+
 ## [0.1.98] - 2026-11-05
 ### Changed
 - Added transition smoothing (`transition: border-right-color 0.15s ease, background-color 0.15s ease`) for multi-selected tabs (`.tabbrowser-tab[multiselected="true"]`) in `patches/ui/custom-layout.patch`.
