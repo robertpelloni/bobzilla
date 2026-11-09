@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.95] - 2026-11-05
+### Changed
+- Added icon-only tab centering (`justify-content: center; margin: 1px 2px`) for collapsed vertical tab sidebars in `patches/ui/custom-layout.patch`.
+
 ## [0.1.94] - 2026-11-05
 ### Changed
 - Added scrollbar thumb transition smoothing (`transition: background-color 0.2s ease`) on `.bobzilla-vertical-tabs::-webkit-scrollbar-thumb` in `patches/ui/custom-layout.patch`.

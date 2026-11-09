@@ -1,6 +1,7 @@
 # Handoff Document
 
 ## Session Summary
+- Added icon-only tab centering (`justify-content: center; margin: 1px 2px`) for collapsed vertical tab sidebars in `patches/ui/custom-layout.patch`.
 - Added scrollbar thumb transition smoothing (`transition: background-color 0.2s ease`) on `.bobzilla-vertical-tabs::-webkit-scrollbar-thumb` in `patches/ui/custom-layout.patch`.
 - Added gentle pulsing micro-animation (`bobzilla-pulse-dot`) to background unread activity indicators in `patches/ui/custom-layout.patch` for subtle visual feedback.
 - Enhanced keyboard focus indicator contrast in `patches/ui/custom-layout.patch` (`.tabbrowser-tab:focus-visible`) with accent ambient glow (`box-shadow: 0 0 6px rgba(53, 132, 228, 0.4)`).
@@ -73,7 +74,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.94`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.95`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.

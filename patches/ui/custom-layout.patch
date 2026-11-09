@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,497 @@
+@@ -1025,6 +1025,508 @@
    color: var(--lwt-tab-text);
  }
 
@@ -150,6 +150,16 @@
 +:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs {
 +  width: 48px !important;
 +  overflow: hidden !important;
++}
++
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .tabbrowser-tab {
++  justify-content: center !important;
++  margin: 1px 2px !important;
++}
++
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover .tabbrowser-tab {
++  justify-content: flex-start !important;
++  margin: 1px 4px !important;
 +}
 +
 +:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .tab-label,
