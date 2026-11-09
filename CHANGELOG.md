@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.93] - 2026-11-05
+### Changed
+- Added gentle pulsing micro-animation (`bobzilla-pulse-dot`) to background unread activity indicators in `patches/ui/custom-layout.patch` for subtle visual feedback.
+
 ## [0.1.92] - 2026-11-05
 ### Changed
 - Enhanced keyboard focus indicator contrast in `patches/ui/custom-layout.patch` (`.tabbrowser-tab:focus-visible`) with accent ambient glow (`box-shadow: 0 0 6px rgba(53, 132, 228, 0.4)`).

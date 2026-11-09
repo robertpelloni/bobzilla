@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,489 @@
+@@ -1025,6 +1025,496 @@
    color: var(--lwt-tab-text);
  }
 
@@ -340,6 +340,12 @@
 +  border-radius: 50% !important;
 +  background-color: var(--tab-selected-accent, #3584e4) !important;
 +  box-shadow: 0 0 6px var(--tab-selected-accent, #3584e4) !important;
++  animation: bobzilla-pulse-dot 2.4s infinite ease-in-out !important;
++}
++
++@keyframes bobzilla-pulse-dot {
++  0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.9; }
++  50% { transform: translateY(-50%) scale(1.3); opacity: 1; }
 +}
 +
 +/* Drag-and-drop reordering drop target cues with neon glow */
