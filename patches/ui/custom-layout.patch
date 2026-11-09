@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,513 @@
+@@ -1025,6 +1025,515 @@
    color: var(--lwt-tab-text);
  }
 
@@ -287,6 +287,8 @@
 +  left: 0 !important;
 +  height: 2px !important;
 +  width: 100% !important;
++  border-bottom-left-radius: 4px !important;
++  border-bottom-right-radius: 4px !important;
 +  background: linear-gradient(90deg, var(--tab-selected-accent, #3584e4) 0%, #62a0ea 100%) !important;
 +  animation: bobzilla-tab-progress 1.2s infinite ease-in-out !important;
 +}

@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.97] - 2026-11-05
+### Changed
+- Added border-radius curvature (`border-bottom-left-radius: 4px; border-bottom-right-radius: 4px`) to `.tab-progress-bar` in `patches/ui/custom-layout.patch` to conform to rounded vertical tab container boundaries.
+
 ## [0.1.96] - 2026-11-05
 ### Changed
 - Added centered throbber alignment (`margin-inline-end: 0`) and opacity transition smoothing for tab loading spinners in collapsed sidebars in `patches/ui/custom-layout.patch`.
