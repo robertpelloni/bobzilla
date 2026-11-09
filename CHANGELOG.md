@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.98] - 2026-11-05
+### Changed
+- Added transition smoothing (`transition: border-right-color 0.15s ease, background-color 0.15s ease`) for multi-selected tabs (`.tabbrowser-tab[multiselected="true"]`) in `patches/ui/custom-layout.patch`.
+
 ## [0.1.97] - 2026-11-05
 ### Changed
 - Added border-radius curvature (`border-bottom-left-radius: 4px; border-bottom-right-radius: 4px`) to `.tab-progress-bar` in `patches/ui/custom-layout.patch` to conform to rounded vertical tab container boundaries.

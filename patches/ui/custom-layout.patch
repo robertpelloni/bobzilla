@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,515 @@
+@@ -1025,6 +1025,516 @@
    color: var(--lwt-tab-text);
  }
 
@@ -241,6 +241,7 @@
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[multiselected="true"] {
 +  border-right: 3px solid var(--tab-selected-accent, #3584e4) !important;
 +  background-color: rgba(53, 132, 228, 0.1) !important;
++  transition: border-right-color 0.15s ease, background-color 0.15s ease !important;
 +}
 +
 +/* Discarded / unloaded memory-saving tab state */
