@@ -18,9 +18,9 @@
 +  max-width: 320px !important;
 +  contain: paint layout !important;
 +  backface-visibility: hidden !important;
-+  transform: translateZ(0) !important;
++  transform: translate3d(0, 0, 0) !important;
 +  will-change: width, box-shadow !important;
-+  transition: width 0.24s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.24s ease !important;
++  transition: width 0.22s cubic-bezier(0.2, 0.0, 0, 1), box-shadow 0.22s ease !important;
 +  background-color: var(--toolbar-bgcolor, #1c1b22) !important;
 +  border-right: 1px solid var(--chrome-content-separator-color, rgba(255, 255, 255, 0.1)) !important;
 +  z-index: 100 !important;

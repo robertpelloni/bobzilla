@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.102] - 2026-11-05
+### Changed
+- Refined vertical tab sidebar width transition easing to `cubic-bezier(0.2, 0.0, 0, 1)` and `transform: translate3d(0, 0, 0)` in `patches/ui/custom-layout.patch` for silky-smooth 120Hz/144Hz high-refresh Wayland rendering.
+
 ## [0.1.101] - 2026-11-05
 ### Changed
 - Added attention-specific amber notification dot styling (`background-color: #f6d32d; box-shadow: 0 0 6px #f6d32d`) to `.tabbrowser-tab[attention="true"]` in `patches/ui/custom-layout.patch`.
