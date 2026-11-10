@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.104] - 2026-11-05
+### Changed
+- Added border-radius matching (`border-top-left-radius: 4px; border-top-right-radius: 4px`) and transition smoothing (`transition: border-top-color 0.15s ease, box-shadow 0.15s ease`) for `.tabbrowser-tab[dragover="true"]` in `patches/ui/custom-layout.patch` to eliminate visual jitter during tab drag reordering.
+
 ## [0.1.103] - 2026-11-05
 ### Changed
 - Added smooth cubic-bezier width transition (`transition: width 0.22s cubic-bezier(0.2, 0.0, 0, 1)`) for compact viewport mode in `patches/ui/custom-layout.patch` to eliminate visual snapping when resizing or tiling windows.
