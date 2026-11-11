@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,532 @@
+@@ -1025,6 +1025,537 @@
    color: var(--lwt-tab-text);
  }
 
@@ -415,8 +415,13 @@
 +  letter-spacing: 0.5px !important;
 +}
 +
++:root[bobzilla-vertical-tabs="true"] .tab-group-header:hover {
++  color: var(--lwt-tab-text, #ffffff) !important;
++  cursor: pointer !important;
++}
++
 +:root[bobzilla-vertical-tabs="true"] .tab-group-header .group-chevron {
-+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
++  transition: transform 0.2s cubic-bezier(0.2, 0.0, 0, 1) !important;
 +}
 +
 +:root[bobzilla-vertical-tabs="true"] .tab-group-header[collapsed="true"] .group-chevron {

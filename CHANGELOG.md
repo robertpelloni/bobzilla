@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.105] - 2026-11-05
+### Changed
+- Added tab group header hover contrast (`color: var(--lwt-tab-text); cursor: pointer`) and chevron rotation transition smoothing (`cubic-bezier(0.2, 0.0, 0, 1)`) in `patches/ui/custom-layout.patch`.
+
 ## [0.1.104] - 2026-11-05
 ### Changed
 - Added border-radius matching (`border-top-left-radius: 4px; border-top-right-radius: 4px`) and transition smoothing (`transition: border-top-color 0.15s ease, box-shadow 0.15s ease`) for `.tabbrowser-tab[dragover="true"]` in `patches/ui/custom-layout.patch` to eliminate visual jitter during tab drag reordering.
