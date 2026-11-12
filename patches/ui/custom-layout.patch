@@ -1,6 +1,6 @@
 --- a/browser/themes/shared/browser.css
 +++ b/browser/themes/shared/browser.css
-@@ -1025,6 +1025,160 @@
+@@ -1025,6 +1025,537 @@
    color: var(--lwt-tab-text);
  }
 
@@ -16,13 +16,64 @@
 +  width: 240px !important;
 +  min-width: 48px !important;
 +  max-width: 320px !important;
++  contain: paint layout !important;
++  backface-visibility: hidden !important;
++  transform: translate3d(0, 0, 0) !important;
 +  will-change: width, box-shadow !important;
-+  transition: width 0.22s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.22s ease !important;
++  transition: width 0.22s cubic-bezier(0.2, 0.0, 0, 1), box-shadow 0.22s ease !important;
 +  background-color: var(--toolbar-bgcolor, #1c1b22) !important;
 +  border-right: 1px solid var(--chrome-content-separator-color, rgba(255, 255, 255, 0.1)) !important;
 +  z-index: 100 !important;
 +  scrollbar-width: thin !important;
 +  scrollbar-color: rgba(255, 255, 255, 0.2) transparent !important;
++  scroll-padding-top: 8px !important;
++  scroll-padding-bottom: 8px !important;
++}
++
++/* Light theme contrast adaptation */
++@media (prefers-color-scheme: light) {
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs {
++    background-color: var(--toolbar-bgcolor, #f0f0f4) !important;
++    border-right: 1px solid var(--chrome-content-separator-color, rgba(0, 0, 0, 0.12)) !important;
++  }
++  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:hover {
++    background-color: var(--tab-hover-bgcolor, rgba(0, 0, 0, 0.06)) !important;
++  }
++  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[selected="true"] {
++    background-color: var(--tab-selected-bgcolor, #ffffff) !important;
++    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
++  }
++}
++
++/* Forced colors / high-contrast mode accessibility adaptation */
++@media (forced-colors: active) {
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs {
++    border-right: 2px solid CanvasText !important;
++  }
++  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[selected="true"] {
++    border: 2px solid Highlight !important;
++    outline: 2px solid Highlight !important;
++  }
++  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:focus-visible {
++    outline: 3px solid Highlight !important;
++  }
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-pinned-tabs-separator {
++    background: CanvasText !important;
++  }
++}
++
++/* Reduced motion accessibility support */
++@media (prefers-reduced-motion: reduce) {
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs,
++  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab,
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-new-tab-button,
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-collapse-toggle-button,
++  :root[bobzilla-vertical-tabs="true"] .tab-group-header .group-chevron,
++  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound {
++    transition: none !important;
++    animation: none !important;
++    transform: none !important;
++  }
 +}
 +
 +:root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs::-webkit-scrollbar {
@@ -32,12 +83,68 @@
 +:root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs::-webkit-scrollbar-thumb {
 +  background: rgba(255, 255, 255, 0.2) !important;
 +  border-radius: 4px !important;
++  transition: background-color 0.2s ease !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs:hover::-webkit-scrollbar-thumb {
++  background: rgba(255, 255, 255, 0.35) !important;
++}
++
++/* Header action bar with collapse toggle and new tab buttons */
++:root[bobzilla-vertical-tabs="true"] .bobzilla-tabs-header-actions {
++  display: flex !important;
++  align-items: center !important;
++  justify-content: space-between !important;
++  padding: 6px 8px !important;
++  border-bottom: 1px solid var(--chrome-content-separator-color, rgba(255, 255, 255, 0.08)) !important;
++  min-height: 36px !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .bobzilla-new-tab-button,
++:root[bobzilla-vertical-tabs="true"] .bobzilla-collapse-toggle-button {
++  cursor: pointer !important;
++  border-radius: 4px !important;
++  padding: 4px 8px !important;
++  background: transparent !important;
++  border: none !important;
++  color: var(--lwt-tab-text, #ffffff) !important;
++  font-size: 0.9em !important;
++  transition: background-color 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.15s ease !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .bobzilla-new-tab-button:hover,
++:root[bobzilla-vertical-tabs="true"] .bobzilla-collapse-toggle-button:hover {
++  background-color: rgba(255, 255, 255, 0.12) !important;
++  transform: scale(1.02) !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .bobzilla-new-tab-button:active,
++:root[bobzilla-vertical-tabs="true"] .bobzilla-collapse-toggle-button:active {
++  transform: scale(0.96) !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .bobzilla-new-tab-button:focus-visible,
++:root[bobzilla-vertical-tabs="true"] .bobzilla-collapse-toggle-button:focus-visible {
++  outline: 2px solid var(--tab-selected-accent, #3584e4) !important;
++  outline-offset: 1px !important;
++}
++
++/* Action bar collapsed state icon centering */
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-tabs-header-actions {
++  justify-content: center !important;
++  padding: 6px 4px !important;
++}
++
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover .bobzilla-tabs-header-actions {
++  justify-content: space-between !important;
++  padding: 6px 8px !important;
 +}
 +
 +/* Responsive viewport adjustments for split-screen and tiled window managers (< 960px) */
 +:root[bobzilla-vertical-tabs="true"][bobzilla-compact-viewport="true"] .bobzilla-vertical-tabs {
 +  width: 180px !important;
 +  font-size: 0.92em !important;
++  transition: width 0.22s cubic-bezier(0.2, 0.0, 0, 1), box-shadow 0.22s ease !important;
 +}
 +
 +/* Collapsed icon-only mode with smooth auto-expand on hover */
@@ -46,9 +153,22 @@
 +  overflow: hidden !important;
 +}
 +
-+:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .tab-label {
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .tabbrowser-tab {
++  justify-content: center !important;
++  margin: 1px 2px !important;
++}
++
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover .tabbrowser-tab {
++  justify-content: flex-start !important;
++  margin: 1px 4px !important;
++}
++
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .tab-label,
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .bobzilla-action-label {
 +  opacity: 0 !important;
-+  transition: opacity 0.15s ease !important;
++  contain-intrinsic-width: 240px !important;
++  text-rendering: optimizeLegibility !important;
++  transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
 +}
 +
 +:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover {
@@ -56,9 +176,10 @@
 +  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.35) !important;
 +}
 +
-+:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover .tab-label {
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover .tab-label,
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs:hover .bobzilla-action-label {
 +  opacity: 1 !important;
-+  transition: opacity 0.2s ease 0.08s !important;
++  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1) 0.06s !important;
 +}
 +
 +/* Pinned tabs horizontal grid arrangement in vertical mode to save vertical screen space */
@@ -79,30 +200,157 @@
 +  display: none !important;
 +}
 +
-+/* Tab styling ergonomics and hover feedback */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[pinned][selected="true"] {
++  border-bottom: 2px solid var(--tab-selected-accent, #3584e4) !important;
++  box-shadow: 0 2px 6px rgba(53, 132, 228, 0.3) !important;
++}
++
++/* Pinned tabs separator divider */
++:root[bobzilla-vertical-tabs="true"] .bobzilla-pinned-tabs-separator {
++  height: 1px !important;
++  background: var(--chrome-content-separator-color, rgba(255, 255, 255, 0.08)) !important;
++  margin: 4px 8px !important;
++}
++
++/* Tab styling ergonomics, hover feedback, and closing animation */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab {
 +  position: relative !important;
 +  border-radius: 4px !important;
 +  margin: 1px 4px !important;
-+  transition: background-color 0.12s ease, transform 0.1s ease !important;
++  will-change: transform, background-color, opacity !important;
++  transition: background-color 0.15s cubic-bezier(0.16, 1, 0.3, 1), transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s ease !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[closing="true"] {
++  opacity: 0 !important;
++  transform: translateX(-8px) !important;
++  pointer-events: none !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[dragging="true"] {
++  opacity: 0.45 !important;
++  border: 1px dashed var(--tab-selected-accent, #3584e4) !important;
 +}
 +
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:hover {
 +  background-color: var(--tab-hover-bgcolor, rgba(255, 255, 255, 0.05)) !important;
++  transform: translateX(2px) !important;
 +}
 +
-+/* Tab audio/mute indicator button overlay */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:focus-visible {
++  outline: 2px solid var(--tab-selected-accent, #3584e4) !important;
++  outline-offset: -1px !important;
++  box-shadow: 0 0 6px rgba(53, 132, 228, 0.4) !important;
++}
++
++/* Split-view / multi-selected tabs styling */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[multiselected="true"] {
++  border-right: 3px solid var(--tab-selected-accent, #3584e4) !important;
++  background-color: rgba(53, 132, 228, 0.1) !important;
++  transition: border-right-color 0.15s ease, background-color 0.15s ease !important;
++}
++
++/* Discarded / unloaded memory-saving tab state */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[pending="true"],
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[discarded="true"] {
++  opacity: 0.72 !important;
++  transition: opacity 0.2s ease !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[pending="true"]:hover,
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[discarded="true"]:hover {
++  opacity: 1 !important;
++}
++
++/* Tab container contextual identity badges (Multi-Account Containers) */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[usercontextid] .tab-context {
++  display: inline-block !important;
++  width: 4px !important;
++  height: 14px !important;
++  border-radius: 2px !important;
++  margin-inline-end: 6px !important;
++  background-color: var(--identity-tab-color, #3584e4) !important;
++}
++
++/* Tab unread notification numerical counter badge */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-badge {
++  display: inline-flex !important;
++  align-items: center !important;
++  justify-content: center !important;
++  min-width: 16px !important;
++  height: 16px !important;
++  padding: 0 4px !important;
++  border-radius: 8px !important;
++  font-size: 0.75em !important;
++  font-weight: 700 !important;
++  background-color: var(--tab-selected-accent, #3584e4) !important;
++  color: #ffffff !important;
++  margin-inline-end: 6px !important;
++}
++
++/* Inline loading progress bar indicator */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[busy="true"] .tab-progress-bar {
++  position: absolute !important;
++  bottom: 0 !important;
++  left: 0 !important;
++  height: 2px !important;
++  width: 100% !important;
++  border-bottom-left-radius: 4px !important;
++  border-bottom-right-radius: 4px !important;
++  background: linear-gradient(90deg, var(--tab-selected-accent, #3584e4) 0%, #62a0ea 100%) !important;
++  animation: bobzilla-tab-progress 1.2s infinite ease-in-out !important;
++}
++
++@keyframes bobzilla-tab-progress {
++  0% { transform: scaleX(0.1); transform-origin: left; }
++  50% { transform: scaleX(0.85); transform-origin: left; }
++  100% { transform: scaleX(1); transform-origin: right; opacity: 0; }
++}
++
++/* Tab throbber / loading spinner alignment in vertical mode */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-throbber {
++  margin-inline-end: 6px !important;
++  width: 16px !important;
++  height: 16px !important;
++  transition: opacity 0.15s ease !important;
++}
++
++:root[bobzilla-sidebar-collapsed="true"] .bobzilla-vertical-tabs .tabbrowser-tab .tab-throbber {
++  margin-inline-end: 0 !important;
++}
++
++/* Tab audio/mute indicator button overlay with active pulse */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound {
 +  display: inline-flex !important;
 +  margin-inline-end: 4px !important;
 +  padding: 2px !important;
 +  border-radius: 3px !important;
 +  opacity: 0.8 !important;
++  transition: opacity 0.15s ease, background-color 0.15s ease !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound[soundplaying="true"] {
++  opacity: 1 !important;
++  animation: bobzilla-pulse-sound 1.8s infinite ease-in-out !important;
++}
++
++@keyframes bobzilla-pulse-sound {
++  0%, 100% { transform: scale(1); }
++  50% { transform: scale(1.15); }
 +}
 +
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound:hover {
 +  opacity: 1 !important;
 +  background-color: rgba(255, 255, 255, 0.2) !important;
++}
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound[muted="true"] {
++  opacity: 0.95 !important;
++  color: #e01b24 !important;
++  background-color: rgba(224, 27, 36, 0.15) !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-icon-sound[muted="true"]:hover {
++  background-color: rgba(224, 27, 36, 0.3) !important;
 +}
 +
 +/* Tab unread activity dot indicator for background tabs */
@@ -118,29 +366,79 @@
 +  border-radius: 50% !important;
 +  background-color: var(--tab-selected-accent, #3584e4) !important;
 +  box-shadow: 0 0 6px var(--tab-selected-accent, #3584e4) !important;
++  animation: bobzilla-pulse-dot 2.4s infinite ease-in-out !important;
 +}
 +
-+/* Drag-and-drop reordering drop target cues */
++@keyframes bobzilla-pulse-dot {
++  0%, 100% { transform: translateY(-50%) scale(1); opacity: 0.9; }
++  50% { transform: translateY(-50%) scale(1.3); opacity: 1; }
++}
++
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[attention="true"]:not([selected="true"])::after {
++  background-color: #f6d32d !important;
++  box-shadow: 0 0 6px #f6d32d !important;
++}
++
++/* Drag-and-drop reordering drop target cues with neon glow */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[dragover="true"] {
 +  border-top: 2px solid var(--tab-selected-accent, #3584e4) !important;
++  border-top-left-radius: 4px !important;
++  border-top-right-radius: 4px !important;
++  box-shadow: 0 -2px 8px rgba(53, 132, 228, 0.6) !important;
++  transition: border-top-color 0.15s ease, box-shadow 0.15s ease !important;
 +}
 +
-+/* Active tab indicator and accent bar */
++/* Active tab indicator, accent bar, and subtle ambient glow */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[selected="true"] {
 +  background-color: var(--tab-selected-bgcolor, rgba(255, 255, 255, 0.08)) !important;
 +  border-left: 3px solid var(--tab-selected-accent, #3584e4) !important;
++  border-top-left-radius: 2px !important;
++  border-bottom-left-radius: 2px !important;
 +  font-weight: 600 !important;
++  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(53, 132, 228, 0.25) !important;
++}
++
++/* Context menu active tab state feedback */
++:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab[contextmenu-active="true"] {
++  background-color: var(--tab-selected-bgcolor, rgba(255, 255, 255, 0.12)) !important;
++}
++
++/* Tab group header styling and collapse chevron */
++:root[bobzilla-vertical-tabs="true"] .tab-group-header {
++  display: flex !important;
++  align-items: center !important;
++  padding: 4px 8px !important;
++  font-size: 0.82em !important;
++  font-weight: 600 !important;
++  color: var(--chrome-content-separator-color, rgba(255, 255, 255, 0.6)) !important;
++  text-transform: uppercase !important;
++  letter-spacing: 0.5px !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tab-group-header:hover {
++  color: var(--lwt-tab-text, #ffffff) !important;
++  cursor: pointer !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tab-group-header .group-chevron {
++  transition: transform 0.2s cubic-bezier(0.2, 0.0, 0, 1) !important;
++}
++
++:root[bobzilla-vertical-tabs="true"] .tab-group-header[collapsed="true"] .group-chevron {
++  transform: rotate(-90deg) !important;
 +}
 +
 +/* Smooth close button visibility on tab hover */
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-close-button {
 +  opacity: 0.6 !important;
 +  border-radius: 3px !important;
-+  transition: opacity 0.12s ease, background-color 0.12s ease !important;
++  margin-inline-start: auto !important;
++  transition: opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease, transform 0.15s ease !important;
 +}
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab .tab-close-button:hover {
 +  opacity: 1 !important;
 +  background-color: rgba(255, 255, 255, 0.15) !important;
++  transform: scale(1.08) !important;
 +}
 +:root[bobzilla-vertical-tabs="true"] .tabbrowser-tab:hover .tab-close-button {
 +  opacity: 0.8 !important;
@@ -155,11 +453,40 @@
 +  font-size: 0.9em !important;
 +}
 +
++:root[bobzilla-compact-ui="true"] .bobzilla-vertical-tabs .tabbrowser-tab .tab-icon-image {
++  width: 14px !important;
++  height: 14px !important;
++  margin-inline-end: 6px !important;
++}
++
 +:root[bobzilla-compact-ui="true"] #nav-bar {
 +  /* Slimmer navigation bar for maximum screen real estate */
 +  padding-top: 2px !important;
 +  padding-bottom: 2px !important;
 +  min-height: 32px !important;
++}
++
++/* High-DPI display font-smoothing and icon alignment */
++@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-vertical-tabs {
++    font-smooth: always;
++    -webkit-font-smoothing: antialiased;
++  }
++}
++
++/* Collapsed sidebar container identity border accent */
++:root[bobzilla-sidebar-collapsed="true"] .tabbrowser-tab[usercontextid] {
++  border-left: 3px solid var(--identity-tab-color, #3584e4) !important;
++}
++
++/* Touch pointer ergonomics */
++@media (pointer: coarse) {
++  :root[bobzilla-vertical-tabs="true"] .tabbrowser-tab {
++    min-height: 38px !important;
++  }
++  :root[bobzilla-vertical-tabs="true"] .bobzilla-tabs-header-actions {
++    min-height: 42px !important;
++  }
 +}
 +
  .tabbrowser-tab {

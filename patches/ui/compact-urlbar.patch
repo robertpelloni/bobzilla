@@ -1,6 +1,6 @@
 --- a/browser/components/urlbar/UrlbarInput.sys.mjs
 +++ b/browser/components/urlbar/UrlbarInput.sys.mjs
-@@ -400,6 +400,19 @@
+@@ -400,6 +400,31 @@
      if (this.uninit) {
        this.uninit();
      }
@@ -11,11 +11,22 @@
 +    this.textbox.setAttribute("compact", "true");
 +    this.panel.classList.add("bobzilla-compact-panel");
 +
-+    // Suppress pop-out visual expansion when compact mode is active
-+    if (Services.prefs.getIntPref("browser.uidensity", 1) === 1) {
-+      this.textbox.classList.add("bobzilla-no-megabar-expand");
-+      this.textbox.removeAttribute("breakout-extend");
-+    }
++    const updateCompactUrlbar = () => {
++      const density = Services.prefs.getIntPref("browser.uidensity", 1);
++      if (density === 1) {
++        this.textbox.classList.add("bobzilla-no-megabar-expand");
++        this.textbox.removeAttribute("breakout-extend");
++        this.textbox.setAttribute("compact", "true");
++      } else {
++        this.textbox.classList.remove("bobzilla-no-megabar-expand");
++        if (density === 0) {
++          this.textbox.removeAttribute("compact");
++        }
++      }
++    };
++
++    updateCompactUrlbar();
++    Services.prefs.addObserver("browser.uidensity", updateCompactUrlbar);
 
      this._uninit = null;
    }

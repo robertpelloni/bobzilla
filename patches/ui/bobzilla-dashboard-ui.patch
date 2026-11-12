@@ -36,7 +36,7 @@
 +    </vbox>
 +  </groupbox>
 +
-   <!-- Category 2: Javasandbox MicroVM Engine -->
++  <!-- Category 2: Javasandbox MicroVM Engine -->
 +  <groupbox class="bobzilla-subgroup">
 +    <label><html:h3>2. Javasandbox MicroVM Engine</html:h3></label>
 +    <vbox class="indent">

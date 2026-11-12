@@ -1,6 +1,6 @@
 --- a/browser/components/pocket/Pocket.sys.mjs
 +++ b/browser/components/pocket/Pocket.sys.mjs
-@@ -20,6 +20,11 @@
+@@ -20,6 +20,15 @@
 
  export var Pocket = {
    init() {
@@ -12,7 +12,9 @@
      if (this._initialized) {
        return;
      }
-   }
+   },
++  savePage: () => Promise.resolve(false),
++  deleteItem: () => Promise.resolve(false),
 --- a/browser/components/pocket/content/pktApi.sys.mjs
 +++ b/browser/components/pocket/content/pktApi.sys.mjs
 @@ -194,6 +194,10 @@
@@ -21,7 +23,7 @@
 
 +  // BOBZILLA: Hard-disable Pocket API
 +  // Instantly return without network calls
-+  return { isUserLoggedIn: () => false };
++  return { isUserLoggedIn: () => false, getArticle: () => Promise.resolve(null) };
 +
    /**
     * Wrapper for all XMLHttpRequests to the API. It ensures that the url and

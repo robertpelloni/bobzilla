@@ -1,18 +1,23 @@
 --- a/dom/canvas/WebGLContext.cpp
 +++ b/dom/canvas/WebGLContext.cpp
-@@ -1025,6 +1025,18 @@
+@@ -1025,6 +1025,27 @@
    if (!mIsWebGL2) {
      return;
    }
 +
-+  // BOBZILLA: Javasandbox WebGL/WebGPU Hardware Passthrough
++  // BOBZILLA: Javasandbox WebGL/WebGPU Hardware Passthrough & VirtIO-GPU DMA-BUF
 +  // Detects if the current WebGL context is being bound by a Javasandbox tab.
 +  // If true, we bypass the standard Gecko Skia/Angle software rasterizer
 +  // and securely route the GL commands via VirtIO-GPU to the Firecracker MicroVM,
 +  // allowing the guest OS to utilize host hardware acceleration natively.
 +  if (mIsJavasandboxTab) {
-+    // Route WebGL command buffer to Unix Domain Socket
++    // Route WebGL command buffer and zero-copy dma-buf handles to runner-daemon
++    if (mSharedDmaBufFd >= 0) {
++      JavasandboxIPC::SyncDmaBufSurface(mSharedDmaBufFd, mSurfaceWidth, mSurfaceHeight);
++    }
 +    JavasandboxIPC::SendGPUCommandBuffer(mCommandBuffer);
++    // Flush virtqueue to ensure zero-latency synchronization
++    JavasandboxIPC::FlushVirtIOQueue();
 +    // Bypass standard Gecko processing
 +    return;
 +  }

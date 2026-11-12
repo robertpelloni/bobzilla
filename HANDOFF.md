@@ -1,6 +1,66 @@
 # Handoff Document
 
 ## Session Summary
+- Added tab group header hover contrast (`color: var(--lwt-tab-text); cursor: pointer`) and chevron rotation transition smoothing (`cubic-bezier(0.2, 0.0, 0, 1)`) in `patches/ui/custom-layout.patch`.
+- Added border-radius matching (`border-top-left-radius: 4px; border-top-right-radius: 4px`) and transition smoothing (`transition: border-top-color 0.15s ease, box-shadow 0.15s ease`) for `.tabbrowser-tab[dragover="true"]` in `patches/ui/custom-layout.patch` to eliminate visual jitter during tab drag reordering.
+- Added smooth cubic-bezier width transition (`transition: width 0.22s cubic-bezier(0.2, 0.0, 0, 1)`) for compact viewport mode in `patches/ui/custom-layout.patch` to eliminate visual snapping when resizing or tiling windows.
+- Refined vertical tab sidebar width transition easing to `cubic-bezier(0.2, 0.0, 0, 1)` and `transform: translate3d(0, 0, 0)` in `patches/ui/custom-layout.patch` for silky-smooth 120Hz/144Hz high-refresh Wayland rendering.
+- Added attention-specific amber notification dot styling (`background-color: #f6d32d; box-shadow: 0 0 6px #f6d32d`) to `.tabbrowser-tab[attention="true"]` in `patches/ui/custom-layout.patch`.
+- Added dedicated selected state styling (`.tabbrowser-tab[pinned][selected="true"]`) with bottom accent border and glow in `patches/ui/custom-layout.patch` to distinguish selected pinned tiles in vertical layout.
+- Added opacity transition smoothing (`transition: opacity 0.2s ease`) for pending and discarded tab states in `patches/ui/custom-layout.patch` to prevent visual jarring upon tab reactivation.
+- Added transition smoothing (`transition: border-right-color 0.15s ease, background-color 0.15s ease`) for multi-selected tabs (`.tabbrowser-tab[multiselected="true"]`) in `patches/ui/custom-layout.patch`.
+- Added border-radius curvature (`border-bottom-left-radius: 4px; border-bottom-right-radius: 4px`) to `.tab-progress-bar` in `patches/ui/custom-layout.patch` to conform to rounded vertical tab container boundaries.
+- Added centered throbber alignment (`margin-inline-end: 0`) and opacity transition smoothing for tab loading spinners in collapsed sidebars in `patches/ui/custom-layout.patch`.
+- Added icon-only tab centering (`justify-content: center; margin: 1px 2px`) for collapsed vertical tab sidebars in `patches/ui/custom-layout.patch`.
+- Added scrollbar thumb transition smoothing (`transition: background-color 0.2s ease`) on `.bobzilla-vertical-tabs::-webkit-scrollbar-thumb` in `patches/ui/custom-layout.patch`.
+- Added gentle pulsing micro-animation (`bobzilla-pulse-dot`) to background unread activity indicators in `patches/ui/custom-layout.patch` for subtle visual feedback.
+- Enhanced keyboard focus indicator contrast in `patches/ui/custom-layout.patch` (`.tabbrowser-tab:focus-visible`) with accent ambient glow (`box-shadow: 0 0 6px rgba(53, 132, 228, 0.4)`).
+- Added active press feedback (`transform: scale(0.96)`) to header action buttons in `patches/ui/custom-layout.patch` for tactile responsive feel.
+- Added auto margin alignment (`margin-inline-start: auto`) and scale hover micro-interactions (`transform: scale(1.08)`) to vertical tab close buttons in `patches/ui/custom-layout.patch`.
+- Added border-radius curvature (`border-top-left-radius: 2px; border-bottom-left-radius: 2px`) to the active vertical tab left accent bar in `patches/ui/custom-layout.patch`.
+- Added collapsed action bar icon centering (`justify-content: center`) and hover expansion transitions in `patches/ui/custom-layout.patch`.
+- Added `contain-intrinsic-width: 240px` and `text-rendering: optimizeLegibility` to tab labels in `patches/ui/custom-layout.patch` to eliminate rasterization jitter during vertical tab width transitions.
+- Enhanced tracking protection panel telemetry in `patches/ui/tracking-protection-ui.patch` (`trackingProtection.sys.mjs`), adding `bobzillaEngineStatus` diagnostics object for native adblock, excised telemetry, fingerprinting resistance, and leakproof WebRTC.
+- Added `Ctrl+Alt+B` / `Accel+Alt+B` keyboard shortcut handler in `patches/ui/vertical-tabs.patch` (`tabbrowser.js`) to toggle vertical sidebar collapsed and expanded mode.
+- Added `Ctrl+Alt+V` / `Accel+Alt+V` keyboard shortcut listener in `patches/ui/vertical-tabs.patch` (`tabbrowser.js`) to toggle vertical tabs orientation instantly.
+- Enhanced `patches/ui/compact-urlbar.patch` in `UrlbarInput.sys.mjs` to dynamically observe `browser.uidensity` preference updates and toggle compact attributes and megabar expansion suppression without requiring browser restarts.
+- Added interactive muted audio indicator styling (`.tab-icon-sound[muted="true"]`) with red contrast background and hover transitions in `patches/ui/custom-layout.patch`.
+- Added `@media (pointer: coarse)` touch ergonomics styles (38px tab min-height, 42px header min-height) and collapsed sidebar container identity border accents in `patches/ui/custom-layout.patch`.
+- Added `@media (forced-colors: active)` high-contrast accessibility styles in `patches/ui/custom-layout.patch` with `CanvasText` boundaries, `Highlight` selections, and pinned tab dividers.
+- Added `@media (prefers-reduced-motion: reduce)` accessibility overrides in `patches/ui/custom-layout.patch` to disable tab hover translations, scale feedback, and pulse animations for users with motion sensitivity.
+- Enhanced `patches/ui/custom-layout.patch` with neon glow drop indicators (`box-shadow: 0 -2px 8px rgba(53, 132, 228, 0.6)`), Wayland/macOS subpixel anti-aliasing easing (`backface-visibility: hidden; transform: translateZ(0)`), and pinned tabs separator divider styling (`.bobzilla-pinned-tabs-separator`).
+- Hardened Pocket integration bypass in `patches/privacy/remove-pocket.patch` with immediate Promise rejection/resolution for save and article retrieval endpoints (`savePage`, `deleteItem`, `getArticle`).
+- Refined tracking protection panel UI in `patches/ui/tracking-protection-ui.patch` (`trackingProtection.sys.mjs`) to visually indicate active native C++ network ad-blocking (`hasActiveNativeAdblock`) and telemetry removal (`telemetryExcised`).
+- Enhanced `about:support` troubleshooting diagnostics (`patches/ui/about-support.patch`) to report `bobzillaDiagnostics` (Javasandbox IPC status, VirtIO-GPU DMA-BUF passthrough, Widevine L1 spoofing, and Jemalloc memory tuning).
+- Added split-view / multi-selected tab border styling (`.tabbrowser-tab[multiselected="true"]`) in `patches/ui/custom-layout.patch`.
+- Added drag-over ghosting styling (`.tabbrowser-tab[dragging="true"]`) with dashed boundaries and dimmed opacity.
+- Enhanced vertical tab scrollbar thumb contrast on container hover.
+- Enhanced `patches/performance/oom-tuning.patch` in `memory/build/mozjemalloc.cpp` with active jemalloc mallctl tuning: configuring `arenas.dirty_decay_ms = 0` and `arenas.muzzy_decay_ms = 0` for rapid dirty page reclamation and invoking idle arena purging.
+- Enhanced Widevine L1 DRM spoofing capabilities in `patches/drm/widevine-l1.patch` (`MediaKeySystemAccessManager.cpp`) with HDCP 2.2 advertising and hardware-secure video decoding robustness (`HW_SECURE_ALL`) for 4K streaming.
+- Expanded `patches/performance/webgpu-passthrough.patch` in `dom/canvas/WebGLContext.cpp` to integrate zero-copy VirtIO-GPU dma-buf surface synchronization (`mSharedDmaBufFd`) and virtqueue flushing.
+- Added unread numerical badge counters (`.tab-badge`) displaying alert counts in vertical tabs (`patches/ui/custom-layout.patch`).
+- Added inline loading progress bar indicators (`.tab-progress-bar`) displaying animated gradient loaders along bottom borders for busy tabs (`patches/ui/custom-layout.patch`).
+- Added high-visibility keyboard focus styling (`:focus-visible` with 2px border radius and `--tab-selected-accent`) across vertical tabs and header action buttons in `patches/ui/custom-layout.patch`.
+- Added context menu active feedback (`.tabbrowser-tab[contextmenu-active="true"]`) for vertical tab items.
+- Added touch gesture and keyboard scroll-padding (`scroll-padding-top: 8px; scroll-padding-bottom: 8px`) for smooth scroll centering.
+- Refactored `scripts/validate-patches.sh` to implement standard `exit 1`/`exit 0` execution semantics with explicit reporting of failed patch names when malformed headers are detected.
+- Enhanced `scripts/bobzilla-tray.py` with an interactive live terminal dashboard mode (`--dashboard`), latency profiling (`IPC Latency: X.XX ms`), and ANSI terminal refresh.
+- Added discovery resolution assertions and telemetry output validation to `bobzilla-tray.py --test`.
+- Added visual styling for discarded and unloaded tabs (`.tabbrowser-tab[pending="true"]`, `.tabbrowser-tab[discarded="true"]`) with dimmed opacity (0.72) in `patches/ui/custom-layout.patch`.
+- Added sound playing pulse animation (`bobzilla-pulse-sound`) for `.tab-icon-sound[soundplaying="true"]`.
+- Refined icon scaling (14px x 14px) and spacing in compact density mode (`browser.uidensity == 1`).
+- Added tab container contextual identity badges (Multi-Account Containers color indicators) in `patches/ui/custom-layout.patch`.
+- Added subtle active tab ambient glow (`box-shadow: 0 0 10px rgba(53, 132, 228, 0.25)`).
+- Added tab group header styling and collapse chevron animations (`rotate(-90deg)`).
+- Added graceful tab exit micro-animations (`opacity: 0; transform: translateX(-8px)`) during tab close transitions in `patches/ui/custom-layout.patch`.
+- Refined light theme contrast styling for `.bobzilla-vertical-tabs` and selected tabs.
+- Added high-DPI display font-smoothing overrides (`-webkit-font-smoothing: antialiased`).
+- Refined vertical tab transitions and micro-animations in `patches/ui/custom-layout.patch` using GPU-accelerated cubic-bezier curves (`cubic-bezier(0.16, 1, 0.3, 1)`).
+- Added `contain: paint layout` to `.bobzilla-vertical-tabs` to eliminate repainting overhead and layout jitter during width transitions.
+- Added smooth tab hover micro-elevation (`transform: translateX(2px)`) and scale feedback (`transform: scale(1.02)`) on action buttons.
+- Added sidebar collapse/expand toggle controls (`sidebar.verticalTabs.collapsed`) in `patches/ui/vertical-tabs.patch`, integrating `toggleVerticalTabsCollapsed()` and `createNewVerticalTab()`.
+- Implemented header action bar styling in `patches/ui/custom-layout.patch` with dedicated compact "New Tab" button and sidebar collapse toggle button.
+- Refined tab loading spinner (throbber) positioning and alignment in vertical tab strip (`patches/ui/custom-layout.patch`).
 - Enhanced `patches/ui/custom-layout.patch` in `browser.css` with tab audio/mute indicator overlays (`.tab-icon-sound`), background unread activity/attention notification glow dots (`.tabbrowser-tab[unread="true"]::after`), and modern ultra-slim custom scrollbars (`scrollbar-width: thin`).
 - Enhanced dynamic vertical tabs and workspace layout across `patches/ui/custom-layout.patch` and `patches/ui/vertical-tabs.patch`.
 - Added window resize listener in `tabbrowser.js` dynamically setting `bobzilla-compact-viewport="true"` on viewport widths below 960px (ideal for split-screen and tiled window manager setups), automatically narrowing vertical tabs to 180px.
@@ -24,7 +84,7 @@
 - Enhanced `scripts/validate-patches.sh` to perform structural validation and source-level dry-run execution.
 - Added a self-created tool `/home/jules/self_created_tools/patch_inspector.py` to ensure all 24 patch files pass diff syntax and hunk header checks.
 - Cleaned `.gitignore` to prevent Rust build targets and mozilla object directories from being tracked.
-- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.61`.
+- Updated all core documentation files (`CHANGELOG.md`, `ROADMAP.md`, `TODO.md`, `DEPLOY.md`, `VISION.md`, `MEMORY.md`, `HANDOFF.md`) and bumped global version to `0.1.105`.
 
 ## Next Steps
 - Verify full Firefox compilation `./scripts/build.sh` once the shallow clone of `mozilla-unified` is populated.
